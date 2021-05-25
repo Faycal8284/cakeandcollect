@@ -1,16 +1,20 @@
 'use strict';
 module.exports = (sequelize, Sequelize) => {
-    //commandes.belongsTo(clients); // Will add id_cli to commande
     const commande = sequelize.define('commande', { // déf, nom table commande, et les param, colonnes table commande
         id_commande :{
             type:  Sequelize.INTEGER,
                     autoIncrement: true,
                     primaryKey: true
         },
-        // id_cli :{
-        //     type:  Sequelize.INTEGER,
-        //             foreignKey: true
-        // },
+        id_cli: {
+            type: Sequelize.INTEGER,
+            onDelete: 'CASCADE',
+            references: {
+                model: 'clients',
+                key: 'id_client',
+                as: 'id_cli'
+            },
+        },
         titre: {
             type: Sequelize.STRING
         },
@@ -30,6 +34,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.DATE,
         }
     }); 
-    //commandes.belongsTo(clients); // Will add id_cli to commandes
+    //commande.belongsTo(client); // Will add id_cli to commandes
+    //commande.belongsTo(commande, {foreignKey: 'id_client'}); // Adds id_cli to Commande
     return commande;
 }
