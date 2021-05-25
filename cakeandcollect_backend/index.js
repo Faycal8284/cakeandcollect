@@ -4,7 +4,8 @@ const db = require("./src/models");
 var app = express();
 db.sequelize.sync();
 
-const vendeur = db.vendeur;
+//const vendeur = db.vendeur;
+const commande = db.commande;
 
 app.use(cors());
 
@@ -12,8 +13,11 @@ app.use(express.json());
 //app.use(express.urlencoded());
 app.use(express.urlencoded({ extended: true }));
 
-// http://localhost:8080/api/vendeur
+// http://localhost:8080/api/vendeurs
 require('./src/routes/vendeur.routes')(app);
+
+// http://localhost:8080/api/commandes
+require('./src/routes/commande.routes')(app);
 
 // navigateur web
 app.get("/", (req, res) => {
