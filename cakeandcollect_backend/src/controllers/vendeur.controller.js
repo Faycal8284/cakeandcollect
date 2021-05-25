@@ -39,6 +39,7 @@ module.exports = {
                 nom: req.body.nom,
                 prenom: req.body.prenom,
                 siret: req.body.siret,
+                email: req.body.email,
                 mdp: req.body.mdp,
                 particulier: req.body.particulier,
                 actif: req.body.actif,
