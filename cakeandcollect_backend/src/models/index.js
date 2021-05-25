@@ -24,5 +24,6 @@ db.sequelize = sequelize;
 
 // Import de l'entité vendeur à mapper (create table rocket avec ses proprietes dans la base) 
 db.vendeur = require('../models/vendeur.model')(sequelize, Sequelize);
+db.client = require('../models/client.model')(sequelize, Sequelize);
 
 module.exports = db;

@@ -14,6 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // http://localhost:8080/api/vendeur
 require('./src/routes/vendeur.routes')(app);
+require('./src/routes/client.routes')(app);
+
 
 // navigateur web
 app.get("/", (req, res) => {
