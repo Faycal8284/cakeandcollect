@@ -8,6 +8,8 @@ db.sequelize.sync();
 const vendeur = db.vendeur;
 const client = db.client;
 const commande = db.commande;
+const categorie = db.categorie;
+const patisserie = db.patisserie;
 
 app.use(cors());
 
@@ -17,10 +19,18 @@ app.use(express.urlencoded({ extended: true }));
 
 // http://localhost:8080/api/vendeurs
 require('./src/routes/vendeur.routes')(app);
+
+// http://localhost:8080/api/clients
 require('./src/routes/client.routes')(app);
 
 // http://localhost:8080/api/commandes
 require('./src/routes/commande.routes')(app);
+
+// http://localhost:8080/api/categories
+require('./src/routes/categorie.routes')(app);
+
+// http://localhost:8080/api/patisseries
+require('./src/routes/patisserie.routes')(app);
 
 // navigateur web
 app.get("/", (req, res) => {

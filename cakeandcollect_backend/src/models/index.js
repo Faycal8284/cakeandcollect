@@ -22,9 +22,11 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-// Import de l'entité vendeur à mapper (create table rocket avec ses proprietes dans la base) 
+// Import de l'entité vendeur à mapper (create table vendeur avec ses proprietes dans la base) 
 db.vendeur = require('../models/vendeur.model')(sequelize, Sequelize);
 db.client = require('../models/client.model')(sequelize, Sequelize);
 db.commande = require('../models/commande.model')(sequelize, Sequelize);
+db.categorie = require('../models/categorie.model')(sequelize, Sequelize);
+db.patisserie = require('../models/patisserie.model')(sequelize, Sequelize);
 
 module.exports = db;

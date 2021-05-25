@@ -34,7 +34,5 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.DATE,
         }
     }); 
-    //commande.belongsTo(client); // Will add id_cli to commandes
-    //commande.belongsTo(commande, {foreignKey: 'id_client'}); // Adds id_cli to Commande
     return commande;
 }
