@@ -1,7 +1,7 @@
 module.exports = {
     HOST: "localhost",
     USER: "root",
-    PASSWORD: "root",
+    PASSWORD: "Faycal8284.",
     DB: "cakeandcollect_db",
     dialect: "mysql",
 
