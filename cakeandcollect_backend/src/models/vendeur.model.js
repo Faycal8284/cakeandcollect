@@ -1,3 +1,4 @@
+'use strict';
 module.exports = (sequelize, Sequelize) => {
     const vendeur = sequelize.define('vendeur', { // déf, nom table vendeur, et les param, colonnes table vendeur
         id_vendeur :{
