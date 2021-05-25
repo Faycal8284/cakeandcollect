@@ -2,7 +2,7 @@ const controller = require("../controllers/vendeur.controller");
 
 module.exports = function (app) {
 
-    app.get("/api/vendeur", controller.getAllVendeur); // http://localhost:8080/api/vendeurs
+    app.get("/api/vendeurs", controller.getAllVendeurs); // http://localhost:8080/api/vendeurs
 
     
     //app.get("/api/vendeurs/:id", controller.getOneVendeur); // http://localhost:8080/api/vendeurs/1

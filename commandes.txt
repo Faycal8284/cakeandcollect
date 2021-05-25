@@ -38,8 +38,7 @@ ng generate module services/modules/ngx-bootstrap --module=app --flat
 npm i ngx-bootstrap-navbar
 
 ----------------------------------------------------------------------------------
-# Installaiton backen nodejs 
-express js
+# Installaiton backend nodejs express js sequelize
 npm init 
 npm install express --save
 npm install sequelize --save 
