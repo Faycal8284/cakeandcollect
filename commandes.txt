@@ -1,0 +1,47 @@
+npm install -g @angular/cli
+ng new cakeandcollect-project
+ng serve -o
+
+ng g c composants/accueil
+ng generate class classes/client
+ng generate class classes/vendeur
+ng g c composants/erreur
+
+ng g i interfaces/client
+ng g i interfaces/vendeur
+
+ng g s services/client
+ng g s services/vendeur
+
+ng g r resolvers/client
+ng g r resolvers/vendeur
+
+npm add @angular/material  // npm uninstall @angular/material // npm audit fix --force
+npm add @angular/material@11.2.12
+npm add @angular/cdk
+
+npm install --save-dev @angular-devkit/build-angular
+
+npm install --force
+
+npm install -g @angular/cli@latest
+npm install -g npm@latest
+
+ng generate module services/modules/material --module=app --flat
+ng generate @angular/material:table --name=table
+ng generate @angular/material:address-form --name=address-form
+ng generate @angular/material:tree --name=tree
+
+npm install bootstrap@~4.6.0 --save
+npm i ngx-bootstrap
+ng generate module services/modules/ngx-bootstrap --module=app --flat
+npm i ngx-bootstrap-navbar
+
+----------------------------------------------------------------------------------
+# Installaiton backen nodejs 
+express js
+npm init 
+npm install express --save
+npm install sequelize --save 
+npm install cors --save 
+npm install mysql2 --save 

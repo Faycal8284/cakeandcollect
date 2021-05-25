@@ -1,0 +1,17 @@
+<nav ngxNavbarDynamicExpand class="navbar-dark bg-dark">
+  <a href="#" class="navbar-brand">Formation Angular</a>
+  <button class="navbar-toggler" type="button" (click)="collapse.toggle()">
+      <span class="navbar-toggler-icon">
+      </span>
+  </button>
+  <ngx-navbar-collapse class="collapse navbar-collapse" #collapse="ngxNavbarCollapse" >
+      <ul class="navbar-nav mr-auto">
+          <li *ngFor="let tab of tabs"><a class="nav-link item" routerLink="/{{tab.path}}" routerLinkActive="active"> {{tab.title}}</a></li>    
+      </ul>
+  </ngx-navbar-collapse>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+  <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+
+</div>
