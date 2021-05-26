@@ -2,6 +2,8 @@ const dbConfig = require("./../config/db.config");
 
 const Sequelize = require("sequelize");
 
+const bcrypt = require("bcrypt");
+
 // Initialisation nouvelle instance connexion database
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     host: dbConfig.HOST,
@@ -55,6 +57,16 @@ db.commande.hasMany(db.patisserie, { as: "patisseries" });
 db.patisserie.belongsTo(db.commande, {
   foreignKey: "commandeId",
   as: "commandes",
+});
+
+db.vendeur.beforeCreate((vendeur, options) => {
+  return bcrypt.hash(vendeur.mdp, 8)
+      .then(hash => {
+        vendeur.mdp = hash;
+      })
+      .catch(err => { 
+          throw new Error(); 
+      });
 });
 
 

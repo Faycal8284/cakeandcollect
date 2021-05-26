@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
 
         this.isLoggedIn = true;
         this.isLoginFailed = false;
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/accueil');
       },
       err => {
         this.errorMessage = err.error.message;

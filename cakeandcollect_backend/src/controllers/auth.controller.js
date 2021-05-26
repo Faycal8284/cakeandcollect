@@ -34,7 +34,7 @@ exports.signin = (req, res) => {
 
       var passwordIsValid = bcrypt.compareSync(
         req.body.password,
-        vendeur.password
+        vendeur.mdp
       );
 
       if (!passwordIsValid) {
@@ -48,20 +48,14 @@ exports.signin = (req, res) => {
         expiresIn: 86400 // 24 hours
       });
 
-      //var authorities = [];
-      /* vendeur.getRoles().then(roles => {
-        for (let i = 0; i < roles.length; i++) {
-          authorities.push("ROLE_" + roles[i].name.toUpperCase());
-        }
-        res.status(200).send({
-          id: vendeur.id,
-          email: vendeur.email,
-          roles: authorities,
-          accessToken: token
-        });
-      }); */
+      res.status(200).send({
+        id: vendeur.id,
+        email: vendeur.email,
+        accessToken: token
+      });
+      
     })
     .catch(err => {
       res.status(500).send({ message: err.message });
     });
-};
+}
