@@ -66,6 +66,15 @@ ng --version (version 11)
 ionic -v (version 6)
 cordova -v (version 10)
 
+si besoin : npm install @ionic/lab
+ionic serve --lab 
+
+-----------------------------------------------------------------------------------
+ionic g page pages/accueil
+ionic g page pages/login
+ionic g s shared/auth
+ionic g s shared/tokenStorage
+ionic g g guards/auth
 
 
 
