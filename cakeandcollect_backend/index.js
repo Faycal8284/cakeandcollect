@@ -11,6 +11,9 @@ const categorie = db.categorie;
 const commande = db.commande;
 const patisserie = db.patisserie;
 
+//authentification
+require('./routes/auth.routes')(app);
+
 app.use(cors());
 
 app.use(express.json()); 

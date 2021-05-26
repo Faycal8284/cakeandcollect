@@ -46,7 +46,6 @@ module.exports = {
                 ville: req.body.ville,
                 note_vendeur: req.body.note_vendeur,
                 avis_commande: req.body.avis_commande,
-
             });
             res.status(201).send(patisserieCreated)
         }
