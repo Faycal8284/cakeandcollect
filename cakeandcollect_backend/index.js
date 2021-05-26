@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 require('./src/routes/client.routes')(app);
 
 // http://localhost:8080/api/vendeurs
-require('./src/routes/vendeur.routes')(app);
+require('./src/routes/vendeurs.routes')(app);
 
 // http://localhost:8080/api/categories
 require('./src/routes/categorie.routes')(app);
@@ -36,6 +36,9 @@ require('./src/routes/patisserie.routes')(app);
 //authentification
 // http://localhost:8080/api/auth
 require('./src/routes/auth.routes')(app);
+
+// login vendeur
+require('./src/routes/vendeur.routes')(app);
 
 
 // navigateur web

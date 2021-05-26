@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content color="primary" padding>
-  <form #form="ngForm" (ngSubmit)="login(form)">
+  <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && isAuthenticated()" #f="ngForm" novalidate>
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
@@ -17,16 +17,30 @@
           </div>
           <div padding>
             <ion-item>
-              <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
+              <ion-input type="text" class="form-control" name="email" [(ngModel)]="form.email" required
+              #email="ngModel"></ion-input>
+              <div class="alert alert-danger" role="alert" *ngIf="email.errors && f.submitted">
+                email is required!
+              </div>
             </ion-item>
             <ion-item>
-              <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+              <ion-input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="3"
+              #password="ngModel"></ion-input>
+              <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
+                <div *ngIf="password.errors.required">Password is required</div>
+                <div *ngIf="password.errors.minlength">
+                    Password must be at least 3 characters
+                </div>
+              </div>
             </ion-item>
           </div>
           <div padding>
             <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
           </div>
         </ion-col>
+        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+          Login failed: {{ errorMessage }}
+        </div>
       </ion-row>
     </ion-grid>
   </form>

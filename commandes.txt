@@ -65,6 +65,7 @@ npm -v (version 6)
 ng --version (version 11)
 ionic -v (version 6)
 cordova -v (version 10)
+node -v (version 14)
 
 si besoin : npm install @ionic/lab
 ionic serve --lab 
@@ -75,6 +76,11 @@ ionic g page pages/login
 ionic g s shared/auth
 ionic g s shared/tokenStorage
 ionic g g guards/auth
-
-
+-----------------------------------------------------------------------------------
+npm install -g node-gyp
+npm install bcrypt
+npm install bcrypt -g
+npm install bcrypt --save
+npm install bcryptjs --save
+-----------------------------------------------------------------------------------
 
