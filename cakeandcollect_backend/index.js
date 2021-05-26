@@ -34,8 +34,11 @@ require('./src/routes/commande.routes')(app);
 require('./src/routes/patisserie.routes')(app);
 
 //authentification
-// http://localhost:8080/api/auth
-require('./src/routes/auth.routes')(app);
+// http://localhost:8080/api/auth/vendeur
+require('./src/routes/auth.vendeur.routes')(app);
+
+// http://localhost:8080/api/auth/client
+require('./src/routes/auth.client.routes')(app);
 
 // login vendeur
 require('./src/routes/vendeur.routes')(app);

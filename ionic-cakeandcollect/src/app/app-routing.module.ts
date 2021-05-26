@@ -12,8 +12,20 @@ const routes: Routes = [
     loadChildren: () => import('./pages/accueil/accueil.module').then( m => m.AccueilPageModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    path: 'login-vendeur',
+    loadChildren: () => import('./pages/vendeur/login-vendeur/login-vendeur.module').then( m => m.LoginVendeurPageModule)
+  },
+  {
+    path: 'espace-vendeur',
+    loadChildren: () => import('./pages/vendeur/espace-vendeur/espace-vendeur.module').then( m => m.EspaceVendeurPageModule)
+  },
+  {
+    path: 'login-client',
+    loadChildren: () => import('./pages/client/login-client/login-client.module').then( m => m.LoginClientPageModule)
+  },
+  {
+    path: 'espace-client',
+    loadChildren: () => import('./pages/client/espace-client/espace-client.module').then( m => m.EspaceClientPageModule)
   }
 ];
 

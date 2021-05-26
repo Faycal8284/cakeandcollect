@@ -69,5 +69,14 @@ db.vendeur.beforeCreate((vendeur, options) => {
       });
 });
 
+db.client.beforeCreate((client, options) => {
+  return bcrypt.hash(client.mdp, 8)
+      .then(hash => {
+        client.mdp = hash;
+      })
+      .catch(err => { 
+          throw new Error(); 
+      });
+});
 
 module.exports = db;

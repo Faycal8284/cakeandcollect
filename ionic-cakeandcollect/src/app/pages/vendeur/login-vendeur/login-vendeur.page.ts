@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/shared/auth.service';
+import { AuthService } from 'src/app/shared/auth.vendeur.service';
 import { TokenStorageService } from 'src/app/shared/token-storage.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-login-vendeur',
+  templateUrl: './login-vendeur.page.html',
+  styleUrls: ['./login-vendeur.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginVendeurPage implements OnInit {
 
   form: any = {
     email: null,
@@ -26,8 +26,6 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  // Se connecte si les credentials (email+password) sont corrects et redirige
-  // vers le composant personne, sinon affiche le message d'erreur (.html)
   isAuthenticated() {
     const { email, password } = this.form;
     this.authService.login(email, password).subscribe(
@@ -37,7 +35,7 @@ export class LoginPage implements OnInit {
 
         this.isLoggedIn = true;
         this.isLoginFailed = false;
-        this.router.navigateByUrl('/accueil');
+        this.router.navigateByUrl('/espace-vendeur'); // navigate vers tableau de bord vendeur
       },
       err => {
         this.errorMessage = err.error.message;
@@ -45,4 +43,5 @@ export class LoginPage implements OnInit {
       }
     );
   }
+
 }
