@@ -44,3 +44,28 @@ npm install express --save
 npm install sequelize --save 
 npm install cors --save 
 npm install mysql2 --save 
+-----------------------------------------------------------------------------------
+# installation auth jwt 
+
+npm install jsonwebtoken
+npm install bcryptjs
+-----------------------------------------------------------------------------------
+# installation Ionic Cordova
+
+npm install -g ionic cordova
+npm install -g @ionic/cli cordova
+ionic -v
+ionic start ionic-cakeandcollect
+cd ionic-cakeandcollect
+ionic serve --lab 
+ionic cordova platform add android
+ionic cordova emulate android -lab
+debuger => chrome://inspect/#devices
+npm -v (version 6)
+ng --version (version 11)
+ionic -v (version 6)
+cordova -v (version 10)
+
+
+
+
