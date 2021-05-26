@@ -1,11 +1,20 @@
+const { authJwt } = require("../middleware");
 const controller = require("../controllers/client.controller");
 
-module.exports = function (app) {
+module.exports = function(app) {
+  app.use(function(req, res, next) {
+    res.header(
+      "Access-Control-Allow-Headers",
+      "x-access-token, Origin, Content-Type, Accept"
+    );
+    next();
+  });
 
-    app.get("/api/clients", controller.getAllClients); // http://localhost:8080/api/clients
-    app.get("/api/clients/:id", controller.getClientById); // http://localhost:8080/api/clients/1
-    app.post("/api/clients", controller.createClient); // http://localhost:8080/api/clients
-    app.put("/api/clients/:id", controller.updateClient); // http://localhost:8080/api/clients/1
-    app.delete("/api/clients/:id", controller.deleteClient); // http://localhost:8080/api/clients/1
+  app.get("/api/test/all", controller.allAccess);
 
-}
+  app.get(
+    "/api/test/client",
+    [authJwt.verifyToken],
+    controller.clientBoard
+  );
+};
