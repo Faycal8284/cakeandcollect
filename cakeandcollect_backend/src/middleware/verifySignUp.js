@@ -3,7 +3,7 @@ const db = require("../models");
 const Vendeur = db.vendeur;
 
 checkVendeurEmail = (req, res, next) => {
-  // Vendeurname
+  // Vendeur
   Vendeur.findOne({
     where: {
       email: req.body.email
@@ -50,7 +50,7 @@ checkVendeurEmail = (req, res, next) => {
 }; */
 
 const verifySignUp = {
-    checkVendeurEmail: checkDuplicateVendeurEmail,
+    checkVendeurEmail: checkVendeurEmail
     //checkRolesExisted: checkRolesExisted
 };
 

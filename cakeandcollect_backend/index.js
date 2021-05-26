@@ -11,9 +11,6 @@ const categorie = db.categorie;
 const commande = db.commande;
 const patisserie = db.patisserie;
 
-//authentification
-require('./routes/auth.routes')(app);
-
 app.use(cors());
 
 app.use(express.json()); 
@@ -35,6 +32,10 @@ require('./src/routes/commande.routes')(app);
 
 // http://localhost:8080/api/patisseries
 require('./src/routes/patisserie.routes')(app);
+
+//authentification
+// http://localhost:8080/api/auth
+require('./src/routes/auth.routes')(app);
 
 
 // navigateur web
