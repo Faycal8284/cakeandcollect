@@ -2,8 +2,8 @@ CREATE DATABASE cakeandcollect_db;
 
 USE cakeandcollect_db;
 
-CREATE TABLE vendeurs(
-  id_vendeur INT PRIMARY KEY,
+CREATE TABLE vendeur(
+  id_vendeur INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   nom VARCHAR(50),
   prenom VARCHAR(50),
   siret VARCHAR(50),
@@ -17,8 +17,8 @@ CREATE TABLE vendeurs(
   code_promo VARCHAR(50)
 );
 
-CREATE TABLE clients(
-  id_client INT PRIMARY KEY,
+CREATE TABLE client(
+  id_client INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   nom VARCHAR(50),
   prenom VARCHAR(50),
   email VARCHAR(50),
@@ -31,8 +31,8 @@ CREATE TABLE clients(
   avis_commande VARCHAR(100)
 );
 
-CREATE TABLE commandes(
-  id_commande INT,
+CREATE TABLE commande(
+  id_commande INT NOT NULL AUTO_INCREMENT,
   id_cli INT,
   titre VARCHAR(50), 
   actif BOOLEAN,
@@ -44,15 +44,15 @@ CREATE TABLE commandes(
   CONSTRAINT pd_commande PRIMARY KEY(id_commande,id_cli)
 );
 
-CREATE TABLE categories(
-  id_categorie INT PRIMARY KEY,
+CREATE TABLE categorie(
+  id_categorie INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   nom VARCHAR(50), 
   descriptions VARCHAR(100),
   img VARCHAR(50)
 );
 
-CREATE TABLE patisseries(
-  id_pat INT,
+CREATE TABLE patisserie(
+  id_patisserie INT NOT NULL AUTO_INCREMENT,
   id_cat INT,
   id_vend INT,
   id_cmd INT,
@@ -69,5 +69,5 @@ CREATE TABLE patisseries(
   FOREIGN KEY (id_cat) REFERENCES categorie(id_categorie),
   FOREIGN KEY (id_vend) REFERENCES vendeur(id_vendeur),
   FOREIGN KEY (id_cmd) REFERENCES commande(id_commande),
-  CONSTRAINT pd_patisserie PRIMARY KEY(id_pat,id_cat)
+  CONSTRAINT pd_patisserie PRIMARY KEY(id_patisserie,id_cat)
 );

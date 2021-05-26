@@ -5,10 +5,10 @@ var app = express();
 db.sequelize.sync();
 
 // définir les tables
-const vendeur = db.vendeur;
 const client = db.client;
-const commande = db.commande;
+const vendeur = db.vendeur;
 const categorie = db.categorie;
+const commande = db.commande;
 const patisserie = db.patisserie;
 
 app.use(cors());
@@ -17,20 +17,22 @@ app.use(express.json());
 //app.use(express.urlencoded());
 app.use(express.urlencoded({ extended: true }));
 
-// http://localhost:8080/api/vendeurs
-require('./src/routes/vendeur.routes')(app);
 
 // http://localhost:8080/api/clients
 require('./src/routes/client.routes')(app);
 
-// http://localhost:8080/api/commandes
-require('./src/routes/commande.routes')(app);
+// http://localhost:8080/api/vendeurs
+require('./src/routes/vendeur.routes')(app);
 
 // http://localhost:8080/api/categories
 require('./src/routes/categorie.routes')(app);
 
+// http://localhost:8080/api/commandes
+require('./src/routes/commande.routes')(app);
+
 // http://localhost:8080/api/patisseries
 require('./src/routes/patisserie.routes')(app);
+
 
 // navigateur web
 app.get("/", (req, res) => {

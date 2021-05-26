@@ -18,7 +18,7 @@ module.exports = {
         const id = req.params.id;
         try { 
             const onePatisserie = await patisserie.findOne(({
-                where: { id_patisserie: id }
+                where: { id: id }
             }))
             if (onePatisserie) {
                 res.status(201).send(onePatisserie);
@@ -60,11 +60,11 @@ module.exports = {
         const id = req.params.id;
         try {
             const onePatisserie = await patisserie.findOne(({
-                where: { id_patisserie: id }
+                where: { id: id }
             }))
             if (onePatisserie) {
                 const updatedPatisserie = await onePatisserie.update(req.body, {
-                    where: { id_patisserie: id }
+                    where: { id: id }
                 })
 
                 res.status(201).send(updatedPatisserie);
@@ -84,7 +84,7 @@ module.exports = {
         try {
 
             const deletedPatisserie = await patisserie.findOne(({
-                where: { id_patisserie: id }
+                where: { id: id }
             }))
             if (deletedPatisserie) {
                 deletedPatisserie.destroy();

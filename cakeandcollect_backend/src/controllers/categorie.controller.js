@@ -18,7 +18,7 @@ module.exports = {
         const id = req.params.id;
         try { 
             const oneCategorie = await categorie.findOne(({
-                where: { id_categorie: id }
+                where: { id: id }
             }))
             if (oneCategorie) {
                 res.status(201).send(oneCategorie);
@@ -60,11 +60,11 @@ module.exports = {
         const id = req.params.id;
         try {
             const oneCategorie = await categorie.findOne(({
-                where: { id_categorie: id }
+                where: { id: id }
             }))
             if (oneCategorie) {
                 const updatedCategorie = await oneCategorie.update(req.body, {
-                    where: { id_categorie: id }
+                    where: { id: id }
                 })
 
                 res.status(201).send(updatedCategorie);
@@ -84,7 +84,7 @@ module.exports = {
         try {
 
             const deletedCategorie = await categorie.findOne(({
-                where: { id_categorie: id }
+                where: { id: id }
             }))
             if (deletedCategorie) {
                 deletedCategorie.destroy();

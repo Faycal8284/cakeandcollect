@@ -18,7 +18,7 @@ module.exports = {
         const id = req.params.id;
         try { 
             const oneCommande = await commande.findOne(({
-                where: { id_commande: id }
+                where: { id: id }
             }))
             if (oneCommande) {
                 res.status(201).send(oneCommande);
@@ -59,11 +59,11 @@ module.exports = {
         const id = req.params.id;
         try {
             const oneCommande = await commande.findOne(({
-                where: { id_commande: id }
+                where: { id: id }
             }))
             if (oneCommande) {
                 const updatedCommande = await oneCommande.update(req.body, {
-                    where: { id_commande: id }
+                    where: { id: id }
                 })
 
                 res.status(201).send(updatedCommande);
@@ -83,7 +83,7 @@ module.exports = {
         try {
 
             const deletedCommande = await commande.findOne(({
-                where: { id_commande: id }
+                where: { id: id }
             }))
             if (deletedCommande) {
                 deletedCommande.destroy();

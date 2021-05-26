@@ -1,35 +1,37 @@
+'use strict';
 module.exports = (sequelize, Sequelize) => {
     const patisserie = sequelize.define('patisserie', { // déf, nom table patisserie, et les param, colonnes table patisserie
-        id_patisserie :{
+        /* id_patisserie :{
             type:  Sequelize.INTEGER,
                     autoIncrement: true,
+                    allowNull: false,
                     primaryKey: true
-        },
-        id_cat: {
+        }, */
+        vendeurId: {
             type: Sequelize.INTEGER,
             onDelete: 'CASCADE',
             references: {
-                model: 'categorie',
-                key: 'id_categorie',
-                as: 'id_cat'
+                model: 'vendeurs',
+                key: 'id',
+                as: 'vendeurId'
             },
         },
-        id_vend: {
+        categorieId: {
             type: Sequelize.INTEGER,
             onDelete: 'CASCADE',
             references: {
-                model: 'vendeur',
-                key: 'id_vendeur',
-                as: 'id_vend'
+                model: 'categories',
+                key: 'id',
+                as: 'categorieId'
             },
         },
-        id_cmd: {
+        commandeId: {
             type: Sequelize.INTEGER,
             onDelete: 'CASCADE',
             references: {
-                model: 'commande',
-                key: 'id_commande',
-                as: 'id_cmd'
+                model: 'commandes',
+                key: 'id',
+                as: 'commandeId'
             },
         },
         nom: {

@@ -18,7 +18,7 @@ module.exports = {
         const id = req.params.id;
         try { 
             const oneVendeur = await vendeur.findOne(({
-                where: { id_vendeur: id }
+                where: { id: id }
             }))
             if (oneVendeur) {
                 res.status(201).send(oneVendeur);
@@ -60,11 +60,11 @@ module.exports = {
         const id = req.params.id;
         try {
             const oneVendeur = await vendeur.findOne(({
-                where: { id_vendeur: id }
+                where: { id: id }
             }))
             if (oneVendeur) {
                 const updatedVendeur = await oneVendeur.update(req.body, {
-                    where: { id_vendeur: id }
+                    where: { id: id }
                 })
 
                 res.status(201).send(updatedVendeur);
@@ -84,7 +84,7 @@ module.exports = {
         try {
 
             const deletedVendeur = await vendeur.findOne(({
-                where: { id_vendeur: id }
+                where: { id: id }
             }))
             if (deletedVendeur) {
                 deletedVendeur.destroy();

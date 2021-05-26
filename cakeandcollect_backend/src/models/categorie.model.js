@@ -1,11 +1,12 @@
 'use strict';
 module.exports = (sequelize, Sequelize) => {
     const categorie = sequelize.define('categorie', { // déf, nom table categorie, et les param, colonnes table categorie
-        id_categorie :{
+        /* id_categorie :{
             type:  Sequelize.INTEGER,
                     autoIncrement: true,
+                    allowNull: false,
                     primaryKey: true
-        },
+        }, */
         nom: {
             type: Sequelize.STRING
         },
@@ -19,4 +20,3 @@ module.exports = (sequelize, Sequelize) => {
     }); 
     return categorie;
 }
-

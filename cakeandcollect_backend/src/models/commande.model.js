@@ -1,18 +1,19 @@
 'use strict';
 module.exports = (sequelize, Sequelize) => {
     const commande = sequelize.define('commande', { // déf, nom table commande, et les param, colonnes table commande
-        id_commande :{
+        /* id_commande :{
             type:  Sequelize.INTEGER,
                     autoIncrement: true,
+                    allowNull: false,
                     primaryKey: true
-        },
-        id_cli: {
+        }, */
+        clientId: {
             type: Sequelize.INTEGER,
             onDelete: 'CASCADE',
             references: {
                 model: 'clients',
-                key: 'id_client',
-                as: 'id_cli'
+                key: 'id',
+                as: 'clientId'
             },
         },
         titre: {

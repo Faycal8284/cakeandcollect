@@ -18,7 +18,7 @@ module.exports = {
         const id = req.params.id;
         try { 
             const oneClient = await client.findOne(({
-                where: { id_client: id }
+                where: { id: id }
             }))
             if (oneClient) {
                 res.status(201).send(oneClient);
@@ -60,11 +60,11 @@ module.exports = {
         const id = req.params.id;
         try {
             const oneClient = await client.findOne(({
-                where: { id_client: id }
+                where: { id: id }
             }))
             if (oneClient) {
                 const updatedClient = await oneClient.update(req.body, {
-                    where: { id_client: id }
+                    where: { id: id }
                 })
 
                 res.status(201).send(updatedClient);
@@ -84,7 +84,7 @@ module.exports = {
         try {
 
             const deletedClient = await client.findOne(({
-                where: { id_client: id }
+                where: { id: id }
             }))
             if (deletedClient) {
                 deletedClient.destroy();

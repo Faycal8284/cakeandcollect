@@ -1,11 +1,12 @@
 'use strict';
 module.exports = (sequelize, Sequelize) => {
     const client = sequelize.define('client', { // déf, nom table client, et les param, colonnes table Client
-        id_client :{
+        /* id_client :{
             type:  Sequelize.INTEGER,
                     autoIncrement: true,
+                    allowNull: false,
                     primaryKey: true
-        },
+        }, */
         nom: {
             type: Sequelize.STRING
         },
