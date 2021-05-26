@@ -76,6 +76,11 @@ ionic g page pages/login
 ionic g s shared/auth
 ionic g s shared/tokenStorage
 ionic g g guards/auth
+
+ionic g page pages/vendeur/loginVendeur
+ionic g page pages/vendeur/espaceVendeur
+ionic g page pages/client/loginClient
+ionic g page pages/client/espaceClient
 -----------------------------------------------------------------------------------
 npm install -g node-gyp
 npm install bcrypt

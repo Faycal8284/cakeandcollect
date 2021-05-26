@@ -1,6 +1,7 @@
 const db = require("../models");
-//const ROLES = db.ROLES;
+
 const Vendeur = db.vendeur;
+const Client = db.client;
 
 checkVendeurEmail = (req, res, next) => {
   // Vendeur
@@ -34,24 +35,42 @@ checkVendeurEmail = (req, res, next) => {
   });
 };
 
-/* checkRolesExisted = (req, res, next) => {
-  if (req.body.roles) {
-    for (let i = 0; i < req.body.roles.length; i++) {
-      if (!ROLES.includes(req.body.roles[i])) {
+checkClientEmail = (req, res, next) => {
+  // Client
+  Client.findOne({
+    where: {
+      email: req.body.email
+    }
+  }).then(client => {
+    if (client) {
+      res.status(400).send({
+        message: "Failed! email is already in use!"
+      });
+      return;
+    }
+
+    // Email
+    Client.findOne({
+      where: {
+        email: req.body.email
+      }
+    }).then(client => {
+      if (client) {
         res.status(400).send({
-          message: "Failed! Role does not exist = " + req.body.roles[i]
+          message: "Failed! Email is already in use!"
         });
         return;
       }
-    }
-  }
-  
-  next();
-}; */
+
+      next();
+    });
+  });
+};
 
 const verifySignUp = {
-    checkVendeurEmail: checkVendeurEmail
-    //checkRolesExisted: checkRolesExisted
+    checkVendeurEmail: checkVendeurEmail,
+    checkClientEmail: checkClientEmail
+
 };
 
 module.exports = verifySignUp;

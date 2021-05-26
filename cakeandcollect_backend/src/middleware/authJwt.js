@@ -1,7 +1,9 @@
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
 const db = require("../models");
+
 const Vendeur = db.vendeur;
+const Client = db.client;
 
 verifyToken = (req, res, next) => {
   let token = req.headers["x-access-token"];
@@ -27,11 +29,19 @@ isVendeur = (req, res, next) => {
   Vendeur.findByPk(req.vendeurId).then(vendeur => {
     next(); // à vérifier
     return;
-    })
+  })
+};
+
+isClient = (req, res, next) => {
+  Client.findByPk(req.clientId).then(client => {
+    next(); // à vérifier
+    return;
+  })
 };
 
 const authJwt = {
   verifyToken: verifyToken,
-  isVendeur: isVendeur
+  isVendeur: isVendeur,
+  isClient: isClient
 };
 module.exports = authJwt;
