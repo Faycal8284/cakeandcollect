@@ -60,7 +60,10 @@ export class AccueilPage implements OnInit {
     this.getCategories();
   }
   getCategories() {
-    this.categories = this.categoriesService.getAllCategories();
+    this.categoriesService.getAllCategories().subscribe(data => {
+      console.log(data);
+      this.categories = data;
+    });;
   }
   // getTopOffers() {
   //   this.offers = this.dataService.getTopOffers();
