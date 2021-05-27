@@ -17,9 +17,7 @@ export class AccueilPage implements OnInit {
   //categorie: Categorie;
   categories: any = [];
   vendeurs: any = [];
-  vendeur: Vendeur;
-
-  
+  // vendeur: Vendeur;
 
   slideOpt1 = {
     initialSlide: 2,
@@ -58,7 +56,8 @@ export class AccueilPage implements OnInit {
   };
 
     constructor(
-    private categoriesService: CategoriesService,private vendeursService: VendeursService ,private router: Router) { }
+      private categoriesService: CategoriesService, private vendeursService: VendeursService,
+      private router: Router) { }
 
   ngOnInit() {
     // this.getTopOffers();
@@ -71,11 +70,11 @@ export class AccueilPage implements OnInit {
       this.categories = data;
     });
   }
+
   getVendeurs() {
-    this.vendeurs = this.vendeursService.getAllVendeurs().subscribe(data => {
+    this.vendeursService.getAllVendeurs().subscribe(data => {
       console.log(data);
       this.vendeurs = data;
     });
-    }
+  }
 }
-  
