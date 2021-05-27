@@ -28,8 +28,11 @@ module.exports = (sequelize, Sequelize) => {
         rue: {
             type: Sequelize.STRING
         },
+        tel: {
+            type: Sequelize.INTEGER
+        },
         code_postal: {
-            type: Sequelize.STRING
+            type: Sequelize.INTEGER
         },
         ville: {
             type: Sequelize.STRING

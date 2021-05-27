@@ -45,6 +45,7 @@ module.exports = {
                 categorie: req.body.categorie,
                 note: req.body.note,
                 code_promo: req.body.code_promo,
+                tel: req.body.tel,
                 particulier: req.body.particulier,
                 actif: req.body.actif,
                 rue: req.body.rue,
