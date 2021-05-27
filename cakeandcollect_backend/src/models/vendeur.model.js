@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, Sequelize) => {
-    const vendeur = sequelize.define('vendeur', { // déf, nom table vendeur, et les param, colonnes table vendeur
+    const vendeur = sequelize.define('vendeur', { // création table vendeur avec ses champs
         /* id_vendeur :{
             type:  Sequelize.INTEGER,
                     autoIncrement: true,
@@ -22,6 +22,18 @@ module.exports = (sequelize, Sequelize) => {
         mdp: {
             type: Sequelize.STRING
         },
+        img: {
+            type: Sequelize.STRING
+        },
+        categorie: {
+            type: Sequelize.STRING
+        },
+        note: {
+            type: Sequelize.INTEGER
+        },
+        code_promo: {
+            type: Sequelize.STRING
+        },
         particulier: {
             type: Sequelize.BOOLEAN
         },
@@ -35,9 +47,6 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         ville: {
-            type: Sequelize.STRING
-        },
-        code_promo: {
             type: Sequelize.STRING
         }
     }); 

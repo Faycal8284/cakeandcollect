@@ -41,12 +41,15 @@ module.exports = {
                 siret: req.body.siret,
                 email: req.body.email,
                 mdp: req.body.mdp,
+                img: req.body.img,
+                categorie: req.body.categorie,
+                note: req.body.note,
+                code_promo: req.body.code_promo,
                 particulier: req.body.particulier,
                 actif: req.body.actif,
                 rue: req.body.rue,
                 code_postal: req.body.code_postal,
-                ville: req.body.ville,
-                code_promo: req.body.code_promo
+                ville: req.body.ville
             });
             res.status(201).send(vendeurCreated)
         }

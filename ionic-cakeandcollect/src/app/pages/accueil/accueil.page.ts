@@ -12,7 +12,7 @@ export class AccueilPage implements OnInit {
 
   items: any;
   offers: any = [];
-  categorie: Categorie;
+  //categorie: Categorie;
   categories: any = [];
   restaurants: any = [];
 
@@ -64,7 +64,7 @@ export class AccueilPage implements OnInit {
     this.categoriesService.getAllCategories().subscribe(data => {
       console.log(data);
       this.categories = data;
-    });;
+    });
   }
   // getTopOffers() {
   //   this.offers = this.dataService.getTopOffers();

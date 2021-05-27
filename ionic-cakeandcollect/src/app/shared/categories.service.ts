@@ -22,45 +22,41 @@ export class CategoriesService {
       );
   }
 
-  getCategorie(id:number){
-    let API_URL = `${this.url}/${id}`;
+  getCategorie(id: number){
+    const API_URL = `${this.url}/${id}`;
     return this.httpClient.get(API_URL, {headers:this.headers})
     .pipe(
-      map((res: any) => {
-        return res || {}
-      }),
+      map((res: any) => res || {}),
       catchError(this.errorMgmt)
-    )
+    );
     }
 
      // Ajoute une Categorie
   addCategorie(data: Categorie): Observable<any>{
-    let API_URL = `${this.url}`;
+    const API_URL = `${this.url}`;
     return this.httpClient.post(API_URL, data)
       .pipe(
         catchError(this.errorMgmt)
-      )
+      );
   }
 
      // Met à jour une Categorie selon son identifiant
   updateCategorie(id: number, data: Categorie): Observable<any>{
-    let API_URL = `${this.url}/${id}`;
+    const API_URL = `${this.url}/${id}`;
     return this.httpClient.put(API_URL, data)
       .pipe(
-        map((res: any) => {
-          return console.log("service :" + res);
-        }),
+        map((res: any) => console.log('service :' + res)),
         catchError(this.errorMgmt)
       );
   }
 
     // Supprime une Categorie selon son identifiant
   deleteCategorie(id: number): Observable<any> {
-    var API_URL = `${this.url}/${id}`;
+    const API_URL = `${this.url}/${id}`;
     return this.httpClient.delete(API_URL)
       .pipe(
         catchError(this.errorMgmt)
-      )
+      );
   }
 
  errorMgmt(error: HttpErrorResponse) {
