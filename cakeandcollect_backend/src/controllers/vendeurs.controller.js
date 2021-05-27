@@ -46,7 +46,7 @@ module.exports = {
                 rue: req.body.rue,
                 code_postal: req.body.code_postal,
                 ville: req.body.ville,
-                code_promo: req.body.code_promo,
+                code_promo: req.body.code_promo
             });
             res.status(201).send(vendeurCreated)
         }

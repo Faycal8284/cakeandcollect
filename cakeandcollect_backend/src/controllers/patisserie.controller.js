@@ -36,16 +36,19 @@ module.exports = {
     async createPatisserie(req, res) {
         try {
             const patisserieCreated = await patisserie.create({
+                vendeurId: req.body.vendeurId,
+                categorieId: req.body.categorieId,
+                commandeId: req.body.commandeId,
                 nom: req.body.nom,
-                prenom: req.body.prenom,
-                email: req.body.email,
-                mdp: req.body.mdp,
-                actif: req.body.actif,
-                rue: req.body.rue,
-                code_postal: req.body.code_postal,
-                ville: req.body.ville,
-                note_vendeur: req.body.note_vendeur,
-                avis_commande: req.body.avis_commande,
+                disponible: req.body.disponible,
+                descriptions: req.body.descriptions,
+                ingredients: req.body.ingredients,
+                prix_u: req.body.prix_u,
+                stock: req.body.stock,
+                img: req.body.img,
+                img1: req.body.img1,
+                img2: req.body.img2,
+                img3: req.body.img3,
             });
             res.status(201).send(patisserieCreated)
         }

@@ -45,7 +45,7 @@ module.exports = {
                 code_postal: req.body.code_postal,
                 ville: req.body.ville,
                 note_vendeur: req.body.note_vendeur,
-                avis_commande: req.body.avis_commande,
+                avis_commande: req.body.avis_commande
 
             });
             res.status(201).send(clientCreated)
