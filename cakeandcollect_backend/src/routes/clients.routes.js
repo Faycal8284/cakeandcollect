@@ -1,4 +1,4 @@
-const controller = require("../controllers/client.controller");
+const controller = require("../controllers/clients.controller");
 
 module.exports = function (app) {
 

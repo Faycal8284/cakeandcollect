@@ -36,16 +36,13 @@ module.exports = {
     async createCommande(req, res) {
         try {
             const commandeCreated = await commande.create({
-                nom: req.body.nom,
-                prenom: req.body.prenom,
-                siret: req.body.siret,
-                mdp: req.body.mdp,
-                particulier: req.body.particulier,
+                clientId: req.body.clientId,
+                titre: req.body.titre,
                 actif: req.body.actif,
-                rue: req.body.rue,
-                code_postal: req.body.code_postal,
-                ville: req.body.ville,
-                code_promo: req.body.code_promo,
+                quantite: req.body.quantite,
+                prix_vente: req.body.prix_vente,
+                date_commande: req.body.date_commande,
+                date_recuperation: req.body.date_recuperation
             });
             res.status(201).send(commandeCreated)
         }
