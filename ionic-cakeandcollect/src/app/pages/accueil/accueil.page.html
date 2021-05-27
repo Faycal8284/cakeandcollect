@@ -1,41 +1,12 @@
-<!-- Header -->
-<ion-header class="ion-no-border">
-  <ion-toolbar color="color1">
-
-    <!-- Back Button -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Espace Vendeur</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-
-    <!-- Title -->
-    <ion-title>Accueil</ion-title>
   </ion-toolbar>
 </ion-header>
-
-
-<!-- Contents -->
 <ion-content class="background">
-
-  <!-- Search Bar -->
-  <div id="section1">
-    <ion-grid>
-      <ion-row class="ion-align-items-center ion-justify-content-center">
-        <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
-          <ion-searchbar (ionInput)="gotoSearchPage($event)" placeholder="Search for Vendeurs..."></ion-searchbar>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-
-  <!-- Top Offers -->
-  <div id="top-offers">
-    <ion-slides class="ion-padding slider" #slider [options]="slideOpt1">
-      <ion-slide *ngFor="let item of offers" [ngStyle]="{'background' : 'url(' + item + ')'}">
-      </ion-slide>
-    </ion-slides>
-  </div>
-
-  <!-- Categories -->
   <div id="categories">
     <ion-list>
       <ion-list-header>
@@ -51,12 +22,10 @@
             <ion-col>
               <ion-card class="ion-no-padding ion-no-margin">
 
-                <!-- Categories Image -->
                 <img [src]="item.img" />
 
-                <!-- Categories Name -->
                 <ion-card-header>
-                  <ion-card-subtitle>{{item.name}}</ion-card-subtitle>
+                  <ion-card-subtitle>{{item.name}}{{item.descriptions}}</ion-card-subtitle>
                 </ion-card-header>
               </ion-card>
             </ion-col>
@@ -65,82 +34,4 @@
       </ion-slide>
     </ion-slides>
   </div>
-  <!-- End Categories -->
-
-
-  <!-- Vendeurs populaires -->
-  <div id="popular-Vendeurs">
-    <ion-list-header>
-      <ion-label color="dark">Vendeurs populaires</ion-label>
-      <ion-button color="color1" (click)="gotoRestaurantPage()">Voir tout</ion-button>
-    </ion-list-header>
-
-    <ion-slides [options]="slideOpt3" class="ion-padding-top">
-      <ion-slide *ngFor="let item of Vendeurs; let i=index">
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-card class="ion-no-padding ion-no-margin">
-                <!-- Image -->
-                <img [src]="item.image" />
-
-                <ion-list lines="none">
-                  <ion-item>
-                    <!-- Like/Dislike Button Option -->
-                    <ion-fab vertical="top" horizontal="end">
-                      <ion-icon color="danger" name="heart"></ion-icon>
-                    </ion-fab>
-
-                    <!-- Vendeurs Info -->
-                    <ion-label class="ion-text-wrap">
-                      <h4 class="name">{{item.name}}</h4>
-                      <h5>{{item.category}}</h5>
-
-                      <!-- Reviews -->
-                      <ion-text color="medium"> {{item.rating}} ({{item.totalReview | number}} reviews)</ion-text>
-                    </ion-label>
-                  </ion-item>
-                </ion-list>
-              </ion-card>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-slide>
-    </ion-slides>
-  </div>
-
-  <!-- Patisseries Populaire -->
-  <div id="popular-Patisseries">
-    <ion-list-header>
-      <ion-label color="dark">Popular Patisseries</ion-label>
-      <ion-button color="color1">Voir tout</ion-button>
-    </ion-list-header>
-
-    <ion-card *ngFor="let item of Vendeurs; let i=index">
-      <ion-list lines="none">
-        <ion-item class="ion-no-padding border">
-
-          <!-- Image -->
-          <ion-thumbnail slot="start">
-            <img class="packages_thumbnail" style="vertical-align: middle;" [src]="item.image">
-          </ion-thumbnail>
-
-          <ion-label class="ion-text-wrap">
-            <h4 class="name">{{item.name}}</h4>
-            <ion-text color="medium">
-              <ion-icon color="medium" name="location"></ion-icon> {{item.address}}
-            </ion-text>
-
-            <br>
-
-            <ion-text color="color1">${{item.price}}</ion-text>
-          </ion-label>
-
-          <ion-card>
-            Commander
-          </ion-card>
-        </ion-item>
-      </ion-list>
-    </ion-card>
-  </div>
-</ion-content>
+</ion-content> 

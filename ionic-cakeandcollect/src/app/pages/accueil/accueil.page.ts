@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CategoriesService } from 'src/app/shared/categories.service';
 
 @Component({
   selector: 'app-accueil',
@@ -49,42 +50,42 @@ export class AccueilPage implements OnInit {
     effect: 'slide',
   };
 
-  constructor(private dataService: DataService,
+    constructor(
     private categoriesService: CategoriesService,
     private router: Router) { }
 
   ngOnInit() {
-    this.getRestaurants();
-    this.getTopOffers();
+    // this.getRestaurants();
+    // this.getTopOffers();
     this.getCategories();
   }
-
-  getTopOffers() {
-    this.offers = this.dataService.getTopOffers();
-  }
-
-  gotoSearchPage(ev) {
-    this.router.navigate(['/tabs/search']);
-  }
-
-  gotoHotelList() {
-    this.router.navigate(['/hotel-list']);
-  }
-
-  gotoCategoriesPage() {
-    this.router.navigate(['/tabs/categories']);
-  }
-
-  gotoRestaurantPage() {
-    this.router.navigate(['/tabs/restaurants']);
-  }
-
-  getRestaurants() {
-    this.restaurants = this.dataService.getAllRestaurants();
-  }
-
   getCategories() {
     this.categories = this.categoriesService.getAllCategories();
   }
+  // getTopOffers() {
+  //   this.offers = this.dataService.getTopOffers();
+  // // }
+
+  // gotoSearchPage(ev) {
+  //   this.router.navigate(['/tabs/search']);
+  // }
+
+  // gotoHotelList() {
+  //   this.router.navigate(['/hotel-list']);
+  // }
+
+  // gotoCategoriesPage() {
+  //   this.router.navigate(['/tabs/categories']);
+  // }
+
+  // gotoRestaurantPage() {
+  //   this.router.navigate(['/tabs/restaurants']);
+  // }
+
+  // getRestaurants() {
+  //   this.restaurants = this.dataService.getAllRestaurants();
+  // }
+
+  
 
 }
