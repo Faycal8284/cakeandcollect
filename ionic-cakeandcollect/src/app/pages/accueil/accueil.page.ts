@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Categorie } from 'src/app/interfaces/categorie';
 import { CategoriesService } from 'src/app/shared/categories.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class AccueilPage implements OnInit {
 
   items: any;
   offers: any = [];
+  categorie: Categorie;
   categories: any = [];
   restaurants: any = [];
 
@@ -51,8 +53,7 @@ export class AccueilPage implements OnInit {
   };
 
     constructor(
-    private categoriesService: CategoriesService,
-    private router: Router) { }
+    private categoriesService: CategoriesService, private router: Router) { }
 
   ngOnInit() {
     // this.getRestaurants();
@@ -89,6 +90,6 @@ export class AccueilPage implements OnInit {
   //   this.restaurants = this.dataService.getAllRestaurants();
   // }
 
-  
+
 
 }
