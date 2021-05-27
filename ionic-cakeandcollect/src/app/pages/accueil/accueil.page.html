@@ -123,18 +123,18 @@
 
           <!-- Image -->
           <ion-thumbnail slot="start">
-            <img class="packages_thumbnail" style="vertical-align: middle;" [src]="item.image">
+            <img class="packages_thumbnail" style="vertical-align: middle;" [src]="item.img">
           </ion-thumbnail>
 
           <ion-label class="ion-text-wrap">
             <h4 class="name">{{item.nom}}</h4>
             <ion-text color="medium">
-              <ion-icon color="medium" name="location"></ion-icon> {{item.ville}}
+              <ion-icon color="medium" name="location"></ion-icon> {{item.descriptions}}
             </ion-text>
 
             <br>
 
-            <ion-text color="color1">{{item.prix}} €</ion-text>
+            <ion-text color="color1">{{item.prix_vente}} €</ion-text>
           </ion-label>
 
           <ion-card>

@@ -38,7 +38,10 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.BOOLEAN
         },
         tel: {
-            type: Sequelize.INTEGER
+            type: Sequelize.STRING
+        },
+        descriptions: {
+            type: Sequelize.STRING
         },
         actif: {
             type: Sequelize.BOOLEAN

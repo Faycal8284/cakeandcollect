@@ -90,7 +90,9 @@ npm install bcryptjs --save
 ionic g page pages/vendeur/registerVendeur
 -----------------------------------------------------------------------------------
 ionic g i interfaces/categorie
-
+-----------------------------------------------------------------------------------
 npm install @ionic-native/core
 npm install @ionic-native/splash-screen
 npm install @ionic-native/status-bar
+-----------------------------------------------------------------------------------
+ionic g page pages/categories

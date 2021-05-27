@@ -29,7 +29,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         tel: {
-            type: Sequelize.INTEGER
+            type: Sequelize.STRING
         },
         code_postal: {
             type: Sequelize.INTEGER

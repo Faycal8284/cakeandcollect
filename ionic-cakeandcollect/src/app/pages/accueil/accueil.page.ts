@@ -77,4 +77,8 @@ export class AccueilPage implements OnInit {
       this.vendeurs = data;
     });
   }
+
+  gotoCategoriesPage() {
+    this.router.navigate(['/categories']);
+  }
 }

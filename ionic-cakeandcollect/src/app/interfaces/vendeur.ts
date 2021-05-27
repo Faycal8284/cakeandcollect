@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export interface Vendeur {
         id?: number;
         nom?: string;
@@ -8,12 +9,12 @@ export interface Vendeur {
         img?: string;
         categorie?: string;
         note?: number;
-        // eslint-disable-next-line @typescript-eslint/naming-convention
         code_promo?: string;
+        descriptions?: string;
         particulier?: boolean;
         actif?: boolean;
         rue?: string;
-        // eslint-disable-next-line @typescript-eslint/naming-convention
         code_postal?: string;
         ville?: string;
+        tel?: string;
 }
