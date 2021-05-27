@@ -42,6 +42,8 @@ require('./src/routes/auth.client.routes')(app);
 
 // login vendeur
 require('./src/routes/vendeur.routes')(app);
+// login client
+require('./src/routes/client.routes')(app);
 
 
 // navigateur web

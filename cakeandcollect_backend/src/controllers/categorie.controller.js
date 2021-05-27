@@ -37,16 +37,8 @@ module.exports = {
         try {
             const categorieCreated = await categorie.create({
                 nom: req.body.nom,
-                prenom: req.body.prenom,
-                email: req.body.email,
-                mdp: req.body.mdp,
-                actif: req.body.actif,
-                rue: req.body.rue,
-                code_postal: req.body.code_postal,
-                ville: req.body.ville,
-                note_vendeur: req.body.note_vendeur,
-                avis_commande: req.body.avis_commande,
-
+                descriptions: req.body.descriptions,
+                img: req.body.img
             });
             res.status(201).send(categorieCreated)
         }

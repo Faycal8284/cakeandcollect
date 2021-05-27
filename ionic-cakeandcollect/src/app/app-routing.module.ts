@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'espace-client',
     loadChildren: () => import('./pages/client/espace-client/espace-client.module').then( m => m.EspaceClientPageModule)
+  },
+  {
+    path: 'register-vendeur',
+    loadChildren: () => import('./pages/vendeur/register-vendeur/register-vendeur.module').then( m => m.RegisterVendeurPageModule)
   }
 ];
 

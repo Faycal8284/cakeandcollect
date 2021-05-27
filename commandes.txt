@@ -46,12 +46,10 @@ npm install cors --save
 npm install mysql2 --save 
 -----------------------------------------------------------------------------------
 # installation auth jwt 
-
 npm install jsonwebtoken
 npm install bcryptjs
 -----------------------------------------------------------------------------------
 # installation Ionic Cordova
-
 npm install -g ionic cordova
 npm install -g @ionic/cli cordova
 ionic -v
@@ -77,6 +75,7 @@ ionic g s shared/auth
 ionic g s shared/tokenStorage
 ionic g g guards/auth
 
+-----------------------------------------------------------------------------------
 ionic g page pages/vendeur/loginVendeur
 ionic g page pages/vendeur/espaceVendeur
 ionic g page pages/client/loginClient
@@ -88,4 +87,4 @@ npm install bcrypt -g
 npm install bcrypt --save
 npm install bcryptjs --save
 -----------------------------------------------------------------------------------
-
+ionic g page pages/vendeur/registerVendeur
