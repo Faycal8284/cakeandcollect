@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Inscription Vendeur</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form *ngIf="!isSuccessfull" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="12" size-lg="12" size-xs="12">
+            <h3>Se Connecter</h3>
+          
+            <ion-item>
+              <ion-label position="floating">Nom</ion-label>
+              <ion-input type="text" class="form-control" name="nom" [(ngModel)]="form.nom" required
+            minlength="3" maxlength="20" #nom="ngModel"></ion-input>
+          <div class="alert-danger" *ngIf="nom.errors && f.submitted">
+            <div *ngIf="nom.errors.required">nom is required</div>
+              <div *ngIf="nom.errors.minlength">
+                  nom must be at least 3 characters
+              </div>
+              <div *ngIf="nom.errors.maxlength">
+                  nom must be at most 20 characters
+              </div>
+            </div>
+          </ion-item>
+        
+          <ion-item lines="full">
+            <ion-label position="floating">Prenom</ion-label>
+            <ion-input type="text" class="form-control" name="prenom" [(ngModel)]="form.prenom" required
+            minlength="3" maxlength="20" #prenom="ngModel"></ion-input>
+            <div class="alert-danger" *ngIf="prenom.errors && f.submitted">
+              <div *ngIf="prenom.errors.required">prenom is required</div>
+              <div *ngIf="prenom.errors.minlength">
+                prenom must be at least 3 characters
+              </div>
+              <div *ngIf="prenom.errors.maxlength">
+                prenom must be at most 20 characters
+              </div>
+            </div>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Last name</ion-label>
+            <ion-input type="text" required></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" class="form-control" name="email" [(ngModel)]="form.email" required email
+            #email="ngModel"></ion-input>
+            <div class="alert-danger" *ngIf="email.errors && f.submitted">
+              <div *ngIf="email.errors.required">Email is required</div>
+              <div *ngIf="email.errors.email">
+                  Email must be a valid email address
+              </div>
+            </div>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="password" class="form-control" name="password" [(ngModel)]="form.password" required
+            minlength="6" #password="ngModel"></ion-input>
+            <div class="alert-danger" *ngIf="password.errors && f.submitted">
+              <div *ngIf="password.errors.required">Password is required</div>
+              <div *ngIf="password.errors.minlength">
+                  Password must be at least 6 characters
+              </div>
+            </div>
+          </ion-item>
+
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" color="danger" expand="block">S'inscrire</ion-button>
+            </ion-col>
+          </ion-row>
+          <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+            Signup failed!<br />{{ errorMessage }}
+          </div>
+          <div class="alert alert-success" *ngIf="isSuccessfull">
+            Your registration is successful!
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

@@ -23,13 +23,14 @@ export class AuthService {
       email,
       password
     }, httpOptions);
-  }
+  };
 
- /*  register(username: string, email: string, password: string): Observable<any> {
+  register(nom: string, prenom: string, email: string, mdp: string): Observable<any> {
     return this.http.post(AUTH_API_VENDEUR + 'signup', {
-      username,
+      nom,
+      prenom,
       email,
-      password
+      mdp
     }, httpOptions);
-  } */
+  };
 }
