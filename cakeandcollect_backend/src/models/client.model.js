@@ -19,6 +19,9 @@ module.exports = (sequelize, Sequelize) => {
         mdp: {
             type: Sequelize.STRING
         },
+        img: {
+            type: Sequelize.STRING
+        },
         actif: {
             type: Sequelize.BOOLEAN
         },

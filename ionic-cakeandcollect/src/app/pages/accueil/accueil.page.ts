@@ -14,7 +14,7 @@ export class AccueilPage implements OnInit {
 
   items: any;
   offers: any = [];
-  categorie: Categorie;
+  //categorie: Categorie;
   categories: any = [];
   vendeurs: any = [];
   vendeur: Vendeur;

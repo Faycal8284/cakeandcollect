@@ -40,6 +40,7 @@ module.exports = {
                 prenom: req.body.prenom,
                 email: req.body.email,
                 mdp: req.body.mdp,
+                img: req.body.img,
                 actif: req.body.actif,
                 rue: req.body.rue,
                 code_postal: req.body.code_postal,
