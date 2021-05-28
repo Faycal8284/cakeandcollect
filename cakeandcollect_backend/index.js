@@ -11,6 +11,8 @@ const categorie = db.categorie;
 const commande = db.commande;
 const patisserie = db.patisserie;
 
+const venpatcat = db.venpatcat;
+
 app.use(cors());
 
 app.use(express.json()); 
@@ -32,6 +34,9 @@ require('./src/routes/commande.routes')(app);
 
 // http://localhost:8080/api/patisseries
 require('./src/routes/patisserie.routes')(app);
+
+// http://localhost:8080/api/venpatcat
+require('./src/routes/venpatcat.routes')(app);
 
 //authentification
 // http://localhost:8080/api/auth/vendeur

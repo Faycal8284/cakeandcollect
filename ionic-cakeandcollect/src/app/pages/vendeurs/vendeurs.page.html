@@ -1,0 +1,55 @@
+<!-- Header -->
+<ion-header>
+  <ion-toolbar color="color1">
+
+    <!-- Back Button -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <!-- Title -->
+    <ion-title>Vendeurs</ion-title>
+
+    <!-- Filter Button -->
+    <!-- <ion-buttons slot="end">
+        <ion-button (click)="gotoFilterPage()">
+          <ion-icon name="filter"></ion-icon>
+        </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contents -->
+<ion-content id="vendeurs">
+  <ion-grid>
+    <ion-row>
+      <!-- List of vendeurs -->
+      <ion-col sizeLg="4" sizeMd="6" sizeXs="12" *ngFor="let vendeur of vendeurs">
+        <ion-card class="ion-no-padding ion-no-margin" (click)="goToVendeursDetails(vendeur)">
+          <!-- Image -->
+          <img [src]="vendeur.img" />
+
+          <!-- Like/Dislike Button Option -->
+          <ion-fab vertical="top" horizontal="end">
+            <ion-fab-button color="color1">
+              <ion-icon color="light" name="heart"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+
+          <ion-list lines="none">
+            <ion-item>
+              <!-- Vendeurs Info -->
+              <ion-label class="ion-text-wrap">
+                <h4>{{vendeur.nom}}</h4>
+                <h5>{{vendeur.categorie}}</h5>
+
+                <!-- Reviews -->
+                <ion-text color="medium"> {{vendeur.note}} ({{vendeur.descriptions}} )</ion-text>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

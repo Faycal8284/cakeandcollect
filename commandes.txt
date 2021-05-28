@@ -112,3 +112,10 @@ npm install -f
 ionic build 
 -----------------------------------------------------------------------------------
 ionic g s shared/patisseries
+
+ionic g page pages/vendeurs
+ionic g page pages/vendeur-details
+
+npm i ionic-header-parallax
+
+ionic g s shared/venpatcat

@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

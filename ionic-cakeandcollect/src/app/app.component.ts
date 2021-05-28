@@ -17,7 +17,8 @@ export class AppComponent {
     { title: 'Espace Client', url: '/login-client', icon: 'heart' },
     { title: 'Register Vendeur', url: '/register-vendeur', icon: 'archive' },
     { title: 'Catégories', url: '/categories', icon: 'heart' },
-    { title: 'recherche', url: '/recherche', icon: 'search' },
+    { title: 'Recherche', url: '/recherche', icon: 'search' },
+    { title: 'Vendeurs', url: '/vendeurs', icon: 'restaurant' },
   ];
   public labels = ['Famille', 'Amis', 'Notes', 'Travail', 'Voyage', 'Rappels'];
   constructor(
@@ -36,6 +37,6 @@ export class AppComponent {
       });
     }
     signout() {
-      this.router.navigate(['/signin']);
+      this.router.navigate(['/login-client']);
     }
 }

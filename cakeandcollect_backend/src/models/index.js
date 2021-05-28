@@ -30,6 +30,7 @@ db.vendeur = require('../models/vendeur.model')(sequelize, Sequelize);
 db.categorie = require('../models/categorie.model')(sequelize, Sequelize);
 db.commande = require('../models/commande.model')(sequelize, Sequelize);
 db.patisserie = require('../models/patisserie.model')(sequelize, Sequelize);
+db.venpatcat = require('../models/venpatcat.model')(sequelize, Sequelize);
 
 db.client.hasMany(db.commande, { as: "commandes" });
 

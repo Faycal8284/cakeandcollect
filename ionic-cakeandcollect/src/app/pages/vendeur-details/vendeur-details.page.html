@@ -1,0 +1,95 @@
+<!-- Header -->
+<ion-header class="ion-no-border">
+  <ion-toolbar color="color1">
+
+    <!-- Back button -->
+    <ion-buttons slot="start">
+      <ion-button color="light" (click)="dismiss()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Title -->
+    <ion-title>Détails Vendeurs</ion-title>
+
+    <!-- Cart Page Button -->
+    <!-- <ion-buttons slot="end">
+      <ion-button color="light" (click)="gotoPanierPage()">
+        <ion-icon name="cart"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+
+<!-- Main Contents of Page -->
+<ion-content id="vendeurs-details">
+
+  <!-- Slider of vendeurs Images -->
+  <div id="vendeur-images">
+    <ion-slides class="ion-padding slider" #slider [options]="slideOpt">
+      <ion-slide *ngFor="let item of venpatcat.ImageV" [ngStyle]="{'background' : 'url(' + item + ')'}">
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <!-- vendeur Info -->
+  <div class="ion-text-center ion-padding-bottom">
+
+    <!-- vendeur Name -->
+    <div class="name">{{venpatcat.Vendeur}}</div>
+
+    <!-- Category -->
+    <ion-text color="medium" class="other-info">{{venpatcat.CategorieV}}</ion-text> <br />
+
+    <!-- Rating Overview -->
+    <ion-text color="medium" class="other-info"> {{venpatcat.Note}}
+      ({{venpatcat.DescriptionsV}} </ion-text><br />
+
+    <!-- Address -->
+    <ion-text color="medium" class="other-info">
+      <ion-icon name="location-outline" color="color1"></ion-icon>{{venpatcat.Adresse}}
+    </ion-text>
+  </div>
+
+
+  <!-- Segment- vendeur pat Category  -->
+  <ion-segment color="danger" (ionChange)="segmentChanged($event)" [value]="segment" [(ngModel)]="segment">
+    <ion-segment-button value="{{item.nom}}" *ngFor="let item of venpatcat; let i = index">
+      <ion-label>{{item.CategorieV}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- pat Items -->
+  <ion-slides id="pat-items" #slides (ionSlideDidChange)="slideChanged()">
+    <ion-slide *ngFor="let pat of venpatcat">
+      <ion-list lines="none">
+        <ion-card *ngFor="let item of pat.items">
+          <ion-list lines="none">
+            <ion-item class="ion-no-padding border">
+
+              <!-- Image -->
+              <ion-thumbnail slot="start">
+                <img class="packages_thumbnail" style="vertical-align: middle;" [src]="item.ImagePat">
+              </ion-thumbnail>
+
+              <ion-label class="ion-text-wrap">
+                <h3 class="name">{{item.Patisserie}}</h3>
+
+                <ion-text color="medium">{{item.DescriptionsP}}</ion-text>
+
+                <br>
+
+                <ion-text color="color1">${{item.Prix}}</ion-text>
+              </ion-label>
+
+              <ion-card>
+                Ajouter
+              </ion-card>
+            </ion-item>
+          </ion-list>
+        </ion-card>
+      </ion-list>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

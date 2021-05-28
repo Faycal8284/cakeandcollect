@@ -1,0 +1,20 @@
+#vendeurs {
+    img {
+        height: 150px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .item {
+        h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: sans-serif;
+        }
+
+        h5 {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+    }
+}
