@@ -1,5 +1,5 @@
 <!-- Header -->
-<ion-header class="ion-no-border">
+<ion-header parallax imageUrl="../../../assets/images/categories/cupcakes.jpg" maximumHeight="350" expandedColor="#AAA" titleColor="white">
   <ion-toolbar color="color1">
 
     <!-- Back Button -->
@@ -27,13 +27,7 @@
     </ion-grid>
   </div>
 
-  <!-- Top Offers -->
-  <!-- <div id="top-offers">
-    <ion-slides class="ion-padding slider" #slider [options]="slideOpt1">
-      <ion-slide *ngFor="let item of offers" [ngStyle]="{'background' : 'url(' + item + ')'}">
-      </ion-slide>
-    </ion-slides>
-  </div> -->
+
 
   <!-- Categories -->
   <div id="categories">
@@ -80,16 +74,6 @@
           <ion-col>
             <ion-card *ngFor="let item of vendeurs; let i=index">
               <img [src]="item.img" />
-
-    <ion-slides [options]="slideOpt3" class="ion-padding-top">
-      <ion-slide *ngFor="let item of vendeurs; let i=index">
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-card class="ion-no-padding ion-no-margin">
-                <!-- Image -->
-                <img [src]="item.img" />
-
                 <ion-list lines="none">
                   <ion-item>
                     <!-- Like/Dislike Button Option -->
@@ -112,42 +96,7 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-      </ion-slide>
-    </ion-slides>
   </div>
 
-  <!-- Les patisseries les plus populaires -->
-  <div id="popular-dishes">
-    <ion-list-header>
-      <ion-label color="dark">Les patisseries les plus populaires </ion-label>
-      <ion-button color="color1">Voir Tous</ion-button>
-    </ion-list-header>
-
-    <ion-card *ngFor="let item of vendeurs; let i=index">
-      <ion-list lines="none">
-        <ion-item class="ion-no-padding border">
-
-          <!-- Image -->
-          <ion-thumbnail slot="start">
-            <img class="packages_thumbnail" style="vertical-align: middle;" [src]="item.image">
-          </ion-thumbnail>
-
-          <ion-label class="ion-text-wrap">
-            <h4 class="name">{{item.nom}}</h4>
-            <ion-text color="medium">
-              <ion-icon color="medium" name="location"></ion-icon> {{item.ville}}
-            </ion-text>
-
-            <br>
-
-            <ion-text color="color1">{{item.prix}} €</ion-text>
-          </ion-label>
-
-          <ion-card>
-            Commander
-          </ion-card>
-        </ion-item>
-      </ion-list>
-    </ion-card>
-  </div>
+</div>
 </ion-content>
