@@ -111,3 +111,4 @@ ionic g page pages/recherche
 npm install -f
 ionic build 
 -----------------------------------------------------------------------------------
+ionic g s shared/patisseries

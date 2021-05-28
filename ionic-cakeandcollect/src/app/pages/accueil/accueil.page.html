@@ -46,12 +46,12 @@
     <ion-list>
       <ion-list-header>
         <ion-label color="dark">Catégories</ion-label>
-        <ion-button color="color1" (click)="gotoCategoriesPage()">Voir tous</ion-button>
+        <ion-button color="color1" >Voir tous</ion-button>
       </ion-list-header>
     </ion-list>
 
     <ion-slides [options]="slideOpts2">
-      <ion-slide *ngFor="let item of categories; let i=index">
+      <ion-slide *ngFor="let item of categories; let i=index" (click)="gotoCategoriesPage()">
         <ion-grid>
           <ion-row>
             <ion-col>
@@ -117,7 +117,7 @@
       <ion-button color="color1">Voir Tous</ion-button>
     </ion-list-header>
 
-    <ion-card *ngFor="let item of vendeurs; let i=index">
+    <ion-card *ngFor="let item of patisseries; let i=index">
       <ion-list lines="none">
         <ion-item class="ion-no-padding border">
 
@@ -134,7 +134,7 @@
 
             <br>
 
-            <ion-text color="color1">{{item.prix_vente}} €</ion-text>
+            <ion-text color="color1">{{item.prix_u}} €</ion-text>
           </ion-label>
 
           <ion-card>

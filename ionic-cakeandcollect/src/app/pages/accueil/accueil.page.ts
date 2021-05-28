@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Categorie } from 'src/app/interfaces/categorie';
 import { Vendeur } from 'src/app/interfaces/Vendeur';
 import { CategoriesService } from 'src/app/shared/categories.service';
+import { PatisseriesService } from 'src/app/shared/patisseries.service';
 import { VendeursService } from 'src/app/shared/vendeurs.service';
 
 
@@ -17,10 +18,10 @@ export class AccueilPage implements OnInit {
   filterTerm: string;
 
   items: any;
-  offers: any = [];
   //categorie: Categorie;
   categories: any = [];
   vendeurs: any = [];
+  patisseries: any = [];
   // vendeur: Vendeur;
 
   slideOpt1 = {
@@ -61,12 +62,12 @@ export class AccueilPage implements OnInit {
 
     constructor(
       private categoriesService: CategoriesService, private vendeursService: VendeursService,
-      private router: Router) { }
+      private patisseriesService: PatisseriesService, private router: Router) { }
 
   ngOnInit() {
-    // this.getTopOffers();
     this.getCategories();
     this.getVendeurs();
+    this.getPatisseries();
   }
   getCategories() {
     this.categoriesService.getAllCategories().subscribe(data => {
@@ -79,6 +80,13 @@ export class AccueilPage implements OnInit {
     this.vendeursService.getAllVendeurs().subscribe(data => {
       console.log(data);
       this.vendeurs = data;
+    });
+  }
+
+  getPatisseries() {
+    this.patisseriesService.getAllPatisseries().subscribe(data => {
+      console.log(data);
+      this.patisseries = data;
     });
   }
 
