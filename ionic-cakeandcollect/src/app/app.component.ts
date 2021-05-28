@@ -17,7 +17,7 @@ export class AppComponent {
     { title: 'Espace Client', url: '/login-client', icon: 'heart' },
     { title: 'Register Vendeur', url: '/register-vendeur', icon: 'archive' },
     { title: 'Catégories', url: '/categories', icon: 'heart' },
-    { title: 'Spam', url: '', icon: 'warning' },
+    { title: 'recherche', url: '/recherche', icon: 'search' },
   ];
   public labels = ['Famille', 'Amis', 'Notes', 'Travail', 'Voyage', 'Rappels'];
   constructor(

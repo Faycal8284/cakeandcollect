@@ -18,7 +18,10 @@ export class CategoriesPage implements OnInit {
   }
 
   getCategories() {
-    this.categories = this.categoriesService.getAllCategories();
+    this.categoriesService.getAllCategories().subscribe(data => {
+      console.log(data);
+      this.categories = data;
+    });
   }
 
   gotoAccueilPage() {
