@@ -1,0 +1,19 @@
+[
+	{
+		"id" : 1,
+		"nom" : "nm_cli_1",
+		"prenom" : "pr_cli_1",
+		"email" : "c@gmail.com",
+		"mdp" : "$2b$08$bnxlmr/pWYNeThktIYoKAumOPD7fdW4gqWWE60YXKh2fUV463OqN2",
+		"img" : "assets/images/clients/c1.jpg",
+		"actif" : 1,
+		"rue" : "6 rue de gaulle",
+		"tel" : "06020304050",
+		"code_postal" : 95800,
+		"ville" : "enghien",
+		"note_vendeur" : "5/5",
+		"avis_commande" : "super",
+		"createdAt" : "2021-05-27 22:07:44",
+		"updatedAt" : "2021-05-27 22:07:44"
+	}
+]

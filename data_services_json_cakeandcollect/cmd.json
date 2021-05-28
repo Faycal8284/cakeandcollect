@@ -1,0 +1,14 @@
+[
+	{
+		"id" : 1,
+		"clientId" : 1,
+		"titre" : "commande de cupCakes",
+		"actif" : 1,
+		"quantite" : 10,
+		"prix_vente" : 20,
+		"date_commande" : "2021-05-26 10:05:06",
+		"date_recuperation" : "2021-05-30 10:05:06",
+		"createdAt" : "2021-05-27 22:08:08",
+		"updatedAt" : "2021-05-27 22:08:08"
+	}
+]
