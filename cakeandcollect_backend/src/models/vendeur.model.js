@@ -37,6 +37,9 @@ module.exports = (sequelize, Sequelize) => {
         particulier: {
             type: Sequelize.BOOLEAN
         },
+        tel: {
+            type: Sequelize.INTEGER
+        },
         actif: {
             type: Sequelize.BOOLEAN
         },
@@ -44,7 +47,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         code_postal: {
-            type: Sequelize.STRING
+            type: Sequelize.INTEGER
         },
         ville: {
             type: Sequelize.STRING
