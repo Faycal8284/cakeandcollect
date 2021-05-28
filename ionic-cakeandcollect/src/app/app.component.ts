@@ -16,10 +16,10 @@ export class AppComponent {
     { title: 'Espace Vendeur', url: '/login-vendeur', icon: 'paper-plane' },
     { title: 'Espace Client', url: '/login-client', icon: 'heart' },
     { title: 'Register Vendeur', url: '/register-vendeur', icon: 'archive' },
-    { title: 'Trash', url: '', icon: 'trash' },
+    { title: 'Catégories', url: '/categories', icon: 'heart' },
     { title: 'Spam', url: '', icon: 'warning' },
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  public labels = ['Famille', 'Amis', 'Notes', 'Travail', 'Voyage', 'Rappels'];
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
