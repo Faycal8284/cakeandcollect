@@ -98,3 +98,16 @@ npm install @ionic-native/status-bar
 ionic g page pages/categories
 ionic g s shared/vendeurs
 ionic g i interfaces/vendeurs
+-----------------------------------------------------------------------------------
+ionic g page pages/search
+ionic g s shared/RestApi
+ionic g pipe search
+ionic g pipe sort
+ou
+Install ng2-search-filter Plugin in Ionic
+npm i ng2-search-filter
+ionic g page pages/recherche
+-----------------------------------------------------------------------------------
+npm install -f
+ionic build 
+-----------------------------------------------------------------------------------

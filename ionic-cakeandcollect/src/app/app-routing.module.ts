@@ -34,7 +34,11 @@ const routes: Routes = [
   {
     path: 'categories',
     loadChildren: () => import('./pages/categories/categories.module').then( m => m.CategoriesPageModule)
+  },  {
+    path: 'recherche',
+    loadChildren: () => import('./pages/recherche/recherche.module').then( m => m.RecherchePageModule)
   }
+
 ];
 
 @NgModule({

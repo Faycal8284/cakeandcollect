@@ -1,0 +1,49 @@
+<!-- Header -->
+<ion-header>
+  <ion-toolbar color="color1">
+
+    <!-- Back Button -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <!-- Title -->
+    <ion-title>Recherche</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-searchbar placeholder="Recherche..." [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
+
+    <ion-list>
+      <ion-item *ngFor="let v of vendeurs | filter:filterTerm">
+        <ion-card>
+          <img [src]="v.img" [alt]="v.nom">
+          <ion-card-header>
+            <ion-card-subtitle>{{v.ville}}</ion-card-subtitle>
+            <ion-card-title>{{v.nom}}</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            {{v.ville}} {{v.email}} {{v.tel}} {{v.descriptions}}
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-item *ngFor="let c of categories | filter:filterTerm">
+        <ion-card>
+          <img [src]="c.img" [alt]="c.nom">
+          <ion-card-header>
+            <ion-card-subtitle></ion-card-subtitle>
+            <ion-card-title>{{c.nom}}</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            {{c.descriptions}}
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list> 
+</ion-content>

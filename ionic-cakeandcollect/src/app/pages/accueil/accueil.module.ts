@@ -6,6 +6,8 @@ import { AccueilPageRoutingModule } from './accueil-routing.module';
 import { AccueilPage } from './accueil.page';
 import { IonicHeaderParallaxModule } from 'ionic-header-parallax';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 @NgModule({
   imports: [
     IonicModule,
@@ -13,7 +15,7 @@ import { IonicHeaderParallaxModule } from 'ionic-header-parallax';
     FormsModule,
     AccueilPageRoutingModule,
     IonicHeaderParallaxModule,
-
+    Ng2SearchPipeModule
   ],
   declarations: [AccueilPage]
 })

@@ -5,12 +5,16 @@ import { Vendeur } from 'src/app/interfaces/Vendeur';
 import { CategoriesService } from 'src/app/shared/categories.service';
 import { VendeursService } from 'src/app/shared/vendeurs.service';
 
+
+
 @Component({
   selector: 'app-accueil',
   templateUrl: './accueil.page.html',
   styleUrls: ['./accueil.page.scss'],
 })
 export class AccueilPage implements OnInit {
+
+  filterTerm: string;
 
   items: any;
   offers: any = [];
@@ -80,5 +84,9 @@ export class AccueilPage implements OnInit {
 
   gotoCategoriesPage() {
     this.router.navigate(['/categories']);
+  }
+
+  gotoRecherchePage(ev) {
+    this.router.navigate(['/recherche']);
   }
 }

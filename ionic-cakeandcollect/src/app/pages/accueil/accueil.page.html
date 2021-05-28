@@ -21,13 +21,25 @@
     <ion-grid>
       <ion-row class="ion-align-items-center ion-justify-content-center">
         <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
-          <ion-searchbar (ionInput)="gotoSearchPage($event)" placeholder="Trouver un vendeur..."></ion-searchbar>
+          <ion-searchbar (ionInput)="gotoRecherchePage($event)" placeholder="Trouver un vendeur..."></ion-searchbar>
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
 
-
+ <!-- Top offres -->
+ <div id="top-offres">
+    <ion-slides class="ion-padding slider" #slider [options]="slideOpt1">
+      <!-- <ion-slide *ngFor="let item of vendeurs" [ngStyle]="{'background' : 'url(' + item.img + ')'}">
+      </ion-slide> -->
+      <ion-slide *ngFor="let item of vendeurs" [ngStyle]="{'background' : 'url(' + item.img + ')'}">
+          <ion-thumbnail slot="start">
+          </ion-thumbnail>
+          <ion-label>{{item.code_promo}}</ion-label>
+          
+      </ion-slide>
+    </ion-slides>
+  </div>
 
   <!-- Categories -->
   <div id="categories">
@@ -66,7 +78,7 @@
   <div id="popular-restaurants">
     <ion-list-header>
       <ion-label color="dark">Vendeurs populaires</ion-label>
-      <ion-button color="color1" (click)="gotoRestaurantPage()">Voir tous</ion-button>
+      <ion-button color="color1" (click)="gotoVendeursPage()">Voir tous</ion-button>
     </ion-list-header>
     <div>
       <ion-grid>

@@ -10,19 +10,15 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { SearchPipe } from './search.pipe';
-import { SortPipe } from './sort.pipe';
 
 @NgModule({
-  declarations: [AppComponent, SearchPipe, SortPipe],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule,
-    SearchPipe,
-    SortPipe
+    HttpClientModule
   ],
   providers: [
     StatusBar,
