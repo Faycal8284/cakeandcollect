@@ -1,17 +1,10 @@
-<!--
-  - Categories Screen
-  - @author    FlawlessThemes <flawlesstemplates@gmail.com>
-  - @copyright Copyright (c) 2020
-  - @license   FlawlessThemes
--->
-
 <!-- Header -->
 <ion-header class="ion-no-border">
   <ion-toolbar color="color1">
 
     <!-- Back button -->
     <ion-buttons slot="start">
-      <ion-button (click)="gotoHomePage()">
+      <ion-button (click)="gotoAccueilPage()">
         <ion-icon name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -36,7 +29,7 @@
 
           <!-- Categories Name -->
           <ion-card-header>
-            <ion-card-subtitle>{{item.name}}</ion-card-subtitle>
+            <ion-card-subtitle>{{item.nom}}</ion-card-subtitle>
           </ion-card-header>
         </ion-card>
       </ion-col>

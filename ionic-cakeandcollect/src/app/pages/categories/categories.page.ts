@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CategoriesService } from 'src/app/shared/categories.service';
 
 @Component({
   selector: 'app-categories',
@@ -7,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./categories.page.scss'],
 })
 export class CategoriesPage implements OnInit {
+
+  categories: any = [];
 
   constructor(private router: Router) { }
 
@@ -18,7 +21,7 @@ export class CategoriesPage implements OnInit {
     this.categories = this.categoriesService.getAllCategories();
   } */
 
-  gotoHomePage() {
+  gotoAccueilPage() {
     this.router.navigate(['/accueil']);
   }
 
