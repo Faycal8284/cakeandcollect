@@ -4,13 +4,16 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AccueilPageRoutingModule } from './accueil-routing.module';
 import { AccueilPage } from './accueil.page';
+import { IonicHeaderParallaxModule } from 'ionic-header-parallax';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    AccueilPageRoutingModule
+    AccueilPageRoutingModule,
+    IonicHeaderParallaxModule,
+
   ],
   declarations: [AccueilPage]
 })

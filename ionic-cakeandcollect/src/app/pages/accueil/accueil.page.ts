@@ -70,12 +70,21 @@ export class AccueilPage implements OnInit {
       console.log(data);
       this.categories = data;
     });
-  }
+  };
   getVendeurs() {
-    this.vendeurs = this.vendeursService.getAllVendeurs().subscribe(data => {
+    this.vendeursService.getAllVendeurs().subscribe(data => {
       console.log(data);
       this.vendeurs = data;
     });
     }
+    shuffle(a) {
+      var j, x, i;
+      for (i = a.length - 1; i > 0; i--) {
+          j = Math.floor(Math.random() * (i + 1));
+          x = a[i];
+          a[i] = a[j];
+          a[j] = x;
+      }
+      return a;
+  }
 }
-  

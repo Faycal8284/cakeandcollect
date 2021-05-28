@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header parallax imageUrl= "../../../assets/images/categories/cupcakes.jpg" maximumHeight="350" expandedColor="#AAA" titleColor="white">
   <ion-toolbar>
     <ion-title>Accueil</ion-title>
     <ion-buttons slot="start">
@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content class="background">
+  
   <div id="categories">
     <ion-list>
       <ion-list-header>
@@ -40,41 +41,33 @@
       <ion-label color="dark">Popular Vendeurs</ion-label>
       <ion-button color="color1" (click)="gotoRestaurantPage()">See All</ion-button>
     </ion-list-header>
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card *ngFor="let item of vendeurs; let i=index">
+              <img [src]="item.img" />
 
-    <ion-slides [options]="slideOpt3" class="ion-padding-top">
-      <ion-slide *ngFor="let item of vendeurs; let i=index">
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-card class="ion-no-padding ion-no-margin">
-                <!-- Image -->
-                <!-- <img [src]="item.image" /> -->
+              <ion-list lines="none">
+                <ion-item>
+                  <ion-fab vertical="top" horizontal="end">
+                    <ion-icon color="danger" name="heart"></ion-icon>
+                  </ion-fab>
 
-                <ion-list lines="none">
-                  <ion-item>
-                    <!-- Like/Dislike Button Option -->
-                    <ion-fab vertical="top" horizontal="end">
-                      <ion-icon color="danger" name="heart"></ion-icon>
-                    </ion-fab>
+                  <ion-label class="ion-text-wrap">
+                    <h4 class="name">{{item.nom}}</h4>
+                    <h5>{{item.ville}}</h5>
 
-                    <!-- Vendeurs Info -->
-                    <ion-label class="ion-text-wrap">
-                      <h4 class="name">{{item.nom}}</h4>
-                      <h5>{{item.ville}}</h5>
-
-                      <!-- Reviews -->
-                      <ion-text color="medium"> {{item.code_promo}})</ion-text>
-                      <ion-text color="medium"> {{item.rue}}{{item.code_postal}})</ion-text>
-
-                    </ion-label>
-                  </ion-item>
-                </ion-list>
-              </ion-card>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-slide>
-    </ion-slides>
+                    <ion-text color="medium"> {{item.code_promo}})</ion-text>
+                    <ion-text color="medium"> {{item.rue}}{{item.code_postal}})</ion-text>
+                  </ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
   </div>
 </ion-content> 
 
