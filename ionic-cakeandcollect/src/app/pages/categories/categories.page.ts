@@ -11,15 +11,15 @@ export class CategoriesPage implements OnInit {
 
   categories: any = [];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private categoriesService: CategoriesService) { }
 
   ngOnInit() {
-    //this.getCategories();
+    this.getCategories();
   }
 
-  /* getCategories() {
+  getCategories() {
     this.categories = this.categoriesService.getAllCategories();
-  } */
+  }
 
   gotoAccueilPage() {
     this.router.navigate(['/accueil']);
