@@ -96,3 +96,5 @@ npm install @ionic-native/splash-screen
 npm install @ionic-native/status-bar
 -----------------------------------------------------------------------------------
 ionic g page pages/categories
+ionic g s shared/vendeurs
+ionic g i interfaces/vendeurs

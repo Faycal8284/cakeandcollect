@@ -18,7 +18,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     StatusBar,

@@ -1,5 +1,5 @@
 <!-- Header -->
-<ion-header class="ion-no-border">
+<ion-header parallax imageUrl="../../../assets/images/categories/cupcakes.jpg" maximumHeight="350" expandedColor="#AAA" titleColor="white">
   <ion-toolbar color="color1">
 
     <!-- Back Button -->
@@ -27,13 +27,7 @@
     </ion-grid>
   </div>
 
-  <!-- Top Offers -->
-  <!-- <div id="top-offers">
-    <ion-slides class="ion-padding slider" #slider [options]="slideOpt1">
-      <ion-slide *ngFor="let item of offers" [ngStyle]="{'background' : 'url(' + item + ')'}">
-      </ion-slide>
-    </ion-slides>
-  </div> -->
+
 
   <!-- Categories -->
   <div id="categories">
@@ -74,16 +68,12 @@
       <ion-label color="dark">Vendeurs populaires</ion-label>
       <ion-button color="color1" (click)="gotoRestaurantPage()">Voir tous</ion-button>
     </ion-list-header>
-
-    <ion-slides [options]="slideOpt3" class="ion-padding-top">
-      <ion-slide *ngFor="let item of vendeurs; let i=index">
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-card class="ion-no-padding ion-no-margin">
-                <!-- Image -->
-                <img [src]="item.img" />
-
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card *ngFor="let item of vendeurs; let i=index">
+              <img [src]="item.img" />
                 <ion-list lines="none">
                   <ion-item>
                     <!-- Like/Dislike Button Option -->
@@ -106,8 +96,6 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-      </ion-slide>
-    </ion-slides>
   </div>
 
   <!-- Les patisseries les plus populaires -->
@@ -144,4 +132,5 @@
       </ion-list>
     </ion-card>
   </div>
+</div>
 </ion-content>
