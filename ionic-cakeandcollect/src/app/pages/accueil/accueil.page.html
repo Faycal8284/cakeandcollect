@@ -1,5 +1,10 @@
+<!-- <ion-content [scrollEvents]="true" parallaxHeader="../../../assets/images/parallax/pat1.jpg" [parallaxHeight]="300" >
+  <div class="main-content"> -->
+ 
+
 <!-- Header -->
-<ion-header parallax imageUrl="../../../assets/images/parallax/pat1.jpg" maximumHeight="350" expandedColor="#AAA" titleColor="white">
+<ion-header >
+  
   <ion-toolbar color="color1">
 
     <!-- Back Button -->
@@ -14,6 +19,7 @@
 
 
 <!-- Contents -->
+
 <ion-content class="background">
 
   <!-- Search Bar -->
@@ -51,7 +57,7 @@
     </ion-list>
 
     <ion-slides [options]="slideOpts2">
-      <ion-slide *ngFor="let item of categories; let i=index" (click)="gotoCategoriesPage()">
+      <ion-slide *ngFor="let item of categories; let i=index" (click)="gotoCategoriePage(item.id)">
         <ion-grid>
           <ion-row>
             <ion-col>
@@ -146,3 +152,5 @@
   </div>
 </div>
 </ion-content>
+
+

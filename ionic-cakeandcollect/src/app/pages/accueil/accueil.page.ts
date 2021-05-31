@@ -1,3 +1,4 @@
+import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoriesService } from 'src/app/shared/categories.service';
@@ -69,13 +70,15 @@ export class AccueilPage implements OnInit {
     this.categoriesService.getAllCategories().subscribe(data => {
       console.log(data);
       this.categories = data;
+
     });
   }
 
   getVendeurs() {
     this.vendeursService.getAllVendeurs().subscribe(data => {
       console.log(data);
-      this.vendeurs = data;
+      this.vendeurs= data ;
+      //this.shuffleArray(this.vendeurs);
     });
   }
 
@@ -86,8 +89,24 @@ export class AccueilPage implements OnInit {
     });
   }
 
-  gotoCategoriesPage() {
-    this.router.navigate(['/categories']);
+  /* shuffleArray = function(array) {
+    var m = array.length, t, i;
+
+    while (m) {
+
+      i = Math.floor(Math.random() * m--);
+
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
+    }
+
+    return array;
+  } */
+
+
+  gotoCategoriePage(id) {
+    this.router.navigate(['categorie',id]);
   }
 
   gotoRecherchePage(ev) {
@@ -100,6 +119,10 @@ export class AccueilPage implements OnInit {
 
   goToVendeursDetails(id) {
     this.router.navigate(['vendeur-details', id]);
+  }
+
+  gotoCategoriesPage() {
+    this.router.navigate(['/categories']);
   }
 
   gotoPatisseriesPage() {

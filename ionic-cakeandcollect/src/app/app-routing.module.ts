@@ -46,12 +46,15 @@ const routes: Routes = [
   {
     path: 'vendeur-details/:id',
     loadChildren: () => import('./pages/vendeur-details/vendeur-details.module').then( m => m.VendeurDetailsPageModule)
-  },  {
+  },
+  {
+    path: 'categorie/:id',
+    loadChildren: () => import('./pages/categorie/categorie.module').then( m => m.CategoriePageModule)
+  },
+  {
     path: 'patisseries',
     loadChildren: () => import('./pages/patisseries/patisseries.module').then( m => m.PatisseriesPageModule)
-  }
-
-
+  },
 
 ];
 
