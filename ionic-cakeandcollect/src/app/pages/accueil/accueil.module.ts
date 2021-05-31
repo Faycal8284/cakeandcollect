@@ -6,7 +6,7 @@ import { AccueilPageRoutingModule } from './accueil-routing.module';
 import { AccueilPage } from './accueil.page';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
+import { ParallaxHeaderDirective } from '../../directives/parallax-header.directive';
 
 @NgModule({
   imports: [
@@ -14,8 +14,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     CommonModule,
     FormsModule,
     AccueilPageRoutingModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
   ],
-  declarations: [AccueilPage]
+  declarations: [AccueilPage, ParallaxHeaderDirective]
 })
 export class AccueilPageModule {}
