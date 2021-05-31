@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/vendeur/login-vendeur/login-vendeur.module').then( m => m.LoginVendeurPageModule)
   },
   {
-    path: 'espace-vendeur',
+    path: 'espace-vendeur/:id',
     loadChildren: () => import('./pages/vendeur/espace-vendeur/espace-vendeur.module').then( m => m.EspaceVendeurPageModule)
   },
   {
@@ -24,7 +24,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/client/login-client/login-client.module').then( m => m.LoginClientPageModule)
   },
   {
-    path: 'espace-client',
+    path: 'espace-client/:id',
     loadChildren: () => import('./pages/client/espace-client/espace-client.module').then( m => m.EspaceClientPageModule)
   },
   {
@@ -42,7 +42,8 @@ const routes: Routes = [
   {
     path: 'vendeurs',
     loadChildren: () => import('./pages/vendeurs/vendeurs.module').then( m => m.VendeursPageModule)
-  },  {
+  },
+  {
     path: 'vendeur-details',
     loadChildren: () => import('./pages/vendeur-details/vendeur-details.module').then( m => m.VendeurDetailsPageModule)
   }

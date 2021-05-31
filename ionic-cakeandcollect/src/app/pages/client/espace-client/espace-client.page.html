@@ -1,9 +1,60 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>espaceClient</ion-title>
+<!-- Header -->
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar color="color1">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <!-- Page Title -->
+    <ion-title>Espace Client</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<!-- Contents -->
+<ion-content [fullscreen]="true" class="background">
+  <!-- Profile Details -->
+  <ion-list lines="none" class="ion-padding-top" *ngIf="client">
+    <ion-item>
+      <!-- User Image -->
+      <ion-avatar slot="start">
+        <img style="vertical-align: middle;" [src]="client.img">
+      </ion-avatar>
 
+      <!-- Details -->
+      <ion-label class="ion-text-wrap">
+        <h4 class="name">{{client.nom }} {{client.prenom }} </h4>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <!-- End Profile Details Section -->
+
+  <ion-list lines="full" class="ion-padding-top">
+    <ion-item>
+      <ion-icon color="medium" slot="end" name="key-outline"></ion-icon>
+      <ion-label class="ion-padding">Modifier Mot de passe</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon color="medium" slot="end" name="heart"></ion-icon>
+      <ion-label class="ion-padding">Mes Favories</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon color="medium" slot="end" name="card"></ion-icon>
+      <ion-label class="ion-padding">Mode de paiement</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon color="medium" slot="end" name="settings"></ion-icon>
+      <ion-label class="ion-padding">Paramètres</ion-label>
+    </ion-item>
+
+  </ion-list>
+  <!-- Footer -->
+  <ion-footer class="ion-no-border">
+    <div class="ion-padding">
+      <ion-button shape="round" color="color1" expand="full" (click)="signout()">
+        Se Déconnecter <ion-icon color="medium" slot="end" name="log-out"></ion-icon></ion-button>
+    </div>
+  </ion-footer>
 </ion-content>

@@ -14,7 +14,7 @@ export interface Vendeur {
         particulier?: boolean;
         actif?: boolean;
         rue?: string;
-        code_postal?: string;
+        code_postal?: number;
         ville?: string;
         tel?: string;
 }

@@ -31,7 +31,8 @@ export class VendeursPage implements OnInit {
   }
 
   goToVendeursDetails(vendeur) {
-    this.router.navigate(['/vendeur-details'], vendeur);
+    //this.router.navigate(['/vendeur-details']);
+    this.router.navigateByUrl('/vendeur-details', { state: vendeur });
   }
 
   /* gotoFilterPage() {

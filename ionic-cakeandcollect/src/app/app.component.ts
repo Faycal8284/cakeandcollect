@@ -20,7 +20,7 @@ export class AppComponent {
     { title: 'Recherche', url: '/recherche', icon: 'search' },
     { title: 'Vendeurs', url: '/vendeurs', icon: 'restaurant' },
   ];
-  public labels = ['Famille', 'Amis', 'Notes', 'Travail', 'Voyage', 'Rappels'];
+  public labels = ['Famille', 'Amis', 'Notes', '', '', 'Rappels'];
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,

@@ -10,6 +10,8 @@ import { TokenStorageService } from 'src/app/shared/token-storage.service';
 })
 export class LoginVendeurPage implements OnInit {
 
+  id: number;
+
   form: any = {
     email: null,
     password: null
@@ -21,7 +23,7 @@ export class LoginVendeurPage implements OnInit {
   errorMessage = '';
 
   constructor(private router: Router, private authService: AuthService,
-    private tokenStorage: TokenStorageService) { }
+              private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
   }
@@ -32,10 +34,12 @@ export class LoginVendeurPage implements OnInit {
       data => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
+        console.log(data);
 
         this.isLoggedIn = true;
         this.isLoginFailed = false;
-        this.router.navigateByUrl('/espace-vendeur'); // navigate vers tableau de bord vendeur
+        //this.router.navigateByUrl('/espace-vendeur'); // navigate vers tableau de bord vendeur
+        this.router.navigate(['espace-vendeur', data.id]);
       },
       err => {
         this.errorMessage = err.error.message;
