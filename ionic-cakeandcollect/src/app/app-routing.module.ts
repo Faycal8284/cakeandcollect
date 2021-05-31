@@ -35,6 +35,7 @@ const routes: Routes = [
     path: 'categories',
     loadChildren: () => import('./pages/categories/categories.module').then( m => m.CategoriesPageModule)
   },
+  
   {
     path: 'recherche',
     loadChildren: () => import('./pages/recherche/recherche.module').then( m => m.RecherchePageModule)
@@ -46,7 +47,12 @@ const routes: Routes = [
   {
     path: 'vendeur-details/:id',
     loadChildren: () => import('./pages/vendeur-details/vendeur-details.module').then( m => m.VendeurDetailsPageModule)
+  },
+  {
+    path: 'categorie/:id',
+    loadChildren: () => import('./pages/categorie/categorie.module').then( m => m.CategoriePageModule)
   }
+
 
 
 ];

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Categorie } from 'src/app/interfaces/categorie';
 import { CategoriesService } from 'src/app/shared/categories.service';
 
 @Component({
-  selector: 'app-categories',
-  templateUrl: './categories.page.html',
-  styleUrls: ['./categories.page.scss'],
+  selector: 'app-categorie',
+  templateUrl: './categorie.page.html',
+  styleUrls: ['./categorie.page.scss'],
 })
-export class CategoriesPage implements OnInit {
+export class CategoriePage implements OnInit {
 
   categories: any = [];
   id: any;
@@ -16,16 +16,15 @@ export class CategoriesPage implements OnInit {
   constructor(private router: Router, private categoriesService: CategoriesService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    
-    this.getCategories();
+    this.id= this.route.snapshot.params['id'];
+    this.categoriesService.getCategorie(this.id).subscribe(data =>{
+      this.categorie=data;
+      console.log(data);
+    })
+   
   }
 
-  getCategories() {
-    this.categoriesService.getAllCategories().subscribe(data => {
-      console.log(data);
-      this.categories = data;
-    });
-  }
+
 
   gotoAccueilPage() {
     this.router.navigate(['/accueil']);
