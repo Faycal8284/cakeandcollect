@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IonSlides, ModalController } from '@ionic/angular';
+import { Vendeur } from 'src/app/interfaces/Vendeur';
 import { VenpatcatService } from 'src/app/shared/venpatcat.service';
 
 @Component({
@@ -14,6 +15,9 @@ export class VendeurDetailsPage implements OnInit {
   segment: any;
   vendeurDetails: any;
   venpatcats: any = [];
+  id: any;
+  vendeur: Vendeur = {};
+  deltaId: any;
 
   slideOpt = {
     initialSlide: 2,
@@ -25,19 +29,33 @@ export class VendeurDetailsPage implements OnInit {
   };
 
   constructor(public modalController: ModalController, private router: Router,
-    private venpatcatServices: VenpatcatService) { }
+              private venpatcatServices: VenpatcatService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     //this.vendeurDetails = history.state;
     //this.segment = this.vendeurDetails.Patisserie;
+    //this.id = this.route.snapshot.params['id'];
+    /* this.venpatcatServices.getVendeur(this.id).subscribe(data => {
+      console.log(data);
+      this.vendeur = data;
+    }); */
     this.getAllData();
   }
 
   getAllData() {
+    this.id = this.route.snapshot.params.id;
+
     this.venpatcatServices.getAllVendeursPatisseriesCategories().subscribe(data => {
-      console.log('Vendeur-détails data : ' + data);
-      this.venpatcats = data;
+    console.log('Vendeur-détails data : ' + JSON.stringify(data)); // En attendant l'interface
+      this.deltaId = JSON.stringify(data[0].IdVendeur);
+        if(this.id === this.deltaId){
+          this.venpatcats = data;
+      }
     });
+  }
+
+  gotoVendeursPage() {
+    this.router.navigateByUrl('/vendeurs');
   }
 
    // Cette fonction sera appelée lors du changement de segment de catégorie patisserie

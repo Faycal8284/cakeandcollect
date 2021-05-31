@@ -21,6 +21,15 @@ export class VenpatcatService {
       );
   }
 
+  getVendeur(id: number){
+    const API_URL = `${this.url}/${id}`;
+    return this.httpClient.get(API_URL, {headers:this.headers})
+    .pipe(
+      map((res: any) => res || {}),
+      catchError(this.errorMgmt)
+    );
+  }
+
   errorMgmt(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

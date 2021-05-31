@@ -4,6 +4,7 @@ const Sequelize = require("sequelize");
 const { QueryTypes } = require('sequelize');
 
 const db = {};
+// doit se connecter pour récupérer la vue dans la base de données
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     host: dbConfig.HOST,
     dialect: dbConfig.dialect,
@@ -17,7 +18,7 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     }
 });
 
-// To be connected
+// Connexion établie
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 module.exports = {
@@ -33,6 +34,26 @@ module.exports = {
             console.log(e); 
             res.status(500).send(e); 
         } 
+    },
+    // Afficher 1
+    async getVendeurById(req, res) {
+
+        const id = req.params.id;
+        try { 
+            const oneVendeur = await venpatcat.findOne(({
+                where: { IdVendeur: id }
+            }))
+            if (oneVendeur) {
+                res.status(201).send(oneVendeur);
+            }
+            else {
+                res.status(404).send("Vendeur patisserie Not Found");
+            }
+        }
+        catch (e) {
+            console.log(e);
+            res.status(400).send(e);
+        }
     }
 }
 

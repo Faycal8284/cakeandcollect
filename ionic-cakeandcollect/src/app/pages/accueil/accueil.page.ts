@@ -93,4 +93,12 @@ export class AccueilPage implements OnInit {
   gotoRecherchePage(ev) {
     this.router.navigate(['/recherche']);
   }
+
+  gotoVendeursPage() {
+    this.router.navigateByUrl('/vendeurs');
+  }
+
+  goToVendeursDetails(id) {
+    this.router.navigate(['vendeur-details', id]);
+  }
 }

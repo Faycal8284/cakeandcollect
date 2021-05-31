@@ -46,7 +46,7 @@
     <ion-list>
       <ion-list-header>
         <ion-label color="dark">Catégories</ion-label>
-        <ion-button color="color1" >Voir tous</ion-button>
+        <ion-button color="color1" (click)="gotoCategoriesPage()">Voir tous</ion-button>
       </ion-list-header>
     </ion-list>
 
@@ -84,8 +84,8 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <ion-card *ngFor="let item of vendeurs; let i=index">
-              <img [src]="item.img" />
+            <ion-card *ngFor="let vendeur of vendeurs; let i=index" (click)="goToVendeursDetails(vendeur.id)">
+              <img [src]="vendeur.img" />
                 <ion-list lines="none">
                   <ion-item>
                     <!-- Like/Dislike Button Option -->
@@ -95,12 +95,12 @@
 
                     <!-- Vendeur Info -->
                     <ion-label class="ion-text-wrap">
-                      <h4 class="name">{{item.nom}}</h4>
-                      <h5>{{item.categorie}}</h5>
+                      <h4 class="name">{{vendeur.nom}}</h4>
+                      <h5>{{vendeur.categorie}}</h5>
 
                       <!-- Note -->
-                      <ion-text color="medium"> {{item.note}} </ion-text>
-                      <ion-text color="medium"> {{item.ville}} </ion-text>
+                      <ion-text color="medium"> {{vendeur.note}} </ion-text>
+                      <ion-text color="medium"> {{vendeur.ville}} </ion-text>
                     </ion-label>
                   </ion-item>
                 </ion-list>

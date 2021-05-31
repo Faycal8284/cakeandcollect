@@ -1,17 +1,27 @@
 .item {
     ion-avatar {
-        width: 200px;
-        height: 200px;
+        width: 100px;
+        height: 100px;
     }
 
     .name {
-        font-size: 1.5rem;
+        font-size: 1rem;
         font-weight: bold;
     }
 
     .edit-profile {
         font-size: 16px;
-        color: #6d6d6d;
+        color: #c10f86;
         font-weight: 500;
+    }
+
+    
+    .ion-color-medium {
+        --ion-color-base: #b10678 !important;
+        --ion-color-base-rgb: var(--ion-color-medium-rgb, 146, 148, 156) !important;
+        --ion-color-contrast: var(--ion-color-medium-contrast, #fff) !important;
+        --ion-color-contrast-rgb: var(--ion-color-medium-contrast-rgb, 255, 255, 255) !important;
+        --ion-color-shade: #b10678 !important;
+        --ion-color-tint: #c72e94 !important;
     }
 }
