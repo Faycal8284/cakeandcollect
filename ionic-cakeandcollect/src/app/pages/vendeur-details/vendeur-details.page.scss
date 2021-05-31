@@ -1,6 +1,18 @@
-#vendeurs-details {
-    #vendeur-images {
+ion-content.background {
+    #section1 {
+        ion-searchbar {
+            --icon-color: var(--ion-color-color1);
+            --placeholder-color: var(--ion-color-color1);
+            --background: #fff;
+            --color: var(--ion-color-color1);
+            --box-shadow: 0px 1px 12px 0px #cccccc;
+            --border-radius: 25px;
+        }
+    }
 
+    #patVendeur {
+
+        // #slider
         ion-slides,
         .swiper-container {
             width: 100%;
@@ -12,46 +24,58 @@
             background-position: center !important;
             border-radius: 10px;
         }
+        ion-label{
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+            font-size: medium;
+        }
 
     }
 
-    .name {
-        font-size: 1.5rem;
-        font-weight: 700;
-    }
 
-    .other-info {
-        font-size: 0.9rem;
-        font-weight: 500;
-    }
-
-    ion-segment-button {
-        --padding-top: 10px;
-        --padding-bottom: 10px;
-    }
-
-
-    ion-thumbnail {
-        width: 140px;
-        height: 90px;
-
+    #categories {
         img {
-            width: 140px;
-            height: 90px;
-            border-radius: 5px;
+            width: 130px;
+            max-height: 60px;
+            object-fit: cover;
+        }
+
+        ion-slides,
+        .swiper-container {
+            width: 100%;
         }
     }
 
-    #list {
-        width: 100%;
+    #popular-vendeurs {
+        .swiper-slide img {
+            height: 120px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .swiper-slide {
+            background-size: cover !important;
+            background-position: center !important;
+            border-radius: 10px;
+        }
+
+        .item {
+
+            .name {
+                font-size: 1rem;
+                font-weight: 700;
+            }
+
+            ion-note {
+                font-size: 1.3rem;
+                font-weight: 600;
+            }
+        }
+
     }
 
-    .pat-name {
-        font-size: 1rem;
-        font-weight: 600;
-    }
-
-    #pat-items {
+    #popular-patisseries {
         .item {
             ion-thumbnail {
                 width: 100px;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { VendeursService } from 'src/app/shared/vendeurs.service';
+import { VenpatcatService } from 'src/app/shared/venpatcat.service';
 
 @Component({
   selector: 'app-vendeurs',
@@ -10,8 +11,10 @@ import { VendeursService } from 'src/app/shared/vendeurs.service';
 export class VendeursPage implements OnInit {
 
   vendeurs: any = [];
+  venpatcats: any = [];
 
-  constructor(private vendeursService: VendeursService, private router: Router) { }
+  constructor(private vendeursService: VendeursService, private venpatcatServices: VenpatcatService,
+              private router: Router) { }
   ngOnInit() {
     this.getVendeurs();
   }
@@ -28,7 +31,7 @@ export class VendeursPage implements OnInit {
   }
 
   goToVendeursDetails(vendeur) {
-    this.router.navigateByUrl('/vendeur-details', { state: vendeur });
+    this.router.navigate(['/vendeur-details'], vendeur);
   }
 
   /* gotoFilterPage() {

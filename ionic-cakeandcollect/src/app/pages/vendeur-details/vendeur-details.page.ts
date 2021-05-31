@@ -28,37 +28,38 @@ export class VendeurDetailsPage implements OnInit {
     private venpatcatServices: VenpatcatService) { }
 
   ngOnInit() {
-    this.vendeurDetails = history.state;
-    this.segment = this.vendeurDetails.venpatcat[0].nom;
+    //this.vendeurDetails = history.state;
+    //this.segment = this.vendeurDetails.Patisserie;
+    this.getAllData();
   }
 
   getAllData() {
     this.venpatcatServices.getAllVendeursPatisseriesCategories().subscribe(data => {
-      console.log(data);
+      console.log('Vendeur-détails data : ' + data);
       this.venpatcats = data;
     });
   }
 
    // Cette fonction sera appelée lors du changement de segment de catégorie patisserie
-   async segmentChanged(ev) {
-    const index = await this.vendeurDetails.venpatcats.findIndex(pat => pat.nom === ev.detail.value);
+   /* async segmentChanged(ev) {
+    const index = await this.vendeurDetails.venpatcats.findIndex(pat => pat.Patisserie === ev.detail.value);
     await this.slider.slideTo(index);
-  }
+  } */
 
   // Cette fonction sera appelée, lors du changement de curseur de catégorie patisserie
-  async slideChanged() {
+  /* async slideChanged() {
     const sliderIndexNumber = await this.slider.getActiveIndex();
     this.segment = this.vendeurDetails.venpatcats[sliderIndexNumber].nom;
-  }
+  } */
 
   // Goto Cart Page
   /* gotoPanierPage() {
     this.router.navigate(['/panier']);
   } */
 
-  // Back to home page
-  dismiss() {
+  // Retour page Accueil
+ /*  quitter() {
     this.router.navigate(['/accueil']);
-  }
+  } */
 
 }
