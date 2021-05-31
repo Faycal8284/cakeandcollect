@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Client } from 'src/app/interfaces/Client';
+import { ClientsService } from 'src/app/shared/clients.service';
 
 @Component({
   selector: 'app-espace-client',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EspaceClientPage implements OnInit {
 
-  constructor() { }
+  client: Client = {};
+  id!: any;
+
+  constructor(private router: Router, private clientService: ClientsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.id = this.route.snapshot.params['id'];
+    this.clientService.getClient(this.id).subscribe(data => {
+      this.client = data;
+    });
+  }
+
+  signout() {
+    this.router.navigate(['/accueil']);
   }
 
 }

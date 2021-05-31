@@ -119,3 +119,6 @@ ionic g page pages/vendeur-details
 npm i ionic-header-parallax
 
 ionic g s shared/venpatcat
+-----------------------------------------------------------------------------------
+ionic g s shared/clients
+ionic g i interfaces/client

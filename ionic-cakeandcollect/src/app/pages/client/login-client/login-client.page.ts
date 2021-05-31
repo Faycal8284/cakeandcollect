@@ -10,6 +10,8 @@ import { TokenStorageService } from 'src/app/shared/token-storage.service';
 })
 export class LoginClientPage implements OnInit {
 
+  id: number;
+
   form: any = {
     email: null,
     password: null
@@ -32,10 +34,12 @@ export class LoginClientPage implements OnInit {
       data => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
+        console.log(data.id);
 
         this.isLoggedIn = true;
         this.isLoginFailed = false;
-        this.router.navigateByUrl('/espace-client'); // navigate vers tableau de bord vendeur
+        //this.router.navigateByUrl('/espace-client'); // navigate vers espace cient
+        this.router.navigate(['espace-client', data.id]);
       },
       err => {
         this.errorMessage = err.error.message;
