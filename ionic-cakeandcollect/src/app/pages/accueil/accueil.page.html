@@ -114,7 +114,7 @@
   <div id="popular-patisseries">
     <ion-list-header>
       <ion-label color="dark">Les patisseries les plus populaires </ion-label>
-      <ion-button color="color1">Voir Tous</ion-button>
+      <ion-button color="color1" (click)="gotoPatisseriesPage()">Voir Tous</ion-button>
     </ion-list-header>
 
     <ion-card *ngFor="let item of patisseries; let i=index">

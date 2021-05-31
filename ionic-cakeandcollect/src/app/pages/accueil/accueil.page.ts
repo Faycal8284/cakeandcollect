@@ -101,4 +101,8 @@ export class AccueilPage implements OnInit {
   goToVendeursDetails(id) {
     this.router.navigate(['vendeur-details', id]);
   }
+
+  gotoPatisseriesPage() {
+    this.router.navigate(['/patisseries']);
+  }
 }

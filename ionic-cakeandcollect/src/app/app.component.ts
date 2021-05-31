@@ -19,6 +19,7 @@ export class AppComponent {
     { title: 'Catégories', url: '/categories', icon: 'heart' },
     { title: 'Recherche', url: '/recherche', icon: 'search' },
     { title: 'Vendeurs', url: '/vendeurs', icon: 'restaurant' },
+    { title: 'Patisseries', url: '/patisseries', icon: 'restaurant' },
   ];
   public labels = ['Famille', 'Amis', 'Notes', '', '', 'Rappels'];
   constructor(

@@ -1,0 +1,39 @@
+<!-- Header -->
+<ion-header class="ion-no-border">
+  <ion-toolbar color="color1">
+
+    <!-- Back button -->
+    <ion-buttons slot="start">
+      <ion-button (click)="gotoAccueilPage()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Page title -->
+    <ion-title>
+      Patisseries
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contents -->
+<ion-content id="patisseries" class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <!-- List of patisseries -->
+      <ion-col size="6" *ngFor="let pat of patisseries">
+        <ion-card class="ion-no-padding ion-no-margin">
+
+          <!-- patisseries Image -->
+          <img [src]="pat.img" />
+
+          <!-- patisseries Name -->
+          <ion-card-header>
+            <ion-card-subtitle>{{pat.nom}}</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
