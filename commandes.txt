@@ -122,3 +122,16 @@ ionic g s shared/venpatcat
 -----------------------------------------------------------------------------------
 ionic g s shared/clients
 ionic g i interfaces/client
+
+ionic g page pages/categorie
+
+ionic g page pages/patisseries
+ionic g s shared/patisseries
+
+npm i @chec/commerce.js
+npm install -g npm
+ionic g service shared/commerce-client --skipTests=true
+
+ionic g page pages/patisserie
+ionic g page pages/panier
+-----------------------------------------------------------------------------------

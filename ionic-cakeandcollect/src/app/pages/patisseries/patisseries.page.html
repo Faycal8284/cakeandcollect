@@ -25,7 +25,7 @@
         <ion-card class="ion-no-padding ion-no-margin">
 
           <!-- patisseries Image -->
-          <img [src]="pat.img" />
+          <img [src]="pat.img" (click)="gotoPatisseriePage(pat.id)"/>
 
           <!-- patisseries Name -->
           <ion-card-header>
@@ -35,5 +35,32 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Ajouter Patisserie</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let patisserie of patisseries">
+        <ion-thumbnail style="--border-radius: 10px" slot="end" *ngIf="patisserie">
+          <img [src]="patisserie.img" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ patisserie.nom }}</h2>
+          <p>{{ patisserie.prix_u.formatted_with_symbol }}</p>
+          <ion-button color="primary" (click)="gotoPanierPage()">
+            Ajouter
+          </ion-button>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+
+
+
+
 </ion-content>
 

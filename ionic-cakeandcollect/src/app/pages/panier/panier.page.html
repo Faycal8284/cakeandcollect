@@ -1,0 +1,103 @@
+<!-- Header -->
+<ion-header class="ion-no-border">
+  <ion-toolbar color="color1">
+
+    <!-- Back button -->
+    <ion-buttons slot="start">
+      <ion-button color="light" (click)="close()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Page title -->
+    <ion-title>Panier</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contents -->
+<ion-content id="panier">
+  <div *ngIf="patisseries" class="ion-padding">
+
+    <!-- Food panier List -->
+    <ion-list lines="none" *ngFor="let pat of patisseries; let i = index">
+      <ion-item-sliding>
+        <ion-item class="ion-no-padding">
+
+          <!-- Food Image -->
+          <ion-thumbnail slot="start">
+            <img style="vertical-align: middle;" [src]="pat.img">
+          </ion-thumbnail>
+
+          <ion-label class="ion-text-wrap">
+            <!-- Food Name -->
+            <ion-text color="dark">
+              <h2> {{ pat.nom }}</h2>
+            </ion-text>
+
+            <!-- Price -->
+            <ion-note slot="end" color="color1">Prix : {{pat.prix_u}} €</ion-note>
+          </ion-label>
+
+          <!-- quantite -->
+          <ion-card>
+            <!-- Add More quantite -->
+            <ion-col (click)="patisseries[i].quantite = patisseries[i].quantite + 1">
+              <ion-icon style="zoom:2.0;" name="add-circle-outline"></ion-icon>
+            </ion-col>
+
+            <!-- Total quantite -->
+            <ion-col class="ion-text-center patisseries[i].quantite">{{patisseries[i].quantite}}</ion-col>
+
+            <!-- Minus quantite -->
+            <ion-col (click)="patisseries[i].quantite > 1 && patisseries[i].quantite = patisseries[i].quantite - 1">
+              <ion-icon style="zoom:2.0;" name="remove-circle-outline"></ion-icon>
+            </ion-col>
+          </ion-card>
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="color1" expandable>
+            Retirer
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+    <!-- Summary Of Price -->
+    <ion-list lines="none">
+
+      <!-- Sub-Total Price -->
+      <ion-item>
+        <ion-label>Sous Total</ion-label>
+        <ion-note slot="end" color="dark">100€</ion-note>
+      </ion-item>
+
+      <!-- Shipping Cost -->
+      <ion-item>
+        <ion-label>Shipping</ion-label>
+        <ion-note slot="end" color="dark">25€</ion-note>
+      </ion-item>
+
+      <!-- Tax Cost -->
+      <ion-item>
+        <ion-label>TVA(20%)</ion-label>
+        <ion-note slot="end" color="dark">100€</ion-note>
+      </ion-item>
+
+      <hr />
+
+      <!-- Total Cost -->
+      <ion-item>
+        <ion-label>Total</ion-label>
+        <ion-note slot="end" color="dark">225€</ion-note>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <!-- Proceed To Checkout Button Option -->
+  <div class="ion-padding">
+    <ion-button color="color1" shape="round" expand="full" (click)="goToCheckout()">
+      Procéder au paiement
+    </ion-button>
+  </div>
+</ion-content>

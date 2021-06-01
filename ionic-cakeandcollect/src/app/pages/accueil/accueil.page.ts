@@ -128,4 +128,8 @@ export class AccueilPage implements OnInit {
   gotoPatisseriesPage() {
     this.router.navigate(['/patisseries']);
   }
+
+  gotoPanierPage() {
+    this.router.navigateByUrl('/panier');
+  }
 }

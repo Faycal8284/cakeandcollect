@@ -9,9 +9,10 @@ export interface Patisserie {
         descriptions?: string;
         ingredients?: string;
         prix_u?: number;
-        stock?: boolean;
+        stock?: number;
         img?: string;
         img1?: string;
         img2?: string;
         img3?: string;
+        quantite?: number;
 }

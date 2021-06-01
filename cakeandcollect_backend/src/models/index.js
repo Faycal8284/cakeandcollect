@@ -58,6 +58,7 @@ db.commande.hasMany(db.patisserie, { as: "patisseries" });
 db.patisserie.belongsTo(db.commande, {
   foreignKey: "commandeId",
   as: "commandes",
+  allowNull: true,
 });
 
 db.vendeur.beforeCreate((vendeur, options) => {

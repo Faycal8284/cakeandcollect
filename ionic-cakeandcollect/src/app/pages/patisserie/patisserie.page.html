@@ -1,0 +1,40 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="color1">
+
+    <!-- Back button -->
+    <ion-buttons slot="start">
+      <ion-button (click)="gotoPatisseriesPage()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Page title -->
+    <ion-title *ngIf="patisserie"> {{patisserie.nom}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<!-- Contents -->
+<ion-content class="background">
+  <ion-card *ngIf="patisserie">
+    <div class="slider">
+      <ion-slides class="ion-padding slider" #slider [options]="slideOpt1">
+        <ion-slide><img [src]="patisserie.img" [alt]="patisserie.nom" [title]="patisserie.nom" /></ion-slide>
+        <ion-slide><img [src]="patisserie.img1" [alt]="patisserie.nom" [title]="patisserie.nom" /></ion-slide>
+        <ion-slide><img [src]="patisserie.img2" [alt]="patisserie.nom" [title]="patisserie.nom" /></ion-slide>
+        <ion-slide><img [src]="patisserie.img3" [alt]="patisserie.nom" [title]="patisserie.nom" /></ion-slide>
+      </ion-slides>
+    </div>
+
+    <ion-item>
+      <ion-label *ngIf="patisserie.disponible==true">Disponible</ion-label>
+      <ion-button fill="outline" slot="end">{{patisserie.prix_u}} €</ion-button>
+    </ion-item>
+
+    <ion-card-content>{{patisserie.descriptions}}</ion-card-content>
+    <ion-card-content>{{patisserie.ingredients}}</ion-card-content>
+
+    <ion-button color="primary" (click)="gotoPanierPage()">Ajouter au panier</ion-button>
+  </ion-card>
+
+</ion-content>

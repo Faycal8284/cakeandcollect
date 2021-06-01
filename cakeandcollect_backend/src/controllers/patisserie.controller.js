@@ -49,6 +49,7 @@ module.exports = {
                 img1: req.body.img1,
                 img2: req.body.img2,
                 img3: req.body.img3,
+                quantite: req.body.quantite,
             });
             res.status(201).send(patisserieCreated)
         }

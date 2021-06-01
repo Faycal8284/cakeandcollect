@@ -1,7 +1,6 @@
 <!-- <ion-content [scrollEvents]="true" parallaxHeader="../../../assets/images/parallax/pat1.jpg" [parallaxHeight]="300" >
   <div class="main-content"> -->
  
-
 <!-- Header -->
 <ion-header >
   
@@ -143,7 +142,7 @@
             <ion-text color="color1">{{item.prix_u}} €</ion-text>
           </ion-label>
 
-          <ion-card>
+          <ion-card (click)="gotoPanierPage()">
             Commander
           </ion-card>
         </ion-item>
