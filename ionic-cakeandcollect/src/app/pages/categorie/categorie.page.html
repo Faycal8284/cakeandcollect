@@ -1,4 +1,4 @@
-<!-- Header -->
+!-- Header -->
 <ion-header class="ion-no-border">
   <ion-toolbar color="color1">
 
@@ -17,15 +17,16 @@
 </ion-header>
 
 <!-- Contents -->
-<ion-content id="categories" class="ion-padding">
+<ion-content  class="ion-padding">
   <ion-grid>
     <ion-row>
       <!-- List of Categories -->
-      <ion-col size="6" *ngFor="let item of categories">
-        <ion-card class="ion-no-padding ion-no-margin">
+      <ion-col size="6"  *ngFor="let item of vendeurs" >
+        <ion-card *ngIf="cat===item.categorie"class="ion-no-padding ion-no-margin">
 
           <!-- Categories Image -->
           <img [src]="item.img" />
+          
 
           <!-- Categories Name -->
           <ion-card-header>
@@ -36,5 +37,3 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-
-}
