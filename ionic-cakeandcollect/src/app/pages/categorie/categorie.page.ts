@@ -12,16 +12,16 @@ export class CategoriePage implements OnInit {
 
   categories: any = [];
   id: any;
-  categorie:Categorie= {};
+  categorie: Categorie= {};
   constructor(private router: Router, private categoriesService: CategoriesService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.id= this.route.snapshot.params['id'];
+    this.id= this.route.snapshot.params.id;
     this.categoriesService.getCategorie(this.id).subscribe(data =>{
       this.categorie=data;
       console.log(data);
-    })
-   
+    });
+
   }
 
 

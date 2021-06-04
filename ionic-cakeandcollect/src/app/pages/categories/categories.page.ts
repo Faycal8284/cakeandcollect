@@ -12,11 +12,11 @@ export class CategoriesPage implements OnInit {
 
   categories: any = [];
   id: any;
-  categorie:Categorie= {};
+  categorie: Categorie= {};
   constructor(private router: Router, private categoriesService: CategoriesService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    
+
     this.getCategories();
   }
 
