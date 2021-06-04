@@ -14,4 +14,12 @@
         color: #6d6d6d;
         font-weight: 500;
     }
+    .ion-color-medium {
+        --ion-color-base: #b10678 !important;
+        --ion-color-base-rgb: var(--ion-color-medium-rgb, 146, 148, 156) !important;
+        --ion-color-contrast: var(--ion-color-medium-contrast, #fff) !important;
+        --ion-color-contrast-rgb: var(--ion-color-medium-contrast-rgb, 255, 255, 255) !important;
+        --ion-color-shade: #b10678 !important;
+        --ion-color-tint: #c72e94 !important;
+    }
 }

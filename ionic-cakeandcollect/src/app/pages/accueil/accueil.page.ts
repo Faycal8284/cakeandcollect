@@ -78,7 +78,7 @@ export class AccueilPage implements OnInit {
     this.vendeursService.getAllVendeurs().subscribe(data => {
       console.log(data);
       this.vendeurs= data ;
-      this.shuffleArray(this.vendeurs)
+      //this.shuffleArray(this.vendeurs);
     });
   }
 
@@ -89,27 +89,47 @@ export class AccueilPage implements OnInit {
     });
   }
 
-  shuffleArray = function(array) {
+  /* shuffleArray = function(array) {
     var m = array.length, t, i;
-  
+
     while (m) {
-      
+
       i = Math.floor(Math.random() * m--);
-  
+
       t = array[m];
       array[m] = array[i];
       array[i] = t;
     }
 
     return array;
-  }
- 
-  
+  } */
+
+
   gotoCategoriePage(id) {
     this.router.navigate(['categorie',id]);
   }
 
   gotoRecherchePage(ev) {
     this.router.navigate(['/recherche']);
+  }
+
+  gotoVendeursPage() {
+    this.router.navigateByUrl('/vendeurs');
+  }
+
+  goToVendeursDetails(id) {
+    this.router.navigate(['vendeur-details', id]);
+  }
+
+  gotoCategoriesPage() {
+    this.router.navigate(['/categories']);
+  }
+
+  gotoPatisseriesPage() {
+    this.router.navigate(['/patisseries']);
+  }
+
+  gotoPanierPage() {
+    this.router.navigateByUrl('/panier');
   }
 }

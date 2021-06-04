@@ -25,7 +25,7 @@
     <ion-row>
       <!-- Liset des vendeurs ayant uniquement des patisseries -->
       <ion-col sizeLg="4" sizeMd="6" sizeXs="12" *ngFor="let vendeur of vendeurs">
-        <ion-card class="ion-no-padding ion-no-margin" (click)="goToVendeursDetails(vendeur)">
+        <ion-card class="ion-no-padding ion-no-margin" (click)="goToVendeursDetails(vendeur.id)">
           <!-- Image -->
           <img [src]="vendeur.img" />
 

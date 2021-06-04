@@ -50,7 +50,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.FLOAT
         },
         stock: {
-            type: Sequelize.BOOLEAN
+            type: Sequelize.INTEGER
         },
         img: {
             type: Sequelize.STRING
@@ -63,6 +63,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         img3: {
             type: Sequelize.STRING
+        },
+        quantite:{
+            type: Sequelize.INTEGER
         }
         
     }); 

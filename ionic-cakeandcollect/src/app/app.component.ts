@@ -12,13 +12,14 @@ export class AppComponent {
   menus: any = [];
   selectedMenu: any;
   public appPages = [
-    { title: 'Accueil', url: '/accueil', icon: 'mail' },
-    { title: 'Espace Vendeur', url: '/login-vendeur', icon: 'paper-plane' },
-    { title: 'Espace Client', url: '/login-client', icon: 'heart' },
-    { title: 'Register Vendeur', url: '/register-vendeur', icon: 'archive' },
+    { title: 'Accueil', url: '/accueil', icon: 'home' },
+    { title: 'Espace Vendeur', url: '/login-vendeur', icon: 'person' },
+    { title: 'Espace Client', url: '/login-client', icon: 'person' },
+    { title: 'Register Vendeur', url: '/register-vendeur', icon: 'add' },
     { title: 'Catégories', url: '/categories', icon: 'heart' },
     { title: 'Recherche', url: '/recherche', icon: 'search' },
     { title: 'Vendeurs', url: '/vendeurs', icon: 'restaurant' },
+    { title: 'Patisseries', url: '/patisseries', icon: 'restaurant' },
   ];
   public labels = ['Famille', 'Amis', 'Notes', '', '', 'Rappels'];
   constructor(

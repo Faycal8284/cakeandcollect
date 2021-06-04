@@ -35,7 +35,6 @@ const routes: Routes = [
     path: 'categories',
     loadChildren: () => import('./pages/categories/categories.module').then( m => m.CategoriesPageModule)
   },
-  
   {
     path: 'recherche',
     loadChildren: () => import('./pages/recherche/recherche.module').then( m => m.RecherchePageModule)
@@ -45,13 +44,24 @@ const routes: Routes = [
     loadChildren: () => import('./pages/vendeurs/vendeurs.module').then( m => m.VendeursPageModule)
   },
   {
-    path: 'vendeur-details',
+    path: 'vendeur-details/:id',
     loadChildren: () => import('./pages/vendeur-details/vendeur-details.module').then( m => m.VendeurDetailsPageModule)
   },
   {
     path: 'categorie/:id',
     loadChildren: () => import('./pages/categorie/categorie.module').then( m => m.CategoriePageModule)
-  }
+  },
+  {
+    path: 'patisseries',
+    loadChildren: () => import('./pages/patisseries/patisseries.module').then( m => m.PatisseriesPageModule)
+  },
+  {
+    path: 'patisserie/:id',
+    loadChildren: () => import('./pages/patisserie/patisserie.module').then( m => m.PatisseriePageModule)
+  },  {
+    path: 'panier',
+    loadChildren: () => import('./pages/panier/panier.module').then( m => m.PanierPageModule)
+  },
 
 
 
