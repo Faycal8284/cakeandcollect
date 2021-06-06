@@ -13,7 +13,8 @@ export class CategoriesPage implements OnInit {
   categories: any = [];
   id: any;
   categorie: Categorie= {};
-  constructor(private router: Router, private categoriesService: CategoriesService, private route: ActivatedRoute) { }
+  constructor(private router: Router, private categoriesService: CategoriesService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -29,6 +30,10 @@ export class CategoriesPage implements OnInit {
 
   gotoAccueilPage() {
     this.router.navigate(['/accueil']);
+  }
+
+  gotoCategoriePage(id) {
+    this.router.navigate(['categorie',id]);
   }
 
 }

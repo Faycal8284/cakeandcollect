@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonSlides, ModalController } from '@ionic/angular';
 import { Vendeur } from 'src/app/interfaces/Vendeur';
+import { VendeursService } from 'src/app/shared/vendeurs.service';
 import { VenpatcatService } from 'src/app/shared/venpatcat.service';
 
 @Component({
@@ -14,10 +15,11 @@ export class VendeurDetailsPage implements OnInit {
   @ViewChild('slides', { static: true }) slider: IonSlides;
   segment: any;
   vendeurDetails: any;
-  venpatcats: any = [];
+
   id: any;
-  vendeur: Vendeur = {};
+  vendeur: any = {};
   deltaId: any;
+  patisseries: any = [];
 
   slideOpt = {
     initialSlide: 2,
@@ -28,41 +30,56 @@ export class VendeurDetailsPage implements OnInit {
     effect: 'slide'
   };
 
-  constructor(public modalController: ModalController, private router: Router,
-              private venpatcatServices: VenpatcatService, private route: ActivatedRoute) { }
+  constructor(public modalController: ModalController, private router: Router, private route: ActivatedRoute,
+              private vendeursService: VendeursService, private venpatcatServices: VenpatcatService, ) { }
 
   ngOnInit() {
+    this.id = this.route.snapshot.params.id;
+    console.log('Id par la route : ' + this.id);
     //this.vendeurDetails = history.state;
     //this.segment = this.vendeurDetails.Patisserie;
     //this.id = this.route.snapshot.params['id'];
-    /* this.venpatcatServices.getVendeur(this.id).subscribe(data => {
-      console.log(data);
-      this.vendeur = data;
-    }); */
-    this.getAllData();
-  }
-
-  getAllData() {
-    this.id = this.route.snapshot.params.id;
-
-    this.venpatcatServices.getAllVendeursPatisseriesCategories().subscribe(data => {
-    console.log('Vendeur-détails data : ' + JSON.stringify(data)); // En attendant l'interface
-      this.deltaId = JSON.stringify(data[0].IdVendeur);
-        if(this.id === this.deltaId){
-          this.venpatcats = data;
-      }
+    this.vendeursService.getVendeur(this.id).subscribe(data => {
+      console.log('Le vendeur : ' + JSON.stringify(data) );
+      this.vendeur = JSON.stringify(data);
     });
+
+    this.venpatcatServices.getVendeur(this.id).subscribe(data => {
+      console.log('Vendeur détails patisseries : ' + JSON.stringify(data)); // En attendant l'interface
+      this.patisseries = data;
+      });
+
+    //this.getAllData();
   }
+
+  /* getAllData() {
+  //this.id = this.vendeur.IdVendeur;
+    this.venpatcatServices.getAllPatisseries().subscribe(data => {
+      console.log('Vendeur-détails data : ' + JSON.stringify(data)); // En attendant l'interface
+        this.deltaId = JSON.stringify(data[0].IdVendeur);
+          if(this.id === this.deltaId){
+            this.patisseries = data;
+        }
+    });
+  } */
 
   gotoVendeursPage() {
     this.router.navigateByUrl('/vendeurs');
   }
 
-   // Cette fonction sera appelée lors du changement de segment de catégorie patisserie
-   /* async segmentChanged(ev) {
-    const index = await this.vendeurDetails.venpatcats.findIndex(pat => pat.Patisserie === ev.detail.value);
-    await this.slider.slideTo(index);
-  } */
+  gotoPatisseriePage(id) {
+    this.router.navigate(['patisserie', id]);
+  }
+
+  gotoPanierPage() {
+    this.router.navigateByUrl('/panier');
+  }
+
+  // Cette fonction sera appelée lors du changement de segment de catégorie patisserie
+  /* async segmentChanged(ev) {
+   const index = await this.vendeurDetails.venpatcats.findIndex(pat => pat.Patisserie === ev.detail.value);
+   await this.slider.slideTo(index);
+ } */
 
   // Cette fonction sera appelée, lors du changement de curseur de catégorie patisserie
   /* async slideChanged() {
@@ -76,8 +93,8 @@ export class VendeurDetailsPage implements OnInit {
   } */
 
   // Retour page Accueil
- /*  quitter() {
-    this.router.navigate(['/accueil']);
-  } */
+  /*  quitter() {
+     this.router.navigate(['/accueil']);
+   } */
 
 }

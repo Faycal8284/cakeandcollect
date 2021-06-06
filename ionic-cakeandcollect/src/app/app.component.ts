@@ -20,6 +20,7 @@ export class AppComponent {
     { title: 'Recherche', url: '/recherche', icon: 'search' },
     { title: 'Vendeurs', url: '/vendeurs', icon: 'restaurant' },
     { title: 'Patisseries', url: '/patisseries', icon: 'restaurant' },
+    { title: 'Panier', url: '/panier', icon: 'cart' },
   ];
   public labels = ['Famille', 'Amis', 'Notes', '', '', 'Rappels'];
   constructor(

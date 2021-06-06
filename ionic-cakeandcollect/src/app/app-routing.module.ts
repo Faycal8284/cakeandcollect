@@ -58,7 +58,8 @@ const routes: Routes = [
   {
     path: 'patisserie/:id',
     loadChildren: () => import('./pages/patisserie/patisserie.module').then( m => m.PatisseriePageModule)
-  },  {
+  },
+  {
     path: 'panier',
     loadChildren: () => import('./pages/panier/panier.module').then( m => m.PanierPageModule)
   },

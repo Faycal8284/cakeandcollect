@@ -30,6 +30,10 @@ export class PanierPage implements OnInit {
     });
   }
 
+  gotoPatisseriePage(id) {
+    this.router.navigate(['patisserie', id]);
+  }
+
   // Go to checkout page
   goToCheckout() {
     this.router.navigate(['/login-client']);

@@ -1,4 +1,4 @@
-!-- Header -->
+<!-- Header -->
 <ion-header class="ion-no-border">
   <ion-toolbar color="color1">
 
@@ -11,7 +11,7 @@
 
     <!-- Page title -->
     <ion-title>
-      Categories
+      Categorie
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -21,13 +21,13 @@
   <ion-grid>
     <ion-row>
       <!-- List of Categories -->
-      <ion-col size="6"  *ngFor="let item of vendeurs" >
-        <ion-card *ngIf="cat===item.categorie"class="ion-no-padding ion-no-margin">
+      <ion-col size="6" *ngFor="let vendeur of vendeurs" >
+        <ion-card class="ion-no-padding ion-no-margin" (click)="goToVendeursDetails(vendeur.IdVendeur)"> 
           <!-- Categories Image -->
-          <img [src]="item.img" />
+          <img [src]="vendeur.imgVendeur" />
           <!-- Categories Name -->
           <ion-card-header>
-            <ion-card-subtitle>{{item.nom}}</ion-card-subtitle>
+            <ion-card-subtitle>{{vendeur.Vendeur}}</ion-card-subtitle>
           </ion-card-header>
         </ion-card>
       </ion-col>

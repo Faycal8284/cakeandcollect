@@ -21,7 +21,8 @@
 
 <ion-content class="background">
 
-  <!-- Search Bar -->
+  <!-- <ion-icon name="cart-outline"></ion-icon> -->
+  <!-- Barre de Recherche -->
   <div id="section1">
     <ion-grid>
       <ion-row class="ion-align-items-center ion-justify-content-center">
@@ -56,18 +57,18 @@
     </ion-list>
 
     <ion-slides [options]="slideOpts2">
-      <ion-slide *ngFor="let item of categories; let i=index" (click)="gotoCategoriePage(item.id)">
+      <ion-slide *ngFor="let categorie of categories; let i=index" (click)="gotoCategoriePage(categorie.id)">
         <ion-grid>
           <ion-row>
             <ion-col>
               <ion-card class="ion-no-padding ion-no-margin">
 
                 <!-- Categories Image -->
-                <img [src]="item.img" />
+                <img [src]="categorie.img" />
 
                 <!-- Categories Name -->
                 <ion-card-header>
-                  <ion-card-subtitle>{{item.nom}}</ion-card-subtitle>
+                  <ion-card-subtitle>{{categorie.nom}}</ion-card-subtitle>
                 </ion-card-header>
               </ion-card>
             </ion-col>
@@ -122,24 +123,24 @@
       <ion-button color="color1" (click)="gotoPatisseriesPage()">Voir Tous</ion-button>
     </ion-list-header>
 
-    <ion-card *ngFor="let item of patisseries; let i=index">
+    <ion-card *ngFor="let patisserie of patisseries; let i=index">
       <ion-list lines="none">
         <ion-item class="ion-no-padding border">
 
           <!-- Image -->
           <ion-thumbnail slot="start">
-            <img class="packages_thumbnail" style="vertical-align: middle;" [src]="item.img">
+            <img class="packages_thumbnail" style="vertical-align: middle;" [src]="patisserie.img" (click)="gotoPatisseriePage(patisserie.id)" />
           </ion-thumbnail>
 
           <ion-label class="ion-text-wrap">
-            <h4 class="name">{{item.nom}}</h4>
+            <h4 class="name">{{patisserie.nom}}</h4>
             <ion-text color="medium">
-              <ion-icon color="medium" name="location"></ion-icon> {{item.descriptions}}
+              <ion-icon color="medium" name="location"></ion-icon> {{patisserie.descriptions}}
             </ion-text>
 
             <br>
 
-            <ion-text color="color1">{{item.prix_u}} €</ion-text>
+            <ion-text color="color1">{{patisserie.prix_u}} €</ion-text>
           </ion-label>
 
           <ion-card (click)="gotoPanierPage()">

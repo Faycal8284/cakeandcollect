@@ -1,6 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable @typescript-eslint/no-unused-expressions */
-/* eslint-disable @typescript-eslint/prefer-for-of */
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Categorie } from 'src/app/interfaces/categorie';
@@ -8,6 +5,7 @@ import { Vendeur } from 'src/app/interfaces/vendeur';
 
 import { CategoriesService } from 'src/app/shared/categories.service';
 import { VendeursService } from 'src/app/shared/vendeurs.service';
+import { VenpatcatService } from 'src/app/shared/venpatcat.service';
 
 @Component({
   selector: 'app-categorie',
@@ -16,74 +14,85 @@ import { VendeursService } from 'src/app/shared/vendeurs.service';
 })
 export class CategoriePage implements OnInit {
 
-  cat: any;
   categories: any = [];
-  id: any;
+  id = 0;
   categorie: Categorie = {};
-  vendeurs: Array<Vendeur> = new Array<Vendeur>();
-  // vendeur:Vendeur={};
+  //vendeurs: Array<Vendeur> = new Array<Vendeur>();
+  vendeurs: any = [];
+  vendeur: Vendeur = {};
 
-  constructor(private router: Router, private categoriesService: CategoriesService, private route: ActivatedRoute, private vendeursService: VendeursService) { }
+  deltaId: string;
+
+  constructor(private router: Router, private categoriesService: CategoriesService,
+              private route: ActivatedRoute, private vendeursPatCatService: VenpatcatService,
+              private vendeursService: VendeursService) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.params.id;
-    this.categoriesService.getCategorie(this.id).subscribe(data => {
-      this.categorie = data;
-      console.log(data);
-      console.log(this.categorie.nom);
-      this.compare(this.categorie.nom);
-      this.compare2();
-
-    });
-    this.getVendeurs();
-    console.log(this.categorie.nom);
-    console.log(this.vendeurs);
-    this.compare('USA');
-    this.compare2();
-  }
-  getVendeurs() {
-    this.vendeursService.getAllVendeurs().subscribe(data => {
-      console.log(data);
+    /* this.id = this.route.snapshot.params.id;
+    this.vendeursPatCatService.getCategorie(this.id).subscribe(data => {
+      console.log('Vendeurs par catégorie data : ' + JSON.stringify(data)); // En attendant l'interface
       this.vendeurs = data;
-      console.log(this.vendeurs);
-    });
+      //this.cat = this.categorie.nom;
+    }); */
+
+    /* this.categoriesService.getCategorie(this.id).subscribe(data => {
+      console.log(data);
+      this.categorie = data;
+      //this.cat = this.categorie.nom;
+    }); */
+
+    this.getAllData();
+    //this.getAllVendeurs();
+
   }
 
-  compare(nom: string) {
-    this.vendeurs;
-    for (let i = 0; i < this.vendeurs.length; i++) {
-      if (nom === this.vendeurs[i].categorie) {
-        return console.log(this.vendeurs[i].categorie);
+  getAllData() {
+    this.id = this.route.snapshot.params.id;
+
+    this.vendeursPatCatService.getCategorie(this.id).subscribe(data => {
+      console.log('Vendeurs par catégorie data : ' + JSON.stringify(data)); // En attendant l'interface
+      this.vendeurs = data;
+    });
+
+    /* this.vendeursPatCatService.getAllVendeursPatisseriesCategories().subscribe(data => {
+      console.log('Vendeurs par catégorie data : ' + JSON.stringify(data)); // En attendant l'interface
+      console.log('data 2 : ' + JSON.stringify(data[2]));
+      console.log('catégorie id : ' + JSON.stringify(data[2].IdCategorie));
+      console.log('catégorie id param : ' + this.id); // 6
+
+      console.log(this.vendeurs);
+
+      this.deltaId = JSON.stringify(data[2].IdCategorie);
+      this.vendeurs = [];
+        if(this.id == 6){
+          this.vendeurs = data;
+          console.log(this.vendeurs);
       }
-    }
-  };
+    }); */
+  }
 
-  // compare2(cat:string){
-  //   this.categories;
-  //   for(let i=0; i<this.categories.length; i++){
-  //     if(cat == this.categories[i].nom){
-  //     return true;
-  //     }
-  //   }
-  //   };
-
-  compare2() {
-    this.categories;
-    for (let i = 0; i < this.categories.length; i++) {
-      if (this.categories[i].nom) {
-        this.cat = this.categories[i].nom;
-      }
-    }
-  };
-
-
+  /* getAllData(){
+    this.vendeursPatCatService.getAllVendeursPatisseriesCategories().subscribe(data => {
+    console.log(data);
+    this.allData = data;
+    });
+  } */
 
   gotoAccueilPage() {
     this.router.navigate(['/accueil']);
   }
 
-}
+  goToVendeursDetails(id) {
+    //this.router.navigate(['/vendeur-details']);
+    this.router.navigate(['vendeur-details', id]);
+  }
 
-// function item(item: any) {
-//   throw new Error('Function not implemented.');
-// }
+
+  /* getAllVendeurs(){
+    this.vendeursService.getAllVendeurs().subscribe(data => {
+    console.log(data);
+    this.vendeurs = data;
+    });
+  } */
+
+}

@@ -10,7 +10,7 @@
 
     <!-- Page title -->
     <ion-title>
-      Vendeur Détails
+      Vendeur Patisseries Détails
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -24,44 +24,44 @@
     <div id="patVendeur">
       <ion-slides class="ion-padding slider" #slider [options]="slideOpt1">
 
-        <ion-slide *ngFor="let pat of venpatcats" [ngStyle]="{'background' : 'url(' + pat.ImagePat + ')'}">
+        <ion-slide *ngFor="let patisserie of patisseries" [ngStyle]="{'background' : 'url(' + patisserie.imagePatisserie + ')'}">
           <ion-thumbnail slot="start">
           </ion-thumbnail>
-          <ion-label>{{pat.Patisserie}}</ion-label>
+          <ion-label>{{patisserie.Patisserie}}</ion-label>
         </ion-slide>
       </ion-slides>
 
     </div>
 
-    <!-- Les patisseries les plus populaires -->
+    <!-- Les patisseries du vendeur  -->
     <div id="patVendeur">
-      <ion-list-header *ngIf="pat">
-        <ion-label color="dark" >Commander </ion-label>
+      <ion-list-header *ngIf="patisserie">
+        <ion-label color="primary" >Commander </ion-label>
         <ion-button color="color1">Voir Tous</ion-button>
       </ion-list-header>
       
 
-      <ion-card *ngFor="let pat of venpatcats; let i=index">
+      <ion-card *ngFor="let patisserie of patisseries; let i=index">
         <ion-list lines="none">
           <ion-item class="ion-no-padding border">
 
             <!-- Image -->
             <ion-thumbnail slot="start">
-              <img class="packages_thumbnail" style="vertical-align: middle;" [src]="pat.ImagePat">
+              <img class="packages_thumbnail" style="vertical-align: middle;" [src]="patisserie.imagePatisserie" (click)="gotoPatisseriePage(patisserie.IdPatisserie)" >
             </ion-thumbnail>
 
-            <ion-label class="ion-text-wrap">
-              <h4 class="name">{{pat.Patisserie}}</h4>
-              <ion-text color="medium">
-                <ion-icon color="medium" name="location"></ion-icon> {{pat.DescriptionsP}}
-              </ion-text>
+            <ion-label class="ion-text-wrap" class="name">
+              {{patisserie.Patisserie}}
+              <!-- <ion-text color="medium">
+                <ion-icon color="medium" name="location"></ion-icon> {{patisserie.Patisserie}}
+              </ion-text> -->
 
               <br>
 
-              <ion-text color="color1">{{pat.Prix}} €</ion-text>
+              <ion-text color="color1">{{patisserie.Prix}} €</ion-text>
             </ion-label>
 
-            <ion-card>
+            <ion-card color="primary" (click)="gotoPanierPage()">
               Commander
             </ion-card>
           </ion-item>
@@ -72,7 +72,7 @@
 
   <div *ngIf="!pat" class="ion-padding" >
     <ion-text color="secondary">
-      <h1> <ion-icon name="information-circle-outline"></ion-icon> Le vendeur n'a pas encore ajouté de patisseries <ion-spinner name="crescent" color="secondary"></ion-spinner></h1>
+      <h1> <ion-icon name="information-circle-outline"></ion-icon> En cours d'ajout des patisseries<ion-spinner name="crescent" color="secondary"></ion-spinner></h1>
     </ion-text>
   </div> 
 

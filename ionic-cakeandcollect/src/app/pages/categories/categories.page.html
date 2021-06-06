@@ -21,15 +21,15 @@
   <ion-grid>
     <ion-row>
       <!-- List of Categories -->
-      <ion-col size="6" *ngFor="let item of categories">
-        <ion-card class="ion-no-padding ion-no-margin">
+      <ion-col size="6" *ngFor="let categorie of categories">
+        <ion-card class="ion-no-padding ion-no-margin" (click)="gotoCategoriePage(categorie.id)">
 
           <!-- Categories Image -->
-          <img [src]="item.img" />
+          <img [src]="categorie.img" />
 
           <!-- Categories Name -->
           <ion-card-header>
-            <ion-card-subtitle>{{item.nom}}</ion-card-subtitle>
+            <ion-card-subtitle>{{categorie.nom}}</ion-card-subtitle>
           </ion-card-header>
         </ion-card>
       </ion-col>

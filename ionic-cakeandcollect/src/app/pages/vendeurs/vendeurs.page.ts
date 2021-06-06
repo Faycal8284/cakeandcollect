@@ -11,12 +11,13 @@ import { VenpatcatService } from 'src/app/shared/venpatcat.service';
 export class VendeursPage implements OnInit {
 
   vendeurs: any = [];
-  venpatcats: any = [];
+  //venpatcats: any = [];
 
   constructor(private vendeursService: VendeursService, private venpatcatServices: VenpatcatService,
               private router: Router) { }
   ngOnInit() {
     this.getVendeurs();
+    //this. getAllVendeurs();
   }
 
   getVendeurs() {
@@ -26,6 +27,13 @@ export class VendeursPage implements OnInit {
     });
   }
 
+  /* getAllVendeurs() {
+    this.venpatcatServices.getAllVendeurs().subscribe(data => {
+      console.log(data);
+      this.vendeurs = data;
+    });
+  } */
+
   gotoAccueilPage() {
     this.router.navigate(['/accueil']);
   }
@@ -33,6 +41,7 @@ export class VendeursPage implements OnInit {
   goToVendeursDetails(id) {
     //this.router.navigate(['/vendeur-details']);
     this.router.navigate(['vendeur-details', id]);
+    console.log('Id dans la fonction goToVendeursDetails : ' + id);
   }
 
   /* gotoFilterPage() {

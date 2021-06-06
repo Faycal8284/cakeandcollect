@@ -19,23 +19,23 @@
   <div *ngIf="patisseries" class="ion-padding">
 
     <!-- Food panier List -->
-    <ion-list lines="none" *ngFor="let pat of patisseries; let i = index">
+    <ion-list lines="none" *ngFor="let patisserie of patisseries; let i = index">
       <ion-item-sliding>
         <ion-item class="ion-no-padding">
 
           <!-- Food Image -->
           <ion-thumbnail slot="start">
-            <img style="vertical-align: middle;" [src]="pat.img">
+            <img style="vertical-align: middle;" [src]="patisserie.img" (click)="gotoPatisseriePage(patisserie.id)" >
           </ion-thumbnail>
 
           <ion-label class="ion-text-wrap">
             <!-- Food Name -->
             <ion-text color="dark">
-              <h2> {{ pat.nom }}</h2>
+              <h2> {{ patisserie.nom }}</h2>
             </ion-text>
 
             <!-- Price -->
-            <ion-note slot="end" color="color1">Prix : {{pat.prix_u}} €</ion-note>
+            <ion-note slot="end" color="color1">Prix : {{patisserie.prix_u}} €</ion-note>
           </ion-label>
 
           <!-- quantite -->
