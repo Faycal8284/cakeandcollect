@@ -1,3 +1,4 @@
+// Connexion à la base données cakeandcollect
 module.exports = {
     HOST: "localhost",
     USER: "root",
