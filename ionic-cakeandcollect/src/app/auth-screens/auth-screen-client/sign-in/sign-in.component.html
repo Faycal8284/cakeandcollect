@@ -1,0 +1,59 @@
+<form [formGroup]="form" class="ion-margin"> 
+  <div class="ion-margin-vertical dispaly">
+    <ion-item lines="full">
+      <ion-input formControlName="email" type="text" placeholder="Entrer email"></ion-input>
+    </ion-item>
+    <ion-text  
+      color="danger" 
+      *ngIf="!form.get('email').valid && form.get('email').touched">
+      <ion-text
+        class="error" 
+        *ngIf="form.get('email').hasError('required')">
+        * Email valide obligatoire
+      </ion-text>
+    </ion-text>
+  </div>
+  <div class="ion-margin-vertical dispaly">
+    <ion-item lines="full">
+      <ion-icon 
+        [name]="type ? 'eye' : 'eye-off'" 
+        slot="end" 
+        color="dark" 
+        (click)="changeType()">
+      </ion-icon>
+      <ion-input formControlName="password" [type]="type ? 'password' : 'text'" 
+        placeholder="Mot de passe"></ion-input>
+    </ion-item>
+    <ion-text 
+      color="danger" 
+      *ngIf="!form.get('password').valid && form.get('password').touched">
+      <ion-text
+        class="error"  
+        *ngIf="form.get('password').hasError('required')">
+        * Mot de passe valide obligatoire
+      </ion-text>
+      <ion-text
+        class="error"  
+        *ngIf="!form.get('password').hasError('required') && form.get('password').hasError('minlength')">
+        * Mot de passe minimum 3 caractères
+      </ion-text>
+    </ion-text>
+  </div>
+</form>
+
+<p class="ion-text-right ion-margin-horizontal">
+  <ion-text color="medium">Mot de passe oublié ?</ion-text>
+</p>
+
+<div class="ion-margin-horizontal">
+  <ion-button
+   class="ion-margin-horizontal"
+    size="large" 
+    expand="block" 
+    shape="round" 
+    color="primary"
+    (click)="onSubmit()">
+    <ion-text>Se connecter</ion-text>
+  </ion-button>
+</div>
+

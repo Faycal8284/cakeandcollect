@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ClientGuard } from './guards/client.guard';
 
 const routes: Routes = [
   {
@@ -63,7 +64,25 @@ const routes: Routes = [
     path: 'panier',
     loadChildren: () => import('./pages/panier/panier.module').then( m => m.PanierPageModule)
   },
+  {
+    path: 'client',
+    loadChildren: () => import('./auth-screens/client/client.module').then( m => m.ClientPageModule)
+  },
+  {
+    path: 'auth-screen-client',
+    loadChildren: () => import('./auth-screens/auth-screen-client/auth-screen-client.module').then( m => m.AuthScreenClientPageModule),
+    canLoad: [ClientGuard]
+  },
+  {
+    path: 'tableau-de-bord-client',
+    loadChildren: () => import('./pages/client/tableau-de-bord/tableau-de-bord.module').then( m => m.TableauDeBordPageModule)
+  },
 
+
+  /* {
+    path: 'auth-screen',
+    loadChildren: () => import('./auth-screens/client/client.module').then( m => m.ClientPageModule)
+  }, */
 
 
 ];

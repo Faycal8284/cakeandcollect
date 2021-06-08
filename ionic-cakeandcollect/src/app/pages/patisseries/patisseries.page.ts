@@ -38,6 +38,10 @@ export class PatisseriesPage implements OnInit {
     this.router.navigate(['patisserie', id]);
   }
 
+  gotoPanierPage() {
+    this.router.navigateByUrl('/panier');
+  }
+
   // autre méthode avec commercejs
   async loadProducts() {
     try {
