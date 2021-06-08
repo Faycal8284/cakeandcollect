@@ -1,0 +1,18 @@
+ion-slides{
+    height: 100%;
+    --bullet-background: var(--ion-color-color1);
+    ion-slide {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .toRight {
+        align-items: initial;
+        justify-content: flex-end;
+    }
+
+    .transforButton{
+        transform: translateY(30vh);
+    }
+}

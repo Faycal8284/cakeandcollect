@@ -13,6 +13,8 @@ export class AppComponent {
   selectedMenu: any;
   public appPages = [
     { title: 'Accueil', url: '/accueil', icon: 'home' },
+    { title: 'Login Client', url: '/client', icon: 'search' },
+    { title: 'TLB CLI', url: '/tableau-de-bord-client', icon: 'home' },
     { title: 'Espace Vendeur', url: '/login-vendeur', icon: 'person' },
     { title: 'Espace Client', url: '/login-client', icon: 'person' },
     { title: 'Register Vendeur', url: '/register-vendeur', icon: 'add' },
@@ -21,6 +23,7 @@ export class AppComponent {
     { title: 'Vendeurs', url: '/vendeurs', icon: 'restaurant' },
     { title: 'Patisseries', url: '/patisseries', icon: 'restaurant' },
     { title: 'Panier', url: '/panier', icon: 'cart' },
+
   ];
   public labels = ['Famille', 'Amis', 'Notes', '', '', 'Rappels'];
   constructor(
