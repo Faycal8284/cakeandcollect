@@ -32,6 +32,7 @@ db.commande = require('../models/commande.model')(sequelize, Sequelize);
 db.patisserie = require('../models/patisserie.model')(sequelize, Sequelize);
 db.venpatcat = require('../models/venpatcat.model')(sequelize, Sequelize);
 
+// 1 Client peut avoir plusieurs commandes
 db.client.hasMany(db.commande, { as: "commandes" });
 
 db.commande.belongsTo(db.client, {
@@ -39,6 +40,7 @@ db.commande.belongsTo(db.client, {
   as: "clients",
 });
 
+// 1 Vendeur peut avoir plusieurs patisseries
 db.vendeur.hasMany(db.patisserie, { as: "patisseries" });
 
 db.patisserie.belongsTo(db.vendeur, {
@@ -46,6 +48,7 @@ db.patisserie.belongsTo(db.vendeur, {
   as: "vendeurs",
 });
 
+// 1 Catégorie peut avoir plusieurs patisseries
 db.categorie.hasMany(db.patisserie, { as: "patisseries" });
 
 db.patisserie.belongsTo(db.categorie, {
@@ -53,6 +56,7 @@ db.patisserie.belongsTo(db.categorie, {
   as: "categories",
 });
 
+// 1 commande peut avoir plusieurs patisseries
 db.commande.hasMany(db.patisserie, { as: "patisseries" });
 
 db.patisserie.belongsTo(db.commande, {
@@ -71,6 +75,7 @@ db.vendeur.beforeCreate((vendeur, options) => {
       });
 });
 
+// à la création de la table, hacher le mot de passe
 db.client.beforeCreate((client, options) => {
   return bcrypt.hash(client.mdp, 8)
       .then(hash => {

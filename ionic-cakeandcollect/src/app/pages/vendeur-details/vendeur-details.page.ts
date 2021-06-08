@@ -41,7 +41,7 @@ export class VendeurDetailsPage implements OnInit {
     //this.id = this.route.snapshot.params['id'];
     this.vendeursService.getVendeur(this.id).subscribe(data => {
       console.log('Le vendeur : ' + JSON.stringify(data) );
-      this.vendeur = JSON.stringify(data);
+      this.vendeur = data;
     });
 
     this.venpatcatServices.getVendeur(this.id).subscribe(data => {
@@ -73,6 +73,9 @@ export class VendeurDetailsPage implements OnInit {
 
   gotoPanierPage() {
     this.router.navigateByUrl('/panier');
+  }
+  gotoAccueilPage() {
+    this.router.navigateByUrl('/accueil');
   }
 
   // Cette fonction sera appelée lors du changement de segment de catégorie patisserie
