@@ -52,6 +52,7 @@ export class CategoriePage implements OnInit {
     this.vendeursPatCatService.getCategorie(this.id).subscribe(data => {
       console.log('Vendeurs par catégorie data : ' + JSON.stringify(data)); // En attendant l'interface
       this.vendeurs = data;
+      this.categorie.nom = data[0].categoriePatisserie;
     });
 
     /* this.vendeursPatCatService.getAllVendeursPatisseriesCategories().subscribe(data => {

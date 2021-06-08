@@ -5,8 +5,6 @@ import { CategoriesService } from 'src/app/shared/categories.service';
 import { PatisseriesService } from 'src/app/shared/patisseries.service';
 import { VendeursService } from 'src/app/shared/vendeurs.service';
 
-
-
 @Component({
   selector: 'app-accueil',
   templateUrl: './accueil.page.html',
@@ -89,22 +87,6 @@ export class AccueilPage implements OnInit {
     });
   }
 
-  /* shuffleArray = function(array) {
-    var m = array.length, t, i;
-
-    while (m) {
-
-      i = Math.floor(Math.random() * m--);
-
-      t = array[m];
-      array[m] = array[i];
-      array[i] = t;
-    }
-
-    return array;
-  } */
-
-
   gotoCategoriePage(id) {
     this.router.navigate(['categorie',id]);
   }
@@ -136,4 +118,20 @@ export class AccueilPage implements OnInit {
   gotoPatisseriePage(id) {
     this.router.navigate(['patisserie', id]);
   }
+
+  /* shuffleArray = function(array) {
+    var m = array.length, t, i;
+
+    while (m) {
+
+      i = Math.floor(Math.random() * m--);
+
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
+    }
+
+    return array;
+  } */
+
 }

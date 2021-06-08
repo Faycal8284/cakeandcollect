@@ -10,6 +10,12 @@
 
     <!-- Page title -->
     <ion-title *ngIf="patisserie"> {{patisserie.nom}} </ion-title>
+    <!-- Cart Page Button -->
+    <ion-buttons slot="end">
+    <ion-button color="light" (click)="gotoPanierPage()">
+      <ion-icon name="cart"></ion-icon>
+    </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

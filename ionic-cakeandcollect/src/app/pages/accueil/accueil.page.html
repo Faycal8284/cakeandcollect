@@ -36,12 +36,12 @@
  <!-- Top offres -->
  <div id="top-offres">
     <ion-slides class="ion-padding slider" #slider [options]="slideOpt1">
-      <!-- <ion-slide *ngFor="let item of vendeurs" [ngStyle]="{'background' : 'url(' + item.img + ')'}">
+      <!-- <ion-slide *ngFor="let vendeur of vendeurs" [ngStyle]="{'background' : 'url(' + vendeur.img + ')'}">
       </ion-slide> -->
-      <ion-slide *ngFor="let item of vendeurs" [ngStyle]="{'background' : 'url(' + item.img + ')'}">
+      <ion-slide *ngFor="let vendeur of vendeurs" [ngStyle]="{'background' : 'url(' + vendeur.img + ')'}" (click)="goToVendeursDetails(vendeur.id)">
           <ion-thumbnail slot="start">
           </ion-thumbnail>
-          <ion-label>{{item.code_promo}}</ion-label>
+          <ion-label>{{vendeur.code_promo}}</ion-label>
           
       </ion-slide>
     </ion-slides>

@@ -94,6 +94,12 @@
     </ion-list>
   </div>
 
+  <!-- Date de la collect à la boulangerie ou chez le client-->
+  <ion-item>
+    <ion-label>Date Collect</ion-label>
+    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+  </ion-item>
+
   <!-- Proceed To Checkout Button Option -->
   <div class="ion-padding">
     <ion-button color="color1" shape="round" expand="full" (click)="goToCheckout()">

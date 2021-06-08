@@ -13,7 +13,6 @@ export class TableauDeBordPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-   
   }
 
   async segmentChanged(ev: any) {
