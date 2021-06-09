@@ -1,9 +1,9 @@
-import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoriesService } from 'src/app/shared/categories.service';
 import { PatisseriesService } from 'src/app/shared/patisseries.service';
 import { VendeursService } from 'src/app/shared/vendeurs.service';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @Component({
   selector: 'app-accueil',
@@ -57,7 +57,8 @@ export class AccueilPage implements OnInit {
 
     constructor(
       private categoriesService: CategoriesService, private vendeursService: VendeursService,
-      private patisseriesService: PatisseriesService, private router: Router) { }
+      private patisseriesService: PatisseriesService, private router: Router,
+      private geolocation: Geolocation) { }
 
   ngOnInit() {
     this.getCategories();
@@ -118,6 +119,29 @@ export class AccueilPage implements OnInit {
   gotoPatisseriePage(id) {
     this.router.navigate(['patisserie', id]);
   }
+
+ /*  this.geolocation.getCurrentPosition().then((resp) => {
+    // resp.coords.latitude
+    // resp.coords.longitude
+   }).catch((error) => {
+     console.log('Error getting location', error);
+   });
+
+   let watch = this.geolocation.watchPosition();
+   watch.subscribe((data) => {
+    // data can be a set of coordinates, or an error (if an error occurred).
+    // data.coords.latitude
+    // data.coords.longitude
+   });
+
+   const subscription = this.geolocation.watchPosition()
+                              .filter((p) => p.coords !== undefined) //Filter Out Errors
+                              .subscribe(position => {
+  console.log(position.coords.longitude + ' ' + position.coords.latitude);
+});
+
+// To stop notifications
+subscription.unsubscribe(); */
 
   /* shuffleArray = function(array) {
     var m = array.length, t, i;

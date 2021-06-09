@@ -1,5 +1,7 @@
 {
   "name": "ionic-cakeandcollect",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
