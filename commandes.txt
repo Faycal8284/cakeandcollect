@@ -149,3 +149,6 @@ ionic g component auth-screens/auth-screen-client/sign-in
 ionic g component auth-screens/auth-screen-client/sign-up
 -----------------------------------------------------------------------------------
 ionic g page pages/client/tableau-de-bord
+-----------------------------------------------------------------------------------
+ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="To locate you"
+npm install --save @ionic-native/geolocation@4
