@@ -48,4 +48,8 @@ export class LoginVendeurPage implements OnInit {
     );
   }
 
+  goToRegisterVendeurPage(){
+    this.router.navigateByUrl('/register-vendeur');
+  }
+
 }

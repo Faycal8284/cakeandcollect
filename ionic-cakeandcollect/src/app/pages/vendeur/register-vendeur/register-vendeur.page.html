@@ -8,33 +8,33 @@
 </ion-header>
 
 <ion-content padding>
-  <form *ngIf="!isSuccessfull" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+  <form *ngIf="!isSuccessfull" name="register" (ngSubmit)="f.form.valid && isRegistred()" #f="ngForm" novalidate>
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="12" size-lg="12" size-xs="12">
-            <h3>Se Connecter</h3>
-          
-            <ion-item>
-              <ion-label position="floating">Nom</ion-label>
-              <ion-input type="text" class="form-control" name="nom" [(ngModel)]="form.nom" required
-            minlength="3" maxlength="20" #nom="ngModel"></ion-input>
-          <div class="alert-danger" *ngIf="nom.errors && f.submitted">
-            <div *ngIf="nom.errors.required">nom is required</div>
+          <h3>Se Connecter</h3>
+
+          <ion-item>
+            <ion-label position="floating">Nom</ion-label>
+            <ion-input type="text" class="form-control" name="nom" [(ngModel)]="register.nom" required minlength="3"
+              maxlength="20" #nom="ngModel"></ion-input>
+            <div class="alert-danger" *ngIf="nom.errors && f.submitted">
+              <div *ngIf="nom.errors.required">nom est obligatoire</div>
               <div *ngIf="nom.errors.minlength">
-                  nom must be at least 3 characters
+                nom must be at least 3 characters
               </div>
               <div *ngIf="nom.errors.maxlength">
-                  nom must be at most 20 characters
+                nom must be at most 20 characters
               </div>
             </div>
           </ion-item>
-        
+
           <ion-item lines="full">
             <ion-label position="floating">Prenom</ion-label>
-            <ion-input type="text" class="form-control" name="prenom" [(ngModel)]="form.prenom" required
-            minlength="3" maxlength="20" #prenom="ngModel"></ion-input>
+            <ion-input type="text" class="form-control" name="prenom" [(ngModel)]="register.prenom" required minlength="3"
+              maxlength="20" #prenom="ngModel"></ion-input>
             <div class="alert-danger" *ngIf="prenom.errors && f.submitted">
-              <div *ngIf="prenom.errors.required">prenom is required</div>
+              <div *ngIf="prenom.errors.required">prenom est obligatoire</div>
               <div *ngIf="prenom.errors.minlength">
                 prenom must be at least 3 characters
               </div>
@@ -45,32 +45,93 @@
           </ion-item>
 
           <ion-item lines="full">
-            <ion-label position="floating">Last name</ion-label>
-            <ion-input type="text" required></ion-input>
+            <ion-label position="floating">Siret</ion-label>
+            <ion-input type="text" class="form-control" name="siret" [(ngModel)]="register.siret"
+                #siret="ngModel"></ion-input>
           </ion-item>
 
           <ion-item lines="full">
             <ion-label position="floating">Email</ion-label>
-            <ion-input type="email" class="form-control" name="email" [(ngModel)]="form.email" required email
-            #email="ngModel"></ion-input>
+            <ion-input type="email" class="form-control" name="email" [(ngModel)]="register.email" required email
+              #email="ngModel"></ion-input>
             <div class="alert-danger" *ngIf="email.errors && f.submitted">
-              <div *ngIf="email.errors.required">Email is required</div>
+              <div *ngIf="email.errors.required">Email est obligatoire</div>
               <div *ngIf="email.errors.email">
-                  Email must be a valid email address
+                Email must be a valid email address
               </div>
             </div>
           </ion-item>
 
           <ion-item lines="full">
             <ion-label position="floating">Password</ion-label>
-            <ion-input type="password" class="form-control" name="password" [(ngModel)]="form.password" required
-            minlength="6" #password="ngModel"></ion-input>
-            <div class="alert-danger" *ngIf="password.errors && f.submitted">
-              <div *ngIf="password.errors.required">Password is required</div>
-              <div *ngIf="password.errors.minlength">
-                  Password must be at least 6 characters
+            <ion-input type="password" class="form-control" name="mdp" [(ngModel)]="register.mdp" required
+              minlength="6" #mdp="ngModel"></ion-input>
+            <div class="alert-danger" *ngIf="mdp.errors && f.submitted">
+              <div *ngIf="mdp.errors.required">Mot de passe est obligatoire</div>
+              <div *ngIf="mdp.errors.minlength">
+                Password must be at least 6 characters
               </div>
             </div>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Image</ion-label>
+            <ion-input type="text" class="form-control" name="img" [(ngModel)]="register.img"
+                #img="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Catégorie</ion-label>
+            <ion-input type="text" class="form-control" name="categorie" [(ngModel)]="register.categorie"
+                #categorie="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Code Promo</ion-label>
+            <ion-input type="text" class="form-control" name="code_promo" [(ngModel)]="register.code_promo"
+                #code_promo="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Particulier</ion-label>
+            <ion-input type="boolean" class="form-control" name="particulier" [(ngModel)]="register.particulier"
+                #particulier="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Téléphone</ion-label>
+            <ion-input type="text" class="form-control" name="tel" [(ngModel)]="register.tel"
+                #tel="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Description</ion-label>
+            <ion-input type="text" class="form-control" name="descriptions" [(ngModel)]="register.descriptions"
+                #descriptions="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Actif</ion-label>
+            <ion-input type="boolean" class="form-control" name="actif" [(ngModel)]="register.actif"
+                #actif="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Rue</ion-label>
+            <ion-input type="text" class="form-control" name="rue" [(ngModel)]="register.rue"
+                #rue="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Code Postal</ion-label>
+            <ion-input type="number" class="form-control" name="code_postal" [(ngModel)]="register.code_postal"
+                #code_postal="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Ville</ion-label>
+            <ion-input type="text" class="form-control" name="ville" [(ngModel)]="register.ville"
+                #ville="ngModel"></ion-input>
           </ion-item>
 
           <ion-row>
@@ -78,12 +139,14 @@
               <ion-button type="submit" color="danger" expand="block">S'inscrire</ion-button>
             </ion-col>
           </ion-row>
+
           <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
             Signup failed!<br />{{ errorMessage }}
           </div>
           <div class="alert alert-success" *ngIf="isSuccessfull">
             Your registration is successful!
           </div>
+          
         </ion-col>
       </ion-row>
     </ion-grid>
