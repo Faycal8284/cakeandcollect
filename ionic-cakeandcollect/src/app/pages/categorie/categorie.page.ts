@@ -48,7 +48,7 @@ export class CategoriePage implements OnInit {
 
   getAllData() {
     this.id = this.route.snapshot.params.id;
-
+    console.log('zzzzzz', this.vendeursPatCatService.getCategorie(this.id))
     this.vendeursPatCatService.getCategorie(this.id).subscribe(data => {
       console.log('Vendeurs par catégorie data : ' + JSON.stringify(data)); // En attendant l'interface
       this.vendeurs = data;

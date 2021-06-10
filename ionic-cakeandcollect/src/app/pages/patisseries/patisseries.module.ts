@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ToastController } from '@ionic/angular';
 
 import { PatisseriesPageRoutingModule } from './patisseries-routing.module';
 
@@ -15,6 +15,7 @@ import { PatisseriesPage } from './patisseries.page';
     IonicModule,
     PatisseriesPageRoutingModule
   ],
-  declarations: [PatisseriesPage]
+  providers: [
+    ToastController]
 })
 export class PatisseriesPageModule {}

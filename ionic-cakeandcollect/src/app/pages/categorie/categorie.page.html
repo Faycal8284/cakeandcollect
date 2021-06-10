@@ -22,7 +22,7 @@
     <ion-row>
       <!-- List of Categories -->
       <ion-col size="6" *ngFor="let vendeur of vendeurs" >
-        <ion-card class="ion-no-padding ion-no-margin" (click)="goToVendeursDetails(vendeur.IdVendeur)"> 
+        <ion-card  class="ion-no-padding ion-no-margin" (click)="goToVendeursDetails(vendeur.IdVendeur)"> 
           <!-- Categories Image -->
           <img [src]="vendeur.imgVendeur" />
           <!-- Categories Name -->

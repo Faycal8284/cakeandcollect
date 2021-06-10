@@ -38,19 +38,20 @@
 
   <ion-header>
     <ion-toolbar color="primary">
-      <ion-title>Ajouter Patisserie</ion-title>
+      <ion-title> Patisserie</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-item *ngFor="let patisserie of patisseries">
+      <ion-item *ngFor="let patisserie of patisseries, let i=index">
         <ion-thumbnail style="--border-radius: 10px" slot="end" *ngIf="patisserie">
           <img [src]="patisserie.img" (click)="gotoPatisseriePage(patisserie.id)" />
         </ion-thumbnail>
         <ion-label>
           <h2>{{ patisserie.nom }}</h2>
           <p>{{ patisserie.prix_u}}</p>
-          <ion-button color="primary" (click)="gotoPanierPage()">
+          <ion-button  color="primary" (click)="addToCart(patisserie)">
+            <ion-icon name="cart"></ion-icon>
             Ajouter
           </ion-button>
         </ion-label>
