@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { CategoriesService } from 'src/app/shared/categories.service';
 import { PatisseriesService } from 'src/app/shared/patisseries.service';
 import { VendeursService } from 'src/app/shared/vendeurs.service';
-import { Geolocation } from '@ionic-native/geolocation';
+//import { Geolocation } from '@ionic-native/geolocation';
 
 @Component({
   selector: 'app-accueil',
@@ -57,8 +57,7 @@ export class AccueilPage implements OnInit {
 
     constructor(
       private categoriesService: CategoriesService, private vendeursService: VendeursService,
-      private patisseriesService: PatisseriesService, private router: Router,
-      private geolocation: Geolocation) { }
+      private patisseriesService: PatisseriesService, private router: Router) { }
 
   ngOnInit() {
     this.getCategories();
