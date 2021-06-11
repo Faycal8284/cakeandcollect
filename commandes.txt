@@ -152,3 +152,7 @@ ionic g page pages/client/tableau-de-bord
 -----------------------------------------------------------------------------------
 ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="To locate you"
 npm install --save @ionic-native/geolocation@4
+npm install --save @ionic-native/geolocation@4
+-----------------------------------------------------------------------------------
+ionic g page pages/client/registerClient
+-----------------------------------------------------------------------------------

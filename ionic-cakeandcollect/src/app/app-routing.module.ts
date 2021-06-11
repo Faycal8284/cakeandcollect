@@ -76,7 +76,11 @@ const routes: Routes = [
   {
     path: 'tableau-de-bord-client',
     loadChildren: () => import('./pages/client/tableau-de-bord/tableau-de-bord.module').then( m => m.TableauDeBordPageModule)
+  },  {
+    path: 'register-client',
+    loadChildren: () => import('./pages/client/register-client/register-client.module').then( m => m.RegisterClientPageModule)
   },
+
 
 
   /* {

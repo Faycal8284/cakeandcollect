@@ -47,4 +47,8 @@ export class LoginClientPage implements OnInit {
       }
     );
   }
+
+  goToRegisterClientPage(){
+    this.router.navigateByUrl('/register-client');
+  }
 }

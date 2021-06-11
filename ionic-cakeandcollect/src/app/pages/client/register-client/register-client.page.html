@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="color1">
-    <ion-title>Inscription Vendeur</ion-title>
+    <ion-title>Inscription Client</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -45,12 +45,6 @@
           </ion-item>
 
           <ion-item lines="full">
-            <ion-label position="floating">Siret</ion-label>
-            <ion-input type="text" class="form-control" name="siret" [(ngModel)]="registerForm.siret"
-                #siret="ngModel"></ion-input>
-          </ion-item>
-
-          <ion-item lines="full">
             <ion-label position="floating">Email</ion-label>
             <ion-input type="email" class="form-control" name="email" [(ngModel)]="registerForm.email" required email
               #email="ngModel"></ion-input>
@@ -81,33 +75,9 @@
           </ion-item>
 
           <ion-item lines="full">
-            <ion-label position="floating">Catégorie</ion-label>
-            <ion-input type="text" class="form-control" name="categorie" [(ngModel)]="registerForm.categorie"
-                #categorie="ngModel"></ion-input>
-          </ion-item>
-
-          <ion-item lines="full">
-            <ion-label position="floating">Code Promo</ion-label>
-            <ion-input type="text" class="form-control" name="code_promo" [(ngModel)]="registerForm.code_promo"
-                #code_promo="ngModel"></ion-input>
-          </ion-item>
-
-          <ion-item lines="full">
-            <ion-label position="floating">Particulier</ion-label>
-            <ion-input type="boolean" class="form-control" name="particulier" [(ngModel)]="registerForm.particulier"
-                #particulier="ngModel"></ion-input>
-          </ion-item>
-
-          <ion-item lines="full">
             <ion-label position="floating">Téléphone</ion-label>
             <ion-input type="text" class="form-control" name="tel" [(ngModel)]="registerForm.tel"
                 #tel="ngModel"></ion-input>
-          </ion-item>
-
-          <ion-item lines="full">
-            <ion-label position="floating">Description</ion-label>
-            <ion-input type="text" class="form-control" name="descriptions" [(ngModel)]="registerForm.descriptions"
-                #descriptions="ngModel"></ion-input>
           </ion-item>
 
           <ion-item lines="full">
