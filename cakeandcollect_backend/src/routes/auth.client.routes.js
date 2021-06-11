@@ -20,4 +20,5 @@ module.exports = function(app) {
     );
   
     app.post("/api/auth/client/signin", controller.signin);
+    //app.post("/api/auth/client/signup", controller.signup);
   };

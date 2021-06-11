@@ -135,3 +135,23 @@ ionic g service shared/commerce-client --skipTests=true
 ionic g page pages/patisserie
 ionic g page pages/panier
 -----------------------------------------------------------------------------------
+ionic g page pages/auth-screen
+ionic g page pages/auth-screen/sign-in
+ionic g page pages/auth-screen/sign-up
+
+ionic g page auth-screens/client
+npm install @capacitor/storage
+ionic g guard guards/client
+ionic g service shared/storage
+
+ionic g page auth-screens/auth-screen-client
+ionic g component auth-screens/auth-screen-client/sign-in
+ionic g component auth-screens/auth-screen-client/sign-up
+-----------------------------------------------------------------------------------
+ionic g page pages/client/tableau-de-bord
+-----------------------------------------------------------------------------------
+ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="To locate you"
+npm install --save @ionic-native/geolocation@4
+-----------------------------------------------------------------------------------
+ionic g page pages/client/registerClient
+-----------------------------------------------------------------------------------

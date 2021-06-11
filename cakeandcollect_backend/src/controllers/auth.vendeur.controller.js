@@ -27,8 +27,7 @@ exports.signup = (req, res) => {
     rue: req.body.rue,
     code_postal: req.body.code_postal,
     ville: req.body.ville
-  })
-    .then(vendeur => {
+  }).then(vendeur => {
         res.send({ message: "Le Vendeur a bien été ajouté à la base !" });
     })
     .catch(err => {
