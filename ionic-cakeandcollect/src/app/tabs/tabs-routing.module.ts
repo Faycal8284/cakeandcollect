@@ -8,47 +8,47 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'home',
-        loadChildren: () => import('../pages/home/home.module').then(m => m.HomeModule)
+        path: 'accueil',
+        loadChildren: () => import('../pages/accueil/accueil.module').then(m => m.AccueilPageModule)
       },
-      {
+      /* {
         path: 'offers',
         loadChildren: () => import('../pages/offers/offers.module').then(m => m.OffersModule)
       },
       {
         path: 'profile',
         loadChildren: () => import('../pages/profile/profile.module').then(m => m.ProfileModule)
-      },
+      }, */
       {
         path: 'categories',
-        loadChildren: () => import('../pages/categories/categories.module').then(m => m.CategoriesModule)
+        loadChildren: () => import('../pages/categories/categories.module').then(m => m.CategoriesPageModule)
       },
       {
-        path: 'restaurants',
-        loadChildren: () => import('../pages/restaurants/restaurants.module').then(m => m.RestaurantsModule)
+        path: 'vendeurs',
+        loadChildren: () => import('../pages/vendeurs/vendeurs.module').then(m => m.VendeursPageModule)
       },
       {
-        path: 'search',
-        loadChildren: () => import('../pages/search/search.module').then(m => m.SearchModule)
+        path: 'recherche',
+        loadChildren: () => import('../pages/recherche/recherche.module').then(m => m.RecherchePageModule)
       },
       {
-        path: 'cart',
-        loadChildren: () => import('../pages/cart/cart.module').then(m => m.CartModule)
+        path: 'panier',
+        loadChildren: () => import('../pages/panier/panier.module').then(m => m.PanierPageModule)
       },
-      {
-        path: 'orders',
-        loadChildren: () => import('../pages/orders/orders.module').then(m => m.OrdersModule)
-      },
+     /*  {
+        path: 'commandes',
+        loadChildren: () => import('../pages/commandes/commandes.module').then(m => m.commandesModule)
+      }, */
       {
         path: '',
-        redirectTo: '/tabs/home',
+        redirectTo: '/tabs/accueil',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/home',
+    redirectTo: '/tabs/accueil',
     pathMatch: 'full'
   }
 ];

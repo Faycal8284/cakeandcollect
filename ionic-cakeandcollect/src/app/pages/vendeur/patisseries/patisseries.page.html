@@ -1,0 +1,51 @@
+<!-- Header -->
+<ion-header>
+  <ion-toolbar color="color1">
+
+     <!-- Back button -->
+    <ion-buttons slot="start">
+      <ion-button *ngIf="patisseries" (click)="goToEspaceVendeur(patisseries[0].IdVendeur)">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Title -->
+    <ion-title>Mes pâtisseries</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contents -->
+<ion-content id="patisseries">
+  <ion-grid>
+    <ion-row>
+      <!-- Liste des patisseries -->
+      <ion-col sizeLg="4" sizeMd="6" sizeXs="12" *ngFor="let patisserie of patisseries">
+        <ion-card class="ion-no-padding ion-no-margin" (click)="goToPatisserieDetails(patisserie.IdPatisserie)">
+          <!-- Image -->
+          <img [src]="patisserie.imagePatisserie" />
+
+          <!-- Like/Dislike Button Option -->
+          <ion-fab vertical="top" horizontal="end">
+            <ion-fab-button color="color1">
+              <ion-icon color="light" name="create" (click)="goToEditPatisserie(patisserie.IdPatisserie)"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+
+          <ion-list lines="none">
+            <ion-item>
+              <!-- patisserie Info -->
+              <ion-label class="ion-text-wrap">
+                <h4>{{patisserie.Patisserie}}</h4>
+                <h5>{{patisserie.categoriePatisserie}}</h5>
+
+                <!-- Reviews -->
+                <ion-text color="medium"> {{patisserie.descriptionPatisserie}} </ion-text>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

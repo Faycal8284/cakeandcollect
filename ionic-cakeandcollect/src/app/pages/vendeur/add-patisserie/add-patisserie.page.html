@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar color="color1">
+    <ion-title>Ajout Patisserie</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- <div *ngIf="isAdded; else registerForm">
+    Patisserie bien ajoutée !
+  </div>  -->
+  <form *ngIf="!isSuccessfull" name="registerForm" (ngSubmit)="f.form.valid && isRegistred()" #f="ngForm" novalidate>
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="12" size-lg="12" size-xs="12">
+          <h3>Ajouter</h3>
+
+          <ion-item>
+            <ion-label position="floating">Nom</ion-label>
+            <ion-input type="text" class="form-control" name="nom" [(ngModel)]="registerForm.nom" required #nom="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Description</ion-label>
+            <ion-input type="text" class="form-control" name="descriptions" [(ngModel)]="registerForm.descriptions" required #descriptions="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Ingrédients</ion-label>
+            <ion-input type="text" class="form-control" name="ingredients" [(ngModel)]="registerForm.ingredients" #ingredients="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Image</ion-label>
+            <ion-input type="file" (change)="loadImageFromDevice($event)" id="file-input"
+                                    accept="image/png, image/jpeg"
+                      class="form-control" name="img" [(ngModel)]="registerForm.img"
+                #img="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Id Catégorie</ion-label>
+            <ion-input type="number" class="form-control" name="categorieId" [(ngModel)]="registerForm.categorieId" #categorieId="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Prix unitaire</ion-label>
+            <ion-input type="number" class="form-control" name="prix_u" [(ngModel)]="registerForm.prix_u" #prix_u="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Stock</ion-label>
+            <ion-input type="number" class="form-control" name="stock" [(ngModel)]="registerForm.stock" #stock="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" color="danger" expand="block">Ajouter</ion-button>
+            </ion-col>
+          </ion-row>
+
+          <div class="alert alert-warning" *ngIf="f.submitted && isAddedFailed">
+            Erreur lors de l'ajout !<br />{{ errorMessage }}
+          </div>
+          <div class="alert alert-success" *ngIf="isSuccessfull">
+            Patisserie bien ajoutée !
+          </div>
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

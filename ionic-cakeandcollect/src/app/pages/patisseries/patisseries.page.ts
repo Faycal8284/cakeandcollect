@@ -20,7 +20,7 @@ export class PatisseriesPage implements OnInit {
   ngOnInit() {
     this.getPatisseries();
 
-    this.loadProducts();
+    //this.loadProducts();
   }
 
   getPatisseries() {
@@ -43,14 +43,14 @@ export class PatisseriesPage implements OnInit {
   }
 
   // autre méthode avec commercejs
-  async loadProducts() {
+  /* async loadProducts() {
     try {
       const { data: patisseries } = await this.commerce.client.patisseries.list();
       this.patisseries = patisseries;
     } catch {
       // a network error occurred or something went wrong
     }
-  }
+  } */
 
  /*  onBuyNowButtonTouched(patisserie: any) {
     window.open(patisserie.checkout_url.checkout, '__target');

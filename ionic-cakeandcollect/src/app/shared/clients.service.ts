@@ -8,7 +8,7 @@ import { Client } from '../interfaces/Client';
   providedIn: 'root'
 })
 export class ClientsService {
-  url = 'http://localhost:8080/api/Clients';
+  url = 'http://localhost:8080/api/clients';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private httpClient: HttpClient) { }
@@ -32,7 +32,7 @@ export class ClientsService {
     }
 
      // Ajoute une Client
-  addClient(data: Client): Observable<any>{
+  addClient(data: Client): Observable<Client>{
     const API_URL = `${this.url}`;
     return this.httpClient.post(API_URL, data)
       .pipe(

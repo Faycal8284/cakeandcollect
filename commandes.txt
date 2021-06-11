@@ -156,3 +156,5 @@ npm install --save @ionic-native/geolocation@4
 -----------------------------------------------------------------------------------
 ionic g page pages/client/registerClient
 -----------------------------------------------------------------------------------
+ionic g page pages/vendeur/patisseries
+ionic g page pages/vendeur/add-patisserie
