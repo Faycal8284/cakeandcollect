@@ -64,7 +64,9 @@ export class RegisterVendeurPage implements OnInit {
     console.log(event);
 
     const file = event.target.files[0];
+    console.log(file);
     const reader = new FileReader();
+    console.log(reader);
 
     reader.readAsArrayBuffer(file);
     reader.onload = () => {
@@ -72,6 +74,9 @@ export class RegisterVendeurPage implements OnInit {
       let blob: Blob = new Blob([new Uint8Array((reader.result as ArrayBuffer))]);
       // create blobURL, such that we could use it in an image element:
       let blobURL: string = URL.createObjectURL(blob);
+
+      //this.yourImageDataURL = dataReader.result;
+
     };
 
     reader.onerror = (error) => {
