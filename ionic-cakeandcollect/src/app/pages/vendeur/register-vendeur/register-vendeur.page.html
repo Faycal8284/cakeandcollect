@@ -76,7 +76,9 @@
 
           <ion-item lines="full">
             <ion-label position="floating">Image</ion-label>
-            <ion-input type="text" class="form-control" name="img" [(ngModel)]="registerForm.img"
+            <ion-input type="file" (change)="loadImageFromDevice($event)" id="file-input"
+                                    accept="image/png, image/jpeg"
+                      class="form-control" name="img" [(ngModel)]="registerForm.img"
                 #img="ngModel"></ion-input>
           </ion-item>
 

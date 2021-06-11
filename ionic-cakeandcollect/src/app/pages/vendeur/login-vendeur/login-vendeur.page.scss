@@ -7,7 +7,13 @@ ion-content {
         --background: transparent;
         --ion-color-base: transparent !important;
         color: #fff;
+        border: 0 !important;
+        margin: 2vh;
+        font-size: 1.5em;
     }    
+    .item-inner{
+        border-color: transparent;
+    }
 }
 .marginBottom {
     margin-bottom: 5vh;

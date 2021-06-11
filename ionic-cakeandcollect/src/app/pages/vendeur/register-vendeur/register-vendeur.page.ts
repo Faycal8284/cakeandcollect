@@ -1,8 +1,8 @@
+/* eslint-disable prefer-const */
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Vendeur } from 'src/app/interfaces/Vendeur';
 import { AuthService } from 'src/app/shared/auth.vendeur.service';
 
 @Component({
@@ -31,8 +31,7 @@ export class RegisterVendeurPage implements OnInit {
     ville: null
   };
 
-  signupInfo: Vendeur;
-  vendeur: any = {};
+
   isSignedUp = false;
   isSignUpFailed = false;
   errorMessage = '';
@@ -45,56 +44,41 @@ export class RegisterVendeurPage implements OnInit {
   isRegistred() {
     console.log(this.registerForm);
     const { nom, prenom, siret, email, mdp, img, categorie, note, code_promo, particulier, tel, descriptions, actif, rue, code_postal, ville } = this.registerForm;
-    this.authService.register(nom, prenom, siret, email, mdp, img, categorie, note, code_promo, particulier, tel, descriptions, actif, rue, code_postal, ville )
-    .subscribe(
-      data => {
-        console.log(data);
+    this.authService.register(nom, prenom, siret, email, mdp, img, categorie, note, code_promo, particulier, tel, descriptions, actif, rue, code_postal, ville)
+      .subscribe(
+        data => {
+          console.log(data);
 
-        this.isSignedUp = true;
-        this.isSignUpFailed = false;
-        this.router.navigateByUrl('/login-vendeur'); // navigate vers la page de connexion
-      },
-      err => {
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
-      }
-    );
+          this.isSignedUp = true;
+          this.isSignUpFailed = false;
+          this.router.navigateByUrl('/login-vendeur'); // navigate vers la page de connexion
+        },
+        err => {
+          this.errorMessage = err.error.message;
+          this.isSignUpFailed = true;
+        }
+      );
   }
 
-  /* onSubmit() {
-    console.log(this.registerForm);
+  loadImageFromDevice(event) {
+    console.log(event);
 
-    this.vendeur = this.authService.create(
-      this.registerForm.nom,
-      this.registerForm.prenom,
-      this.registerForm.siret,
-      this.registerForm.email,
-      this.registerForm.mdp,
-      this.registerForm.img,
-      this.registerForm.categorie,
-      this.registerForm.note,
-      this.registerForm.code_promo,
-      this.registerForm.particulier,
-      this.registerForm.tel,
-      this.registerForm.descriptions,
-      this.registerForm.actif,
-      this.registerForm.rue,
-      this.registerForm.code_postal,
-      this.registerForm.ville);
+    const file = event.target.files[0];
+    const reader = new FileReader();
 
-      this.authService.register(nom, prenom, siret, email, mdp, img, categorie, note, code_promo, particulier, tel, descriptions, actif, rue, code_postal, ville )
-      .subscribe(
-      data => {
-        console.log(data);
-        this.isSignedUp = true;
-        this.isSignUpFailed = false;
-      },
-      error => {
-        console.log(error);
-        this.errorMessage = error.error.message;
-        this.isSignUpFailed = true;
-      }
-    );
-  } */
+    reader.readAsArrayBuffer(file);
+    reader.onload = () => {
+      // get the blob of the image:
+      let blob: Blob = new Blob([new Uint8Array((reader.result as ArrayBuffer))]);
+      // create blobURL, such that we could use it in an image element:
+      let blobURL: string = URL.createObjectURL(blob);
+    };
 
+    reader.onerror = (error) => {
+
+      console.log(error);
+      //handle errors
+
+    };
+  };
 }
