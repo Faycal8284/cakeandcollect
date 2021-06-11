@@ -22,15 +22,21 @@
             <h3>Connexion</h3>
           </div>
           <div padding>
-            <ion-item lines="full">
+            <ion-item lines="full" color="transparent">
               <ion-input type="text" class="form-control" name="email" [(ngModel)]="form.email" required
               #email="ngModel"></ion-input>
               <div class="alert alert-danger" role="alert" *ngIf="email.errors && f.submitted">
                 Email obligatoire !
               </div>
             </ion-item>
-            <ion-item lines="full">
-              <ion-input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="3"
+            <ion-item lines="full" color="transparent">
+              <ion-icon 
+                [name]="type ? 'eye' : 'eye-off'" 
+                slot="end" 
+                color="dark" 
+                (click)="changeType()">
+              </ion-icon>
+              <ion-input [type]="type ? 'password' : 'text'" class="form-control" name="password" [(ngModel)]="form.password" required minlength="3"
               #password="ngModel"></ion-input>
               <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
                 <div *ngIf="password.errors.required">Mot de passe obligatoire</div>
@@ -51,13 +57,13 @@
     </ion-grid>
   </form>
 
-  <div padding>
-    <ion-footer>
-      <ion-toolbar>
-        <ion-title>Vous n'avez pas de compte ?</ion-title>
-          <ion-button size="small" color="primary" (click)="goToRegisterClientPage()">Créer un compte</ion-button>
-      </ion-toolbar>
-    </ion-footer>
-  </div>
+  
+  <ion-item color="transparent">
+    <div>
+      <ion-title>Vous n'avez pas de compte ?</ion-title><br>
+      <ion-button size="small" color="primary" (click)="goToRegisterClientPage()">Créer un compte</ion-button>
+    </div>
+  </ion-item>
+
 
 </ion-content>
