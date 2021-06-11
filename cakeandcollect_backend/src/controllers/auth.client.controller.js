@@ -11,9 +11,9 @@ exports.signup = (req, res) => {
     nom: req.body.nom,
     prenom: req.body.prenom,
     email: req.body.email,
+    mdp: req.body.mdp,
     //mdp: bcrypt.hashSync(req.body.mdp, 8),
     //mdp: bcrypt.hash(req.body.mdp, 8),
-    mdp: req.body.mdp,
     img: req.body.img,
     tel: req.body.tel,
     actif: req.body.actif,
@@ -21,7 +21,7 @@ exports.signup = (req, res) => {
     code_postal: req.body.code_postal,
     ville: req.body.ville,
     note_vendeur: req.body.note_vendeur,
-    avis_commande: req.body.avis_commande,
+    avis_commande: req.body.avis_commande
   }).then(client => {
         res.send({ message: "Le Client a bien été ajouté à la base !" });
     })

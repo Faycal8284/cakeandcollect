@@ -76,12 +76,19 @@ const routes: Routes = [
   {
     path: 'tableau-de-bord-client',
     loadChildren: () => import('./pages/client/tableau-de-bord/tableau-de-bord.module').then( m => m.TableauDeBordPageModule)
-  },  {
+  },
+  {
     path: 'register-client',
     loadChildren: () => import('./pages/client/register-client/register-client.module').then( m => m.RegisterClientPageModule)
   },
-
-
+  {
+    path: 'mes-patisseries/:id',
+    loadChildren: () => import('./pages/vendeur/patisseries/patisseries.module').then( m => m.PatisseriesPageModule)
+  },
+  {
+    path: 'ajouter-patisserie/:id',
+    loadChildren: () => import('./pages/vendeur/add-patisserie/add-patisserie.module').then( m => m.AddPatisseriePageModule)
+  },
 
   /* {
     path: 'auth-screen',

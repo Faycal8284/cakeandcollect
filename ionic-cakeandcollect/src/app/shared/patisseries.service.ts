@@ -9,7 +9,7 @@ import { Patisserie } from '../interfaces/patisserie';
   providedIn: 'root'
 })
 export class PatisseriesService {
-  url = 'http://localhost:8080/api/Patisseries';
+  url = 'http://localhost:8080/api/patisseries';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private httpClient: HttpClient) { }
