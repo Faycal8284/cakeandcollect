@@ -21,6 +21,7 @@ export class LoginVendeurPage implements OnInit {
   isLoginFailed = false;
 
   errorMessage = '';
+  type = true;
 
   constructor(private router: Router, private authService: AuthService,
               private tokenStorage: TokenStorageService) { }
@@ -50,6 +51,10 @@ export class LoginVendeurPage implements OnInit {
 
   goToRegisterVendeurPage(){
     this.router.navigateByUrl('/register-vendeur');
+  }
+
+  changeType() {
+    this.type = !this.type;
   }
 
 }

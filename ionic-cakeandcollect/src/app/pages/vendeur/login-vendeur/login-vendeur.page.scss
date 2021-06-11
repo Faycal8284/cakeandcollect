@@ -1,0 +1,14 @@
+ion-content {
+    --background: url('../../../../assets/images/background/macarons-framboise.jpg') no-repeat center center/cover;
+    h3{
+        color: lightgoldenrodyellow;
+    }
+    ion-input, ion-footer{
+        --background: transparent;
+        --ion-color-base: transparent !important;
+        color: #fff;
+    }    
+}
+.marginBottom {
+    margin-bottom: 5vh;
+}
