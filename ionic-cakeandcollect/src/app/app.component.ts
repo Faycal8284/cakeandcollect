@@ -20,7 +20,7 @@ export class AppComponent {
     { title: 'TLB CLI', url: '/tableau-de-bord-client', icon: 'apps' },
     { title: 'Panier', url: '/panier', icon: 'cart' },
   ];
-  public labels = ['Famille', 'Amis', 'Notes', '', '', 'Rappels'];
+  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,

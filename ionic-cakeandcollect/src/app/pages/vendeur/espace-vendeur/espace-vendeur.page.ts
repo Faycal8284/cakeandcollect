@@ -17,7 +17,7 @@ export class EspaceVendeurPage implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.params['id']; // l'id du vendeur
+    this.id = this.route.snapshot.params.id; // l'id du vendeur
     this.vendeurService.getVendeur(this.id).subscribe(data => {
       console.log(data);
       this.vendeur = data;

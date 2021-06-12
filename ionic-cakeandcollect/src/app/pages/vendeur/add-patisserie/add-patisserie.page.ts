@@ -46,7 +46,6 @@ export class AddPatisseriePage implements OnInit {
   }
 
   isRegistred() {
-    console.log("L'id du vendeur qui ajoute " + this.id);
     console.log(this.registerForm);
     const { nom, vendeurId, categorieId, commandeId, disponible, descriptions, ingredients, prix_u, stock, img, img1, img2, img3, quantite } = this.registerForm;
     this.patisserie = this.registerForm;
@@ -56,7 +55,7 @@ export class AddPatisseriePage implements OnInit {
         data => {
           console.log(data);
 
-          this.router.navigate(['espace-vendeur', this.id]);
+          this.router.navigate(['mes-patisseries', this.id]);
           this.isAdded = true;
           this.isAddedFailed = false;
         },
@@ -93,5 +92,9 @@ export class AddPatisseriePage implements OnInit {
 
     };
   };
+
+  goToEspaceVendeur(id){
+    this.router.navigate(['espace-vendeur', id]);
+  }
 
 }

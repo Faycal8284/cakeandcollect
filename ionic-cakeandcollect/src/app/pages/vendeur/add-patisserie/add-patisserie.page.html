@@ -1,9 +1,17 @@
+<!-- Header -->
 <ion-header>
   <ion-toolbar color="color1">
-    <ion-title>Ajout Patisserie</ion-title>
+
+    <!-- Back button -->
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-button (click)="goToEspaceVendeur(id)">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
     </ion-buttons>
+
+    <!-- Title -->
+    <ion-title>Ajouter Patisserie</ion-title>
+
   </ion-toolbar>
 </ion-header>
 

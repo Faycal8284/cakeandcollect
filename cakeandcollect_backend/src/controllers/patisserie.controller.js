@@ -24,7 +24,7 @@ module.exports = {
                 res.status(201).send(onePatisserie);
             }
             else {
-                res.status(404).send("Patisserie Not Found");
+                res.status(404).send("Patisserie introuvable");
             }
         }
         catch (e) {
@@ -73,7 +73,7 @@ module.exports = {
                 res.status(201).send(updatedPatisserie);
             }
             else {
-                res.status(404).send("Patisserie Not Found");
+                res.status(404).send("Patisserie introuvable");
             }
         }
         catch (e) {
@@ -91,10 +91,10 @@ module.exports = {
             }))
             if (deletedPatisserie) {
                 deletedPatisserie.destroy();
-                res.status(201).send("Deleted");
+                res.status(201).send("Patisserie supprimée avec succès !");
             }
             else {
-                res.status(404).send("Patisserie Not Found");
+                res.status(404).send("Patisserie innexistante");
             }
 
         }
@@ -102,5 +102,31 @@ module.exports = {
             console.log(e);
             res.status(400).send(e);
         }
-    },
+    }, 
+
+    /* async deletePatisserie(req, res) {
+        const id = req.params.id;
+        const deletedPatisserie = await patisserie.findOne(({
+                where: { id: id }
+            }))
+            deletedPatisserie.destroy() 
+                .then(num => {
+                    if (num == 1) {
+                        res.send({
+                            message: "Patisserie bien supprimée!"
+                        });
+                    } else {
+                        res.send({
+                            message: `Impossible de supprimer avec id=${id}. Peut-être que la patisserie n'existe pas ?!`
+                        });
+                    }
+                })
+                .catch(err => {
+                    res.status(500).send({
+                        message: "Impossible de supprimer la patisserie à l'id=" + id
+                    });
+                });
+    }, */
+
+    
 }

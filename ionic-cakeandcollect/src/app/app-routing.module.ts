@@ -89,6 +89,10 @@ const routes: Routes = [
     path: 'ajouter-patisserie/:id',
     loadChildren: () => import('./pages/vendeur/add-patisserie/add-patisserie.module').then( m => m.AddPatisseriePageModule)
   },
+  {
+    path: 'edit-patisserie/:id',
+    loadChildren: () => import('./pages/vendeur/edit-patisserie/edit-patisserie.module').then( m => m.EditPatisseriePageModule)
+  },
 
   /* {
     path: 'auth-screen',
