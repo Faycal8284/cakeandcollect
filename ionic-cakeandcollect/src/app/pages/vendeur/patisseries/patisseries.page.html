@@ -4,7 +4,7 @@
 
     <!-- Back button -->
     <ion-buttons slot="start">
-      <ion-button (click)="goToPatisseriesOfVendeur(id)">
+      <ion-button (click)="goToEspaceVendeur(id)">
         <ion-icon name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -40,10 +40,16 @@
             <!-- Image -->
             <img [src]="patisserie.imagePatisserie" />
 
-            <!-- Like/Dislike Button Option -->
+            <!-- edit/suppr Button Option -->
             <ion-fab vertical="top" horizontal="end">
-              <ion-fab-button color="color1">
+              <ion-fab-button color="success">
                 <ion-icon color="light" name="create" (click)="goToEditPatisserie(patisserie.IdPatisserie)"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
+
+            <ion-fab vertical="top" horizontal="start">
+              <ion-fab-button color="danger">
+                <ion-icon color="light" name="trash" (click)="deletePatisserie(patisserie.IdPatisserie)"></ion-icon>
               </ion-fab-button>
             </ion-fab>
 
@@ -52,10 +58,11 @@
                 <!-- patisserie Info -->
                 <ion-label class="ion-text-wrap">
                   <h4>{{patisserie.Patisserie}}</h4>
-                  <h5>{{patisserie.categoriePatisserie}}</h5>
+                  <h5>Catégorie : {{patisserie.categoriePatisserie}}</h5>
 
-                  <!-- Reviews -->
-                  <ion-text color="medium"> {{patisserie.descriptionPatisserie}} </ion-text>
+                  <!-- Stock et prix -->
+                  <ion-text color="medium"> Stock : {{patisserie.stockPatisserie}} /  </ion-text>
+                  <ion-text color="medium"> Prix U : {{patisserie.Prix}} €</ion-text>
                 </ion-label>
               </ion-item>
             </ion-list>

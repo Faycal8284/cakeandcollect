@@ -55,7 +55,7 @@ export class AddPatisseriePage implements OnInit {
         data => {
           console.log(data);
 
-          this.router.navigate(['espace-vendeur', this.id]);
+          this.router.navigate(['mes-patisseries', this.id]);
           this.isAdded = true;
           this.isAddedFailed = false;
         },

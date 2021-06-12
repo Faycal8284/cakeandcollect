@@ -16,9 +16,22 @@
 </ion-header>
 
 <ion-content padding>
+  <!-- <ion-fab vertical="top" horizontal="end">
+    <ion-fab-button color="danger">
+      <ion-icon color="light" name="trash" (click)="deletePatisserie(id)"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
 
   <ion-list lines="full">
     <form [formGroup]="editForm" (ngSubmit)="modifier()">
+
+      <ion-item>
+        <!-- Image -->
+        <img [src]="patisserie.img" />
+        <ion-label position="floating">Image Principale</ion-label>
+        <ion-input formControlName="img" type="file">
+        </ion-input>
+      </ion-item>
 
       <ion-item>
         <ion-label position="floating">Nom</ion-label>
@@ -57,12 +70,6 @@
       <ion-item>
         <ion-label position="floating">Stock</ion-label>
         <ion-input formControlName="stock" type="number">
-        </ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="floating">Image Principale</ion-label>
-        <ion-input formControlName="img" type="file">
         </ion-input>
       </ion-item>
 

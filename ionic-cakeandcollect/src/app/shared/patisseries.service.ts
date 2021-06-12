@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable,throwError } from 'rxjs';
@@ -11,6 +12,7 @@ import { Patisserie } from '../interfaces/patisserie';
 export class PatisseriesService {
   url = 'http://localhost:8080/api/patisseries';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
+  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', }), responseType: 'text' as 'json' };
 
   constructor(private httpClient: HttpClient) { }
 
@@ -51,10 +53,10 @@ export class PatisseriesService {
       );
   }
 
-    // Supprime une Patisserie selon son identifiant
+  // Supprime une Patisserie selon son identifiant
   deletePatisserie(id: number): Observable<any> {
     const API_URL = `${this.url}/${id}`;
-    return this.httpClient.delete(API_URL)
+    return this.httpClient.delete(API_URL, this.httpOptions)
       .pipe(
         catchError(this.errorMgmt)
       );

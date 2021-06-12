@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/type-annotation-spacing */
 /* eslint-disable @typescript-eslint/quotes */
 /* eslint-disable @typescript-eslint/dot-notation */
 /* eslint-disable prefer-const */
@@ -18,7 +19,7 @@ export class EditPatisseriePage implements OnInit {
 
   patisserie: Patisserie = {};
   editForm: FormGroup;
-  id: any;
+  id = this.route.snapshot.params.id;
 
   constructor(public formBuilder: FormBuilder, private zone: NgZone, private route: ActivatedRoute,
               private patisseriesServices: PatisseriesService, private router: Router) { }
@@ -35,7 +36,6 @@ export class EditPatisseriePage implements OnInit {
       img: ['']
     });
 
-    this.id = this.route.snapshot.params.id;
 
     this.patisseriesServices.getPatisserie(this.id).subscribe(data =>{
       console.log(data);
@@ -64,6 +64,25 @@ export class EditPatisseriePage implements OnInit {
 
   goToPatisseriesOfVendeur(id){
     this.router.navigate(['mes-patisseries', id]);
+  }
+
+  deletePatisserie(id:any){
+    this.patisseriesServices.deletePatisserie(id).subscribe(data => {
+      console.log(data);
+    });
+   /*  this.patisseriesServices.deletePatisserie(id).subscribe(async data => {
+      console.log(data);
+      let toast = await this.toast.create({
+        message: 'Patisserie supprimée',
+        duration: 2500
+      });
+      toast.present();
+      this.patisseriesServices.getAllPatisseries().subscribe(data => {
+        console.log(data);
+        this.patisseries = data;
+      });
+    });
+    this.getAllPatisseriesVendeur(null); */
   }
 
 
