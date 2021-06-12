@@ -20,22 +20,44 @@ export class PatisseriesPage implements OnInit {
     private patisseriesServices: PatisseriesService, private venpatcatServices: VenpatcatService) { }
 
   ngOnInit() {
+    this.getAllPatisseriesVendeur(null);
+    //this.doRefresh(null);
+  }
+
+  getAllPatisseriesVendeur(event) {
     this.id = this.route.snapshot.params.id;
-    //this.id = this.route.snapshot.params['id'];
-    console.log('Id par la route : ' + this.id);
+    console.log('Id vendeur : ' + this.id);
 
     this.venpatcatServices.getVendeur(this.id).subscribe(data => {
-      console.log('List des pat : ' + JSON.stringify(data));
+      console.log('Mes patisseries dispoibles : ' + JSON.stringify(data));
       this.patisseries = data;
+
+      if (event){
+        event.target.complete();
+      }
+    }, error => {
+      console.log(error);
+
+      if (event) {
+        event.target.complete();
+      }
     });
-  }
 
-  goToPatisserieDetails(id){
-    this.router.navigate(['patisserie', id]);
-  }
+}
 
-  goToEspaceVendeur(id){
-    this.router.navigate(['espace-vendeur', id]);
-  }
+doRefresh(event) {
+}
+
+goToPatisserieDetails(id){
+  this.router.navigate(['patisserie', id]);
+}
+
+goToEspaceVendeur(id){
+  this.router.navigate(['espace-vendeur', id]);
+}
+
+goToEditPatisserie(id){
+  this.router.navigate(['edit-patisserie', id]);
+}
 
 }

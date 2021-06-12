@@ -1,0 +1,144 @@
+<!-- Header -->
+<ion-header>
+  <ion-toolbar color="color1">
+
+    <!-- Back button -->
+    <ion-buttons slot="start">
+      <ion-button *ngIf="patisserie" (click)="goToPatisseriesOfVendeur(patisserie.vendeurId)">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Title -->
+    <ion-title>Modifier pâtisserie</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list lines="full">
+    <form [formGroup]="editForm" (ngSubmit)="saveForm()">
+
+      <ion-item>
+        <ion-label position="floating">Nom</ion-label>
+        <ion-input formControlName="nom" type="text" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Categorie Id</ion-label>
+        <ion-input formControlName="categorieId" type="number">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Disponible ?</ion-label>
+        <ion-input formControlName="disponible" type="boolean">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-input formControlName="descriptions" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Ingrédients</ion-label>
+        <ion-input formControlName="ingredients" type="text">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Prix unitaire</ion-label>
+        <ion-input formControlName="prix_u" type="number">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Stock</ion-label>
+        <ion-input formControlName="stock" type="number">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Image Principale</ion-label>
+        <ion-input formControlName="img" type="file">
+        </ion-input>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" shape="full" expand="block">
+            Mettre à jour
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-list>
+
+
+  <!-- <div *ngIf="isEdited; else editForm">
+    Patisserie bien ajoutée !
+  </div>  -->
+  <!--  <form *ngIf="!isSuccessfull" name="editForm" (ngSubmit)="f.form.valid && isModifed()" #f="ngForm" novalidate>
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="12" size-lg="12" size-xs="12">
+          <h3>Modifier</h3>
+
+          <ion-item>
+            <ion-label position="floating">Nom</ion-label>
+            <ion-input type="text" class="form-control" name="nom" [(ngModel)]="editForm.nom" required #nom="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Description</ion-label>
+            <ion-input type="text" class="form-control" name="descriptions" [(ngModel)]="editForm.descriptions" required #descriptions="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Ingrédients</ion-label>
+            <ion-input type="text" class="form-control" name="ingredients" [(ngModel)]="editForm.ingredients" #ingredients="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Image</ion-label>
+            <ion-input type="file" (change)="loadImageFromDevice($event)" id="file-input"
+                                    accept="image/png, image/jpeg"
+                      class="form-control" name="img" [(ngModel)]="editForm.img"
+                #img="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Id Catégorie</ion-label>
+            <ion-input type="number" class="form-control" name="categorieId" [(ngModel)]="editForm.categorieId" #categorieId="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Prix unitaire</ion-label>
+            <ion-input type="number" class="form-control" name="prix_u" [(ngModel)]="editForm.prix_u" #prix_u="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Stock</ion-label>
+            <ion-input type="number" class="form-control" name="stock" [(ngModel)]="editForm.stock" #stock="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" color="danger" expand="block">Modifier</ion-button>
+            </ion-col>
+          </ion-row>
+
+          <div class="alert alert-warning" *ngIf="f.submitted && isAddedFailed">
+            Erreur lors de la modification !<br />{{ errorMessage }}
+          </div>
+          <div class="alert alert-success" *ngIf="isSuccessfull">
+            Patisserie a bien été modifiée !
+          </div>
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form> -->
+</ion-content>

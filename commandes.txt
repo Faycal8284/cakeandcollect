@@ -157,3 +157,4 @@ ionic g page pages/client/registerClient
 -----------------------------------------------------------------------------------
 ionic g page pages/vendeur/patisseries
 ionic g page pages/vendeur/add-patisserie
+ionic g page pages/vendeur/edit-patisserie
