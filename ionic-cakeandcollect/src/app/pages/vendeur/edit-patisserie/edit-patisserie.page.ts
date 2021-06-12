@@ -16,33 +16,12 @@ import { PatisseriesService } from 'src/app/shared/patisseries.service';
 })
 export class EditPatisseriePage implements OnInit {
 
-  /* editForm: any = {
-    nom: null,
-    vendeurId: this.id,
-    categorieId: null,
-    commandeId: null,
-    disponible: 1,
-    descriptions: null,
-    ingredients: null,
-    prix_u: null,
-    stock: null,
-    img: null,
-    img1: null,
-    img2: null,
-    img3: null,
-    quantite: null
-  };
-
-
-  isEdited = false;
-  isEditedFailed = false;
-  errorMessage = ''; */
   patisserie: Patisserie = {};
-
   editForm: FormGroup;
   id: any;
 
-  constructor(public formBuilder: FormBuilder, private zone: NgZone, private route: ActivatedRoute, private patisseriesServices: PatisseriesService, private router: Router) { }
+  constructor(public formBuilder: FormBuilder, private zone: NgZone, private route: ActivatedRoute,
+              private patisseriesServices: PatisseriesService, private router: Router) { }
 
   ngOnInit() {
     this.editForm = this.formBuilder.group({
@@ -56,7 +35,7 @@ export class EditPatisseriePage implements OnInit {
       img: ['']
     });
 
-    this.id = this.route.snapshot.params['id'];
+    this.id = this.route.snapshot.params.id;
 
     this.patisseriesServices.getPatisserie(this.id).subscribe(data =>{
       console.log(data);
@@ -74,10 +53,9 @@ export class EditPatisseriePage implements OnInit {
         img: data.img
       });
     });
-
   }
 
-  saveForm(){
+  modifier(){
     this.patisseriesServices.updatePatisserie(this.id, this.editForm.value).subscribe(data => {
       console.log("Edit patisserie :" + data);
       this.zone.run(() => this.router.navigate(['mes-patisseries', this.patisserie.vendeurId]));
@@ -89,44 +67,7 @@ export class EditPatisseriePage implements OnInit {
   }
 
 
-    /* console.log(this.editForm);
-    const { nom, vendeurId, categorieId, commandeId, disponible, descriptions, ingredients, prix_u, stock, img, img1, img2, img3, quantite } = this.editForm;
-    this.patisserie = this.editForm;
-
-    this.patisseriesServices.getPatisserie(this.id)
-      .subscribe(
-        data => {
-          console.log(data);
-
-          this.editForm.patchValue({
-            nom: data.nom,
-            categorieId: data.categorieId,
-            descriptions: data.descriptions,
-            ingredients: data.ingredients,
-            prix_u: data.prix_u,
-            stock: data.stock,
-            img: data.img
-          });
-
-           this.router.navigate(['espace-vendeur', this.id]);
-          this.isEdited = true;
-          this.isEditedFailed = false; 
-        },
-        err => {
-          this.errorMessage = err.error.message;
-          this.isEditedFailed = true;
-        }
-      );
-  }
-
-
-  isModifed() {
-    this.patisseriesServices.updatePatisserie(this.id, this.editForm.value).subscribe(data => {
-      console.log("Edit patisserie :" + data);
-      //this.zone.run(() => this.router.navigate(['user']));
-    })
-  }
-
+  /*
   loadImageFromDevice(event) {
     console.log(event);
 
