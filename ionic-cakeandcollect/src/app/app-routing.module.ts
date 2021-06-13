@@ -101,6 +101,11 @@ const routes: Routes = [
     path: 'changer-motdepasse-vendeur/:id',
     loadChildren: () => import('./pages/vendeur/changer-motdepasse/changer-motdepasse.module').then( m => m.ChangerMotdepassePageModule)
   },
+  {
+    path: 'mode-de-paiement',
+    loadChildren: () => import('./pages/client/mode-de-paiement/mode-de-paiement.module').then( m => m.ModeDePaiementPageModule)
+  },
+
 
 
 ];
