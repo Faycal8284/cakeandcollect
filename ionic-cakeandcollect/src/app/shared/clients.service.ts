@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable,throwError } from 'rxjs';
@@ -10,6 +11,7 @@ import { Client } from '../interfaces/Client';
 export class ClientsService {
   url = 'http://localhost:8080/api/clients';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
+  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', }), responseType: 'text' as 'json' };
 
   constructor(private httpClient: HttpClient) { }
 
@@ -43,7 +45,7 @@ export class ClientsService {
      // Met à jour une Client selon son identifiant
   updateClient(id: number, data: Client): Observable<any>{
     const API_URL = `${this.url}/${id}`;
-    return this.httpClient.put(API_URL, data)
+    return this.httpClient.put(API_URL, data, this.httpOptions)
       .pipe(
         map((res: any) => console.log('service :' + res)),
         catchError(this.errorMgmt)
@@ -53,7 +55,7 @@ export class ClientsService {
     // Supprime une Client selon son identifiant
   deleteClient(id: number): Observable<any> {
     const API_URL = `${this.url}/${id}`;
-    return this.httpClient.delete(API_URL)
+    return this.httpClient.delete(API_URL, this.httpOptions)
       .pipe(
         catchError(this.errorMgmt)
       );

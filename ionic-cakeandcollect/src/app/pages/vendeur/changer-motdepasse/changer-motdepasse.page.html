@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="color1">
+    <ion-buttons slot="start">
+      <ion-button (click)="gotToEspaceVendeur()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Modifier mon mot de passe</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list lines="full">
+  <form [formGroup]="changerMdpForm" (ngSubmit)="modifierMdp()">
+
+    <ion-item>
+      <ion-icon [name]="type ? 'eye' : 'eye-off'" slot="end" color="dark" (click)="changeType()">
+      </ion-icon>
+      <ion-label position="floating">Entrer votre nouveau Mot de passe</ion-label>
+      <ion-input formControlName="mdp" [type]="type ? 'password' : 'text'" required aria-placeholder="nouveau mot de passe"></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="primary" shape="full" expand="block">
+          Mettre à jour
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-list>
+</ion-content>

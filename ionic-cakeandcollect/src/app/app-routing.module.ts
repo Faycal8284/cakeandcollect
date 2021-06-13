@@ -93,11 +93,14 @@ const routes: Routes = [
     path: 'edit-patisserie/:id',
     loadChildren: () => import('./pages/vendeur/edit-patisserie/edit-patisserie.module').then( m => m.EditPatisseriePageModule)
   },
-
-  /* {
-    path: 'auth-screen',
-    loadChildren: () => import('./auth-screens/client/client.module').then( m => m.ClientPageModule)
-  }, */
+  {
+    path: 'changer-motdepasse-client/:id',
+    loadChildren: () => import('./pages/client/changer-motdepasse/changer-motdepasse.module').then( m => m.ChangerMotdepassePageModule)
+  },
+  {
+    path: 'changer-motdepasse-vendeur/:id',
+    loadChildren: () => import('./pages/vendeur/changer-motdepasse/changer-motdepasse.module').then( m => m.ChangerMotdepassePageModule)
+  },
 
 
 ];

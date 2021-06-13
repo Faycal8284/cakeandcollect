@@ -57,13 +57,20 @@
     </ion-grid>
   </form>
 
+  <ion-list lines="none" class="bg-transparent">
+    <ion-item color="transparent">
+      <ion-button size="small" color="dark" [routerLink]="['/changer-motdepasse']">
+        Mot de passe oublié ?</ion-button>
+    </ion-item>
+
+    <ion-item color="transparent">
+      <div>
+        <ion-title>Vous n'avez pas de compte ?</ion-title><br>
+        <ion-button size="small" color="primary" (click)="goToRegisterClientPage()">Créer un compte</ion-button>
+      </div>
+    </ion-item>
+  </ion-list>
   
-  <ion-item color="transparent">
-    <div>
-      <ion-title>Vous n'avez pas de compte ?</ion-title><br>
-      <ion-button size="small" color="primary" (click)="goToRegisterClientPage()">Créer un compte</ion-button>
-    </div>
-  </ion-item>
 
 
 </ion-content>

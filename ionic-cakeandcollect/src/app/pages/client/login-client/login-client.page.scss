@@ -4,11 +4,15 @@ ion-content {
         color: lightgoldenrodyellow;
     }
     ion-input, ion-footer{
-        --background: transparent;
+        --background: transparent !important;
         --ion-color-base: transparent !important;
         color: #fff;
-    }    
+    }   
 }
 .marginBottom {
     margin-bottom: 5vh;
 }
+
+.bg-transparent {
+    background: transparent;
+  }

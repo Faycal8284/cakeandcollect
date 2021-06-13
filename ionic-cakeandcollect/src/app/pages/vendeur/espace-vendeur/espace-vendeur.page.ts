@@ -35,4 +35,8 @@ export class EspaceVendeurPage implements OnInit {
   goToAddPatisserie(id){
     this.router.navigate(['ajouter-patisserie', id]);
   }
+
+  gotToModifierMotDePasse(id: any){
+    this.router.navigate(['changer-motdepasse-vendeur', id]);
+  }
 }

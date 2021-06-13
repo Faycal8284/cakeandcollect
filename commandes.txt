@@ -159,3 +159,6 @@ ionic g page pages/client/registerClient
 ionic g page pages/vendeur/patisseries
 ionic g page pages/vendeur/add-patisserie
 ionic g page pages/vendeur/edit-patisserie
+-----------------------------------------------------------------------------------
+ionic g page pages/client/changer-motdepasse
+ionic g page pages/vendeur/changer-motdepasse
