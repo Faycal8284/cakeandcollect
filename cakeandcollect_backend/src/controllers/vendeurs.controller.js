@@ -1,4 +1,5 @@
 const vendeur = require('../models').vendeur;
+const bcrypt = require("bcrypt");
 
 module.exports = {
     // Afficher tous les vendeurs
@@ -63,6 +64,7 @@ module.exports = {
 
     async updateVendeur(req, res) {
         const id = req.params.id;
+        req.body.mdp = await bcrypt.hash(req.body.mdp, 8);
         try {
             const oneVendeur = await vendeur.findOne(({
                 where: { id: id }

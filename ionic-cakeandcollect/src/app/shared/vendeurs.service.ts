@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable,throwError } from 'rxjs';
@@ -10,6 +11,7 @@ import { Vendeur } from '../interfaces/Vendeur';
 export class VendeursService {
   url = 'http://localhost:8080/api/vendeurs';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
+  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', }), responseType: 'text' as 'json' };
 
   constructor(private httpClient: HttpClient) { }
 
@@ -43,7 +45,7 @@ export class VendeursService {
      // Met à jour une Vendeur selon son identifiant
   updateVendeur(id: number, data: Vendeur): Observable<any>{
     const API_URL = `${this.url}/${id}`;
-    return this.httpClient.put(API_URL, data)
+    return this.httpClient.put(API_URL, data, this.httpOptions)
       .pipe(
         map((res: any) => console.log('service :' + res)),
         catchError(this.errorMgmt)

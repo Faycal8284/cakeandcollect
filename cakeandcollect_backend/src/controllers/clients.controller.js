@@ -1,4 +1,5 @@
 const client = require('../models').client;
+const bcrypt = require("bcrypt");
 
 module.exports = {
     // Afficher tous les clients
@@ -60,7 +61,9 @@ module.exports = {
 
     async updateClient(req, res) {
         const id = req.params.id;
+        req.body.mdp = await bcrypt.hash(req.body.mdp, 8);
         try {
+            
             const oneClient = await client.findOne(({
                 where: { id: id }
             }))

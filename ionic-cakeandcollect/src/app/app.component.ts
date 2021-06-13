@@ -15,8 +15,8 @@ export class AppComponent {
     { title: 'Accueil', url: '/accueil', icon: 'home' },
     { title: 'Recherche', url: '/recherche', icon: 'search' },
     { title: 'Espace Client', url: '/login-client', icon: 'person' },
-    { title: 'Espace Vendeur', url: '/login-vendeur', icon: 'create' },
-    { title: 'Login Client', url: '/client', icon: 'person' },
+    { title: 'Espace Vendeur', url: '/login-vendeur', icon: 'restaurant' },
+    { title: 'Login Client', url: '/client', icon: 'create' },
     { title: 'TLB CLI', url: '/tableau-de-bord-client', icon: 'apps' },
     { title: 'Panier', url: '/panier', icon: 'cart' },
   ];
