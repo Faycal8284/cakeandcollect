@@ -30,4 +30,8 @@ export class EspaceClientPage implements OnInit {
     this.router.navigate(['changer-motdepasse-client', id]);
   }
 
+  goToModeDePaiement() {
+    this.router.navigate(['/mode-de-paiement']);
+  }
+
 }

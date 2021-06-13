@@ -161,3 +161,9 @@ ionic g page pages/vendeur/edit-patisserie
 -----------------------------------------------------------------------------------
 ionic g page pages/client/changer-motdepasse
 ionic g page pages/vendeur/changer-motdepasse
+-----------------------------------------------------------------------------------
+ionic g page pages/client/mode-de-paiement
+ionic cordova plugin add cordova-sqlite-storage
+npm install --save @ionic/storage
+npm install @ionic/storage
+npm install @ionic/storage-angular

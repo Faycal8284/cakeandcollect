@@ -10,7 +10,8 @@ export class ClientGuard implements CanLoad {
   constructor(private router: Router, private storage: StorageService) {}
 
   async canLoad(): Promise<boolean> {
-    const hasScreenClient = await this.storage.getStorage(CLIENT_KEY);
+    //const hasScreenClient = await this.storage.getStorage(CLIENT_KEY);
+    const hasScreenClient = await this.storage.get(CLIENT_KEY);
     if(hasScreenClient && hasScreenClient.value === 'true'){
       return true;
     } else {
