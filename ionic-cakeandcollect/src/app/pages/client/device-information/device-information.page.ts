@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Device } from '@ionic-native/device/ngx';
 import { IonSlides } from '@ionic/angular';
@@ -12,7 +12,7 @@ import { IonSlides } from '@ionic/angular';
 })
 export class DeviceInformationPage implements OnInit {
 
-  constructor(private device: Device, private route: ActivatedRoute) { }
+  constructor(private device: Device, private route: ActivatedRoute, private router: Router) { }
 
   @ViewChild('slides', { static: true }) slider: IonSlides;
   segment = 0;
@@ -23,6 +23,9 @@ export class DeviceInformationPage implements OnInit {
   platform: any;
   model: any;
   version: any;
+  manufacturer: any;
+  isVirtual: any;
+  serial: any;
 
 
   ngOnInit() {
@@ -32,6 +35,9 @@ export class DeviceInformationPage implements OnInit {
     this.version = this.device.version;
     this.platform = this.device.platform;
     this.cordova = this.device.cordova;
+    this.manufacturer = this.device.manufacturer;
+    this.isVirtual = this.device.isVirtual;
+    this.serial = this.device.serial;
   }
 
   async segmentChanged(ev: any) {
@@ -40,6 +46,10 @@ export class DeviceInformationPage implements OnInit {
 
   async slideChanged() {
     this.segment = await this.slider.getActiveIndex();
+  }
+
+  gotToEspaceClient() {
+    this.router.navigate(['espace-client', this.id]);
   }
 
 

@@ -1,14 +1,10 @@
-<!-- Header -->
-<ion-header >
-  
+<ion-header>
   <ion-toolbar color="color1">
-
-    <!-- Back Button -->
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-button (click)="gotToEspaceClient()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
     </ion-buttons>
-
-    <!-- Title -->
     <ion-title>Paramètres</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -33,15 +29,16 @@
     
   <ion-slides #slides (ionSlideDidChange)="slideChanged()" scrollbar="true">  
     <ion-slide>
-      <ion-list-item>
+      <ion-list padding> 
         <ion-item>Device Model : {{ model }} </ion-item>
         <ion-item>Device Cordova : {{ cordova }}</ion-item>
         <ion-item>Device Platform : {{ platform }} </ion-item>
         <ion-item>Device UUID : {{ uuid }}</ion-item>
         <ion-item>Device Version : {{ version }}</ion-item>
-        <ion-item></ion-item>
-        <ion-item></ion-item>
-      </ion-list-item>
+        <ion-item>Device Serial : {{ serial }} </ion-item>
+        <ion-item>isVirtual : {{ isVirtual }}</ion-item>
+        <ion-item>Manufacturer : {{ manufacturer }}</ion-item>
+      </ion-list>
 
     </ion-slide>  
 
