@@ -1,0 +1,54 @@
+<!-- Header -->
+<ion-header >
+  
+  <ion-toolbar color="color1">
+
+    <!-- Back Button -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <!-- Title -->
+    <ion-title>Paramètres</ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content class="ion-padding" color="light">  
+  <ion-toolbar>  
+    <ion-segment (ionChange)="segmentChanged($event)" [(ngModel)]="segment" color="primary">  
+      <ion-segment-button value="0">  
+        <ion-label>Device</ion-label>  
+        <ion-icon name="settings"></ion-icon>  
+      </ion-segment-button>  
+      <ion-segment-button value="1">  
+        <ion-label>Favoris</ion-label>  
+        <ion-icon name="heart"></ion-icon>  
+      </ion-segment-button>  
+      <ion-segment-button value="2">  
+        <ion-label>Profile</ion-label>  
+        <ion-icon name="person"></ion-icon>  
+      </ion-segment-button>  
+    </ion-segment>  
+  </ion-toolbar>  
+    
+  <ion-slides #slides (ionSlideDidChange)="slideChanged()" scrollbar="true">  
+    <ion-slide>
+      <ion-list-item>
+        <ion-item>Device Model : {{ model }} </ion-item>
+        <ion-item>Device Cordova : {{ cordova }}</ion-item>
+        <ion-item>Device Platform : {{ platform }} </ion-item>
+        <ion-item>Device UUID : {{ uuid }}</ion-item>
+        <ion-item>Device Version : {{ version }}</ion-item>
+        <ion-item></ion-item>
+        <ion-item></ion-item>
+      </ion-list-item>
+
+    </ion-slide>  
+
+
+    <ion-slide>Mes pâtisseries favorites</ion-slide>  
+
+
+    <ion-slide>Mettre à jour mon profile</ion-slide>  
+  </ion-slides>  
+</ion-content>  

@@ -17,7 +17,6 @@ export class AppComponent {
     { title: 'Espace Client', url: '/login-client', icon: 'person' },
     { title: 'Espace Vendeur', url: '/login-vendeur', icon: 'restaurant' },
     { title: 'Login Client', url: '/client', icon: 'create' },
-    { title: 'TLB CLI', url: '/tableau-de-bord-client', icon: 'apps' },
     { title: 'Panier', url: '/panier', icon: 'cart' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

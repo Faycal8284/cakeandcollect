@@ -105,6 +105,11 @@ const routes: Routes = [
     path: 'mode-de-paiement',
     loadChildren: () => import('./pages/client/mode-de-paiement/mode-de-paiement.module').then( m => m.ModeDePaiementPageModule)
   },
+  {
+    path: 'device-information/:id',
+    loadChildren: () => import('./pages/client/device-information/device-information.module').then( m => m.DeviceInformationPageModule)
+  },
+
 
 
 

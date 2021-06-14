@@ -34,4 +34,8 @@ export class EspaceClientPage implements OnInit {
     this.router.navigate(['/mode-de-paiement']);
   }
 
+  goToDeviceInformation(id: any){
+    this.router.navigate(['device-information', id]);
+  }
+
 }
