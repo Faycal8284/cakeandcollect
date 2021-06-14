@@ -56,7 +56,6 @@
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
-
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-ionic-webview": "^4.2.1",
@@ -86,7 +85,6 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
-
       "cordova-plugin-nativestorage": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
@@ -100,7 +98,7 @@
     "platforms": [
       "android"
     ],
-      "cordova-plugin-x-toast": {},
-      "cordova-sqlite-storage": {}
+    "cordova-plugin-x-toast": {},
+    "cordova-sqlite-storage": {}
   }
 }
