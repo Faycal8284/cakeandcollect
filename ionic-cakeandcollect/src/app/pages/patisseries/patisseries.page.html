@@ -13,9 +13,9 @@
     <ion-title>
       Patisseries
     </ion-title>
-     <!-- Cart Page Button -->
-     <ion-buttons slot="end">
-      <ion-button color="light" (click)="gotoPanierPage()">
+    <!-- Cart Page Button -->
+    <ion-buttons slot="end">
+      <ion-button color="light" (click)="openPanier()">
         <ion-icon name="cart"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -24,39 +24,46 @@
 
 <!-- Contents -->
 <ion-content id="patisseries" class="ion-padding">
-  <ion-grid>
-    <ion-row>
-      <!-- List of patisseries -->
-      <ion-col size="6" *ngFor="let pat of patisseries">
-        <ion-card class="ion-no-padding ion-no-margin">
+  
+  <ion-slides [options]="slideOpts2">
+    <ion-slide *ngFor="let pat of patisseries; let i=index" (click)="gotoCategoriePage(pat.id)">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card class="ion-no-padding ion-no-margin">
 
-          <!-- patisseries Image -->
-          <img [src]="pat.img" (click)="gotoPatisseriePage(pat.id)"/>
+              <!-- Categories Image -->
+              <img [src]="pat.img" />
 
-          <!-- patisseries Name -->
-          <ion-card-header>
-            <ion-card-subtitle>{{pat.nom}}</ion-card-subtitle>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+              <!-- Categories Name -->
+              <ion-card-header>
+                <ion-card-subtitle>{{pat.nom}}</ion-card-subtitle>
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>
+
+
 
   <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>Ajouter Patisserie</ion-title>
+    <ion-toolbar color="primary" >
+      <ion-title> Patisserie</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-item *ngFor="let patisserie of patisseries">
+      <ion-item *ngFor="let patisserie of patisseries, let i=index">
         <ion-thumbnail style="--border-radius: 10px" slot="end" *ngIf="patisserie">
           <img [src]="patisserie.img" (click)="gotoPatisseriePage(patisserie.id)" />
         </ion-thumbnail>
         <ion-label>
           <h2>{{ patisserie.nom }}</h2>
           <p>{{ patisserie.prix_u}}</p>
-          <ion-button color="primary" (click)="gotoPanierPage()">
+          <ion-button color="primary" (click)="addToCart(patisserie)">
+            <ion-icon name="cart"></ion-icon>
             Ajouter
           </ion-button>
         </ion-label>
@@ -69,4 +76,3 @@
 
 
 </ion-content>
-

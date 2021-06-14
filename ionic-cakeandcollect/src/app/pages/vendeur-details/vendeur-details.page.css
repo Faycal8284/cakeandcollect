@@ -1,0 +1,95 @@
+ion-content.background #section1 ion-searchbar {
+  --icon-color: var(--ion-color-color1);
+  --placeholder-color: var(--ion-color-color1);
+  --background: #fff;
+  --color: var(--ion-color-color1);
+  --box-shadow: 0px 1px 12px 0px #cccccc;
+  --border-radius: 25px;
+}
+
+ion-content.background #patVendeur ion-slides,
+ion-content.background #patVendeur .swiper-container {
+  width: 100%;
+  height: 200px;
+}
+
+ion-content.background #patVendeur .swiper-slide {
+  background-size: cover !important;
+  background-position: center !important;
+  border-radius: 10px;
+}
+
+ion-content.background #patVendeur ion-label {
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #7a0571, 0 0 1em #660361, 0 0 0.2em #4a075f;
+  font-size: medium;
+}
+
+ion-content.background #categories img {
+  width: 130px;
+  max-height: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+ion-content.background #categories ion-slides,
+ion-content.background #categories .swiper-container {
+  width: 100%;
+}
+
+ion-content.background #popular-vendeurs .swiper-slide img {
+  height: 120px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+ion-content.background #popular-vendeurs .swiper-slide {
+  background-size: cover !important;
+  background-position: center !important;
+  border-radius: 10px;
+}
+
+ion-content.background #popular-vendeurs .item .name {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+ion-content.background #popular-vendeurs .item ion-note {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+ion-content.background #popular-patisseries .item ion-thumbnail {
+  width: 100px;
+  height: 120px;
+}
+
+ion-content.background #popular-patisseries .item ion-thumbnail .packages_thumbnail {
+  width: 100px;
+  height: 120px;
+  border-radius: 5px;
+}
+
+ion-content.background #popular-patisseries .item .name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+ion-content.background #popular-patisseries .item ion-note {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+ion-content.background #popular-patisseries .item ion-card {
+  -webkit-writing-mode: tb-rl;
+      -ms-writing-mode: tb-rl;
+          writing-mode: tb-rl;
+  padding: 10px;
+  background: var(--ion-color-color1);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+}
+/*# sourceMappingURL=vendeur-details.page.css.map */

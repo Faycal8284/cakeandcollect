@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EACF,mBAAmB,CAAA,KAAC;EACpB,sBAAsB,CAAA,KAAC;CACxB;;AACD,AAAA,SAAS,CAAC;EACR,MAAM,EAAE,mBAAmB;CAC5B",
+    "sources": [
+        "tableau-de-bord.page.scss"
+    ],
+    "names": [],
+    "file": "tableau-de-bord.page.css"
+}

@@ -1,0 +1,51 @@
+#panier .item ion-thumbnail {
+  width: 80px;
+  height: 100px;
+}
+
+#panier .item ion-thumbnail img {
+  width: 80px;
+  height: 100px;
+  border-radius: 5px;
+}
+
+#panier .item h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+#panier .item ion-card {
+  -webkit-writing-mode: tb-rl;
+      -ms-writing-mode: tb-rl;
+          writing-mode: tb-rl;
+  padding: 10px;
+  background: var(--ion-color-color1);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#panier .item ion-note {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+#panier #empty h4 {
+  color: #888888;
+  font-weight: bolder;
+}
+
+#panier #empty p {
+  color: #888888;
+}
+
+#panier ion-fab-button {
+  --background: transparent;
+  --background-focused: transparent;
+  --background-activated: transparent;
+}
+
+#panier hr {
+  border-top: 1px dashed var(--ion-color-color1);
+}
+/*# sourceMappingURL=panier.page.css.map */

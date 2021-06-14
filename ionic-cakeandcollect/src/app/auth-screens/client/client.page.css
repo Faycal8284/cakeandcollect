@@ -1,0 +1,25 @@
+ion-slides {
+  height: 100%;
+  --bullet-background: var(--ion-color-color1);
+}
+
+ion-slides ion-slide {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+ion-slides .toRight {
+  -webkit-box-align: initial;
+      -ms-flex-align: initial;
+          align-items: initial;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+ion-slides .transforButton {
+  -webkit-transform: translateY(30vh);
+          transform: translateY(30vh);
+}
+/*# sourceMappingURL=client.page.css.map */

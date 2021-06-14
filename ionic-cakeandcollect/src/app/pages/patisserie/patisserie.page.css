@@ -1,0 +1,12 @@
+.slider ion-slides,
+.slider .swiper-container {
+  width: 100%;
+  height: 260px;
+}
+
+.slider .swiper-slide {
+  background-size: cover !important;
+  background-position: center !important;
+  border-radius: 10px;
+}
+/*# sourceMappingURL=patisserie.page.css.map */

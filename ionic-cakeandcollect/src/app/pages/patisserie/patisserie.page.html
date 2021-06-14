@@ -12,7 +12,7 @@
     <ion-title *ngIf="patisserie"> {{patisserie.nom}} </ion-title>
     <!-- Cart Page Button -->
     <ion-buttons slot="end">
-    <ion-button color="light" (click)="gotoPanierPage()">
+    <ion-button color="light" (click)="openPanier()">
       <ion-icon name="cart"></ion-icon>
     </ion-button>
     </ion-buttons>
@@ -39,8 +39,15 @@
 
     <ion-card-content>{{patisserie.descriptions}}</ion-card-content>
     <ion-card-content>{{patisserie.ingredients}}</ion-card-content>
-
-    <ion-button color="primary" (click)="gotoPanierPage()">Ajouter au panier</ion-button>
+    <ion-label>
+      <h2>{{ patisserie.nom }}</h2>
+      <p>{{ patisserie.prix_u}}</p>
+      <ion-button  name="cart"
+        color="primary" (click)="addToCart(patisserie)">
+        <ion-icon name='cart'></ion-icon>
+        Ajouter
+      </ion-button>
+    </ion-label>
   </ion-card>
 
 </ion-content>

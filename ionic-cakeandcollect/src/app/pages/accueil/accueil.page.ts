@@ -76,7 +76,7 @@ export class AccueilPage implements OnInit {
     this.vendeursService.getAllVendeurs().subscribe(data => {
       console.log(data);
       this.vendeurs= data ;
-      //this.shuffleArray(this.vendeurs);
+      this.shuffleArray(this.vendeurs);
     });
   }
 
@@ -84,7 +84,25 @@ export class AccueilPage implements OnInit {
     this.patisseriesService.getAllPatisseries().subscribe(data => {
       console.log(data);
       this.patisseries = data;
+      this.shuffleArray(this.patisseries);
+
     });
+  }
+  shuffleArray = function(array) {
+    var m = array.length, t, i;
+  
+    // While there remain elements to shuffle
+    while (m) {
+      // Pick a remaining element…
+      i = Math.floor(Math.random() * m--);
+  
+      // And swap it with the current element.
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
+    }
+  
+    return array;
   }
 
   gotoCategoriePage(id) {

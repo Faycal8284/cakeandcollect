@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAGI,OAHG,CAGH,UAAU;AAHd,OAAO,CAIH,iBAAiB,CAAC;EACd,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,KAAK;CAChB;;AAPL,AASI,OATG,CASH,aAAa,CAAC;EACV,eAAe,EAAE,gBAAgB;EACjC,mBAAmB,EAAE,iBAAiB;EACtC,aAAa,EAAE,IAAI;CACtB",
+    "sources": [
+        "patisserie.page.scss"
+    ],
+    "names": [],
+    "file": "patisserie.page.css"
+}
