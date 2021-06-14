@@ -1,0 +1,44 @@
+<!-- Header -->
+<ion-header class="ion-no-border">
+
+  <ion-toolbar color="color1">
+    <ion-buttons slot="start">
+      <ion-button (click)="gotToEspaceClient()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Mode de paiement</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contents -->
+<ion-content id="card-selection">
+
+  <div class="ion-padding">
+    <ion-list>
+      <ion-radio-group [value]="0">
+        <ion-item lines="full" *ngFor="let item of cards; let i = index">
+
+          <ion-img class="ion-padding-end" style="vertical-align: middle;" [src]="item.img">
+          </ion-img>
+
+          <ion-label class="ion-text-wrap ion-padding">
+            <h2 class="name">{{item.name}}</h2>
+            <ion-text color="medium">{{item.cardNumber}}</ion-text>
+          </ion-label>
+
+          <ion-radio slot="end" [value]="i" color="color1"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <div class="ion-padding">
+    <ion-button color="color1" shape="round" expand="full" (click)="goToConfirmationCommande()">
+      Choisir
+    </ion-button>
+  </div>
+</ion-footer>

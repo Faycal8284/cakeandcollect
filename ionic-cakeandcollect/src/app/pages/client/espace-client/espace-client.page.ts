@@ -16,7 +16,7 @@ export class EspaceClientPage implements OnInit {
   constructor(private router: Router, private clientService: ClientsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
+    this.id = this.route.snapshot.params.id;
     this.clientService.getClient(this.id).subscribe(data => {
       this.client = data;
     });
@@ -24,6 +24,14 @@ export class EspaceClientPage implements OnInit {
 
   signout() {
     this.router.navigate(['/accueil']);
+  }
+
+  gotToModifierMotDePasse(id: any){
+    this.router.navigate(['changer-motdepasse-client', id]);
+  }
+
+  goToModeDePaiement() {
+    this.router.navigate(['/mode-de-paiement']);
   }
 
 }

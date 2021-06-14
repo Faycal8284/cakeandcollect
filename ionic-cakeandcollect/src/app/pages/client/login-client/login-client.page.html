@@ -22,20 +22,26 @@
             <h3>Connexion</h3>
           </div>
           <div padding>
-            <ion-item lines="full">
+            <ion-item lines="full" color="transparent">
               <ion-input type="text" class="form-control" name="email" [(ngModel)]="form.email" required
               #email="ngModel"></ion-input>
               <div class="alert alert-danger" role="alert" *ngIf="email.errors && f.submitted">
-                email is required!
+                Email obligatoire !
               </div>
             </ion-item>
-            <ion-item lines="full">
-              <ion-input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="3"
+            <ion-item lines="full" color="transparent">
+              <ion-icon 
+                [name]="type ? 'eye' : 'eye-off'" 
+                slot="end" 
+                color="dark" 
+                (click)="changeType()">
+              </ion-icon>
+              <ion-input [type]="type ? 'password' : 'text'" class="form-control" name="password" [(ngModel)]="form.password" required minlength="3"
               #password="ngModel"></ion-input>
               <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
-                <div *ngIf="password.errors.required">Password is required</div>
+                <div *ngIf="password.errors.required">Mot de passe obligatoire</div>
                 <div *ngIf="password.errors.minlength" color="danger">
-                    Password must be at least 3 characters
+                   Minimum 3 caractères
                 </div>
               </div>
             </ion-item>
@@ -45,9 +51,26 @@
           </div>
         </ion-col>
         <div color="danger" class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
-          Login failed: {{ errorMessage }}
+          Erreur de connexion : {{ errorMessage }}
         </div>
       </ion-row>
     </ion-grid>
   </form>
+
+  <ion-list lines="none" class="bg-transparent">
+    <ion-item color="transparent">
+      <ion-button size="small" color="dark" [routerLink]="['/changer-motdepasse']">
+        Mot de passe oublié ?</ion-button>
+    </ion-item>
+
+    <ion-item color="transparent">
+      <div>
+        <ion-title>Vous n'avez pas de compte ?</ion-title><br>
+        <ion-button size="small" color="primary" (click)="goToRegisterClientPage()">Créer un compte</ion-button>
+      </div>
+    </ion-item>
+  </ion-list>
+  
+
+
 </ion-content>

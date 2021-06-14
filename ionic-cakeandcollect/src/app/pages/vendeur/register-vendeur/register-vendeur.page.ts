@@ -1,9 +1,9 @@
+/* eslint-disable prefer-const */
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.vendeur.service';
-import { TokenStorageService } from 'src/app/shared/token-storage.service';
 
 @Component({
   selector: 'app-register-vendeur',
@@ -12,9 +12,7 @@ import { TokenStorageService } from 'src/app/shared/token-storage.service';
 })
 export class RegisterVendeurPage implements OnInit {
 
-  id: number;
-
-  register: any = {
+  registerForm: any = {
     nom: null,
     prenom: null,
     siret: null,
@@ -24,45 +22,68 @@ export class RegisterVendeurPage implements OnInit {
     categorie: null,
     note: null,
     code_promo: null,
-    partticulier: null,
+    particulier: null,
     tel: null,
     descriptions: null,
-    actif: null,
+    actif: 1, // actif par défaut
     rue: null,
     code_postal: null,
     ville: null
   };
 
-  isLoggedIn = false;
-  isLoginFailed = false;
 
+  isSignedUp = false;
+  isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private router: Router, private authService: AuthService,
-              private tokenStorage: TokenStorageService) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   isRegistred() {
-    const { nom, prenom, siret, email, mdp, img, categorie, note, code_promo, partticulier, tel, descriptions, actif, rue, code_postal, ville } = this.register;
-    this.authService.register(nom, prenom, siret, email, mdp, img, categorie, note, code_promo, partticulier, tel, descriptions, actif, rue, code_postal, ville )
-    .subscribe(
-      data => {
-        //this.tokenStorage.saveToken(data.accessToken);
-        //this.tokenStorage.saveUser(data);
-        console.log(data);
+    console.log(this.registerForm);
+    const { nom, prenom, siret, email, mdp, img, categorie, note, code_promo, particulier, tel, descriptions, actif, rue, code_postal, ville } = this.registerForm;
+    this.authService.register(nom, prenom, siret, email, mdp, img, categorie, note, code_promo, particulier, tel, descriptions, actif, rue, code_postal, ville)
+      .subscribe(
+        data => {
+          console.log(data);
 
-        //this.isLoggedIn = true;
-        //this.isLoginFailed = false;
-        //this.router.navigateByUrl('/espace-vendeur'); // navigate vers tableau de bord vendeur
-        //this.router.navigate(['espace-vendeur', data.id]);
-      },
-      err => {
-        this.errorMessage = err.error.message;
-        this.isLoginFailed = true;
-      }
-    );
+          this.isSignedUp = true;
+          this.isSignUpFailed = false;
+          this.router.navigateByUrl('/login-vendeur'); // navigate vers la page de connexion
+        },
+        err => {
+          this.errorMessage = err.error.message;
+          this.isSignUpFailed = true;
+        }
+      );
   }
 
+  loadImageFromDevice(event) {
+    console.log(event);
+
+    const file = event.target.files[0];
+    console.log(file);
+    const reader = new FileReader();
+    console.log(reader);
+
+    reader.readAsArrayBuffer(file);
+    reader.onload = () => {
+      // get the blob of the image:
+      let blob: Blob = new Blob([new Uint8Array((reader.result as ArrayBuffer))]);
+      // create blobURL, such that we could use it in an image element:
+      let blobURL: string = URL.createObjectURL(blob);
+
+      //this.yourImageDataURL = dataReader.result;
+
+    };
+
+    reader.onerror = (error) => {
+
+      console.log(error);
+      //handle errors
+
+    };
+  };
 }

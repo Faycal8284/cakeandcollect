@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { Vendeur } from '../interfaces/Vendeur';
 
 const AUTH_API_VENDEUR = 'http://localhost:8080/api/auth/vendeur/';
-const API_VENDEUR = 'http://localhost:8080/api/auth/vendeurs/';
+//const API_VENDEUR = 'http://localhost:8080/api/auth/vendeurs/';
 
 //const AUTH_API_CLIENT = 'http://localhost:8080/api/auth/client/';
 
@@ -29,8 +29,8 @@ export class AuthService {
     }, httpOptions);
   };
 
-  register(nom: string, prenom: string, siret: string, email: string, mdp: string, img: string, categorie: string, note: number, code_promo: string, partticulier: boolean, tel: string, descriptions: string, actif: boolean, rue: string, code_postal: string, ville: string): Observable<Vendeur> {
-    return this.http.post(API_VENDEUR + 'signup', {
+  register(nom: string, prenom: string, siret: string, email: string, mdp: string, img: string, categorie: string, note: number, code_promo: string, particulier: boolean, tel: string, descriptions: string, actif: boolean, rue: string, code_postal: string, ville: string): Observable<Vendeur> {
+    return this.http.post(AUTH_API_VENDEUR + 'signup', {
       nom,
       prenom,
       siret,
@@ -40,7 +40,7 @@ export class AuthService {
       categorie,
       note,
       code_promo,
-      partticulier,
+      particulier,
       tel,
       descriptions,
       actif,

@@ -1,0 +1,85 @@
+<!-- Header -->
+<ion-header>
+  <ion-toolbar color="color1">
+
+    <!-- Back button -->
+    <ion-buttons slot="start">
+      <ion-button *ngIf="patisserie" (click)="goToPatisseriesOfVendeur(patisserie.vendeurId)">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Title -->
+    <ion-title>Modifier pâtisserie</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- <ion-fab vertical="top" horizontal="end">
+    <ion-fab-button color="danger">
+      <ion-icon color="light" name="trash" (click)="deletePatisserie(id)"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
+
+  <ion-list lines="full">
+    <form [formGroup]="editForm" (ngSubmit)="modifier()">
+
+      <ion-item>
+        <!-- Image -->
+        <img [src]="patisserie.img" />
+        <ion-label position="floating">Image Principale</ion-label>
+        <ion-input formControlName="img" type="file">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Nom</ion-label>
+        <ion-input formControlName="nom" type="text" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Categorie Id</ion-label>
+        <ion-input formControlName="categorieId" type="number">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Disponible ?</ion-label>
+        <ion-input formControlName="disponible" type="boolean">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-input formControlName="descriptions" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Ingrédients</ion-label>
+        <ion-input formControlName="ingredients" type="text">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Prix unitaire</ion-label>
+        <ion-input formControlName="prix_u" type="number">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Stock</ion-label>
+        <ion-input formControlName="stock" type="number">
+        </ion-input>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" shape="full" expand="block">
+            Mettre à jour
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-list>
+</ion-content>

@@ -7,12 +7,23 @@ var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
   // Save Client to Database
-  Client.create({
+  Client.create({    
+    nom: req.body.nom,
+    prenom: req.body.prenom,
     email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 8)
-  })
-    .then(client => {
-        res.send({ message: "Client was registered successfully!" });
+    mdp: req.body.mdp,
+    //mdp: bcrypt.hashSync(req.body.mdp, 8),
+    //mdp: bcrypt.hash(req.body.mdp, 8),
+    img: req.body.img,
+    tel: req.body.tel,
+    actif: req.body.actif,
+    rue: req.body.rue,
+    code_postal: req.body.code_postal,
+    ville: req.body.ville,
+    note_vendeur: req.body.note_vendeur,
+    avis_commande: req.body.avis_commande
+  }).then(client => {
+        res.send({ message: "Le Client a bien été ajouté à la base !" });
     })
     .catch(err => {
       res.status(500).send({ message: err.message });
@@ -27,7 +38,7 @@ exports.signin = (req, res) => {
   })
     .then(client => {
       if (!client) {
-        return res.status(404).send({ message: "Client Not found." });
+        return res.status(404).send({ message: "Client introuvable." });
       }
 
       var passwordIsValid = bcrypt.compareSync(
@@ -38,7 +49,7 @@ exports.signin = (req, res) => {
       if (!passwordIsValid) {
         return res.status(401).send({
           accessToken: null,
-          message: "Invalid Password!"
+          message: "Mot de passe invalide!"
         });
       }
 

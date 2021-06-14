@@ -12,26 +12,11 @@ checkVendeurEmail = (req, res, next) => {
   }).then(vendeur => {
     if (vendeur) {
       res.status(400).send({
-        message: "Failed! email is already in use!"
+        message: "Erreur! email existe déjà!"
       });
       return;
     }
-
-    // Email
-    Vendeur.findOne({
-      where: {
-        email: req.body.email
-      }
-    }).then(vendeur => {
-      if (vendeur) {
-        res.status(400).send({
-          message: "Failed! Email is already in use!"
-        });
-        return;
-      }
-
-      next();
-    });
+    next();
   });
 };
 
@@ -44,33 +29,17 @@ checkClientEmail = (req, res, next) => {
   }).then(client => {
     if (client) {
       res.status(400).send({
-        message: "Failed! email is already in use!"
+        message: "Erreur ! Email existe déjà !"
       });
       return;
     }
-
-    // Email
-    Client.findOne({
-      where: {
-        email: req.body.email
-      }
-    }).then(client => {
-      if (client) {
-        res.status(400).send({
-          message: "Failed! Email is already in use!"
-        });
-        return;
-      }
-
-      next();
-    });
+    next();
   });
 };
 
 const verifySignUp = {
-    checkVendeurEmail: checkVendeurEmail,
-    checkClientEmail: checkClientEmail
-
+  checkVendeurEmail: checkVendeurEmail,
+  checkClientEmail: checkClientEmail
 };
 
 module.exports = verifySignUp;

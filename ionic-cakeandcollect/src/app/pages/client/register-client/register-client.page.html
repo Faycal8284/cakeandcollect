@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar color="color1">
+    <ion-title>Inscription Client</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="isSignedUp; else signupForm">
+    Vous êtes enregistrés, connectez-vous !
+  </div>
+  <form *ngIf="!isSuccessfull" name="registerForm" (ngSubmit)="f.form.valid && isRegistred()" #f="ngForm" novalidate>
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="12" size-lg="12" size-xs="12">
+          <h3>S'enregistrer</h3>
+
+          <ion-item>
+            <ion-label position="floating">Nom</ion-label>
+            <ion-input type="text" class="form-control" name="nom" [(ngModel)]="registerForm.nom" required minlength="3"
+              maxlength="20" #nom="ngModel"></ion-input>
+            <div class="alert-danger" *ngIf="nom.errors && f.submitted">
+              <div *ngIf="nom.errors.required">nom est obligatoire</div>
+              <div *ngIf="nom.errors.minlength">
+                Minimum 3 caractères
+              </div>
+            </div>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Prénom</ion-label>
+            <ion-input type="text" class="form-control" name="prenom" [(ngModel)]="registerForm.prenom" required minlength="3"
+              maxlength="20" #prenom="ngModel"></ion-input>
+            <div class="alert-danger" *ngIf="prenom.errors && f.submitted">
+              <div *ngIf="prenom.errors.required">prénom est obligatoire</div>
+              <div *ngIf="prenom.errors.minlength">
+                Minimum 3 caractères
+              </div>
+              <!-- <div *ngIf="prenom.errors.maxlength">
+                prenom must be at most 20 characters
+              </div> -->
+            </div>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" class="form-control" name="email" [(ngModel)]="registerForm.email" required email
+              #email="ngModel"></ion-input>
+            <div class="alert-danger" *ngIf="email.errors && f.submitted">
+              <div *ngIf="email.errors.required">Email est obligatoire</div>
+              <div *ngIf="email.errors.email">
+                L'email n'est pas valide
+              </div>
+            </div>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Mot de passe</ion-label>
+            <ion-input type="password" class="form-control" name="mdp" [(ngModel)]="registerForm.mdp" required
+              minlength="6" #mdp="ngModel"></ion-input>
+            <div class="alert-danger" *ngIf="mdp.errors && f.submitted">
+              <div *ngIf="mdp.errors.required">Mot de passe est obligatoire</div>
+              <div *ngIf="mdp.errors.minlength">
+                Minimum 6 caractères 
+              </div>
+            </div>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Image</ion-label>
+            <ion-input type="text" class="form-control" name="img" [(ngModel)]="registerForm.img"
+                #img="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Téléphone</ion-label>
+            <ion-input type="text" class="form-control" name="tel" [(ngModel)]="registerForm.tel"
+                #tel="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Rue</ion-label>
+            <ion-input type="text" class="form-control" name="rue" [(ngModel)]="registerForm.rue"
+                #rue="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Code Postal</ion-label>
+            <ion-input type="number" class="form-control" name="code_postal" [(ngModel)]="registerForm.code_postal"
+                #code_postal="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Ville</ion-label>
+            <ion-input type="text" class="form-control" name="ville" [(ngModel)]="registerForm.ville"
+                #ville="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" color="danger" expand="block">S'inscrire</ion-button>
+            </ion-col>
+          </ion-row>
+
+          <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+            Erreur lors de l'inscription !<br />{{ errorMessage }}
+          </div>
+          <div class="alert alert-success" *ngIf="isSuccessfull">
+            Vous êtes bien enregistrés !
+          </div>
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

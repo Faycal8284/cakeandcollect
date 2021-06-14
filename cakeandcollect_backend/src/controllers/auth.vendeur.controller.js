@@ -15,7 +15,9 @@ exports.signup = (req, res) => {
     prenom: req.body.prenom,
     siret: req.body.siret,
     email: req.body.email,
-    mdp: bcrypt.hashSync(req.body.mdp, 8),
+    //mdp: bcrypt.hashSync(req.body.mdp, 8),
+    //mdp: bcrypt.hash(req.body.mdp, 8),
+    mdp: req.body.mdp,
     img: req.body.img,
     categorie: req.body.categorie,
     note: req.body.note,
@@ -27,8 +29,7 @@ exports.signup = (req, res) => {
     rue: req.body.rue,
     code_postal: req.body.code_postal,
     ville: req.body.ville
-  })
-    .then(vendeur => {
+  }).then(vendeur => {
         res.send({ message: "Le Vendeur a bien été ajouté à la base !" });
     })
     .catch(err => {

@@ -38,6 +38,8 @@ export class PatisseriesPage implements OnInit {
   ngOnInit() {
     this.getPatisseries();
     this.storage.create();
+
+    //this.loadProducts();
   }
 
   getPatisseries() {
@@ -129,6 +131,16 @@ export class PatisseriesPage implements OnInit {
     });
     return await modal.present();
   }
+
+  // autre méthode avec commercejs
+  /* async loadProducts() {
+    try {
+      const { data: patisseries } = await this.commerce.client.patisseries.list();
+      this.patisseries = patisseries;
+    } catch {
+      // a network error occurred or something went wrong
+    }
+  } */
 
   // autre méthode avec commercejs
   // async loadProducts() {

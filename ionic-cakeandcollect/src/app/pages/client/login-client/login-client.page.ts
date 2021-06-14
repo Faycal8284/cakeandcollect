@@ -11,6 +11,7 @@ import { TokenStorageService } from 'src/app/shared/token-storage.service';
 export class LoginClientPage implements OnInit {
 
   id: number;
+  type = true;
 
   form: any = {
     email: null,
@@ -46,5 +47,13 @@ export class LoginClientPage implements OnInit {
         this.isLoginFailed = true;
       }
     );
+  }
+
+  goToRegisterClientPage(){
+    this.router.navigateByUrl('/register-client');
+  }
+
+  changeType() {
+    this.type = !this.type;
   }
 }

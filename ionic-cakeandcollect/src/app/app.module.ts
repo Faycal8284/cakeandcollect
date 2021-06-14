@@ -18,6 +18,7 @@ import { PanierPage } from './pages/panier/panier.page';
   declarations: [AppComponent,PanierPage],
   entryComponents: [PanierPage],
   imports: [
+    IonicStorageModule.forRoot(),
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
