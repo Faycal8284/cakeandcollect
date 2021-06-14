@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { PatisseriePageRoutingModule } from './patisserie-routing.module';
 
 import { PatisseriePage } from './patisserie.page';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PatisseriePageRoutingModule
+    PatisseriePageRoutingModule,
+    IonicStorageModule.forRoot(),
   ],
   declarations: [PatisseriePage]
 })

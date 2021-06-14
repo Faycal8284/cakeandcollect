@@ -1,10 +1,9 @@
-<!-- Header -->
 <ion-header class="ion-no-border">
   <ion-toolbar color="color1">
 
     <!-- Back button -->
     <ion-buttons slot="start">
-      <ion-button color="light" (click)="close()">
+      <ion-button color="light" (click)="closeModal()">
         <ion-icon name="close-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -16,88 +15,82 @@
 
 <!-- Contents -->
 <ion-content id="panier">
-  <div *ngIf="patisseries" class="ion-padding">
+  <div>
 
     <!-- Food panier List -->
-    <ion-list lines="none" *ngFor="let patisserie of patisseries; let i = index">
-      <ion-item-sliding>
-        <ion-item class="ion-no-padding">
+    <ion-list *ngFor='let article of panierItems'>
+      <ion-item class="ion-no-padding">
 
-          <!-- Food Image -->
-          <ion-thumbnail slot="start">
-            <img style="vertical-align: middle;" [src]="patisserie.img" (click)="gotoPatisseriePage(patisserie.id)" >
-          </ion-thumbnail>
+        <!-- Food Image -->
+        <ion-thumbnail slot="start">
+          <img style="vertical-align: middle;" [src]='article.item.img'>
+        </ion-thumbnail>
 
-          <ion-label class="ion-text-wrap">
-            <!-- Food Name -->
-            <ion-text color="dark">
-              <h2> {{ patisserie.nom }}</h2>
-            </ion-text>
 
-            <!-- Price -->
-            <ion-note slot="end" color="color1">Prix : {{patisserie.prix_u}} €</ion-note>
-          </ion-label>
+        quantite
+        <ion-card>
+          <!-- Add More quantite -->
+          <ion-col (click)="article[i].qty = article[i].qty + 1">
+            <ion-icon style="zoom:1.7;" name="add-circle-outline"></ion-icon>
+          </ion-col>
 
-          <!-- quantite -->
-          <ion-card>
-            <!-- Add More quantite -->
-            <ion-col (click)="patisseries[i].quantite = patisseries[i].quantite + 1">
-              <ion-icon style="zoom:2.0;" name="add-circle-outline"></ion-icon>
-            </ion-col>
+          <!-- Total quantite -->
+          <ion-col style='text-align:center'>{{article.qty}}</ion-col>
 
-            <!-- Total quantite -->
-            <ion-col class="ion-text-center patisseries[i].quantite">{{patisseries[i].quantite}}</ion-col>
+          <!-- Minus quantite -->
+          <ion-col (click)="article[i].qty > 1 && article[i].quantite = patisseries[i].quantite - 1">
+            <ion-icon style="zoom:1.7;" name="remove-circle-outline"></ion-icon>
+          </ion-col>
+        </ion-card>
+      </ion-item>
+      <ion-item>
+        <!-- Food Name -->
+        <ion-text color="dark">
+          <h2> {{ article.item.nom }}</h2>
+        </ion-text>
 
-            <!-- Minus quantite -->
-            <ion-col (click)="patisseries[i].quantite > 1 && patisseries[i].quantite = patisseries[i].quantite - 1">
-              <ion-icon style="zoom:2.0;" name="remove-circle-outline"></ion-icon>
-            </ion-col>
-          </ion-card>
-        </ion-item>
+        <!-- Price -->
+        <ion-note slot="end" color="color1">Prix : {{article.item.prix_u}} €</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Sous-total:</ion-label>
+        <ion-note slot="end" color="dark">{{(article.qty*article.item.prix_u | currency:'EUR':true)}}</ion-note>
+      </ion-item>
 
-        <ion-item-options side="end">
-          <ion-item-option color="color1" expandable>
-            Retirer
-          </ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
+      <ion-item-options side="end">
+        <ion-item-option color="color1" expandable>
+          Retirer
+        </ion-item-option>
+      </ion-item-options>
     </ion-list>
+
 
     <!-- Summary Of Price -->
     <ion-list lines="none">
 
-      <!-- Sub-Total Price -->
-      <ion-item>
-        <ion-label>Sous Total</ion-label>
-        <ion-note slot="end" color="dark">100€</ion-note>
-      </ion-item>
-
-      <!-- Shipping Cost -->
-      <ion-item>
-        <ion-label>Shipping</ion-label>
-        <ion-note slot="end" color="dark">25€</ion-note>
-      </ion-item>
-
-      <!-- Tax Cost -->
-      <ion-item>
-        <ion-label>TVA(20%)</ion-label>
-        <ion-note slot="end" color="dark">100€</ion-note>
-      </ion-item>
-
-      <hr />
-
       <!-- Total Cost -->
       <ion-item>
-        <ion-label>Total</ion-label>
-        <ion-note slot="end" color="dark">225€</ion-note>
+        <ion-label>Total:</ion-label>
+        <ion-note slot="end" color="dark">{{total | currency:'EUR':true}}</ion-note>
       </ion-item>
     </ion-list>
   </div>
+
+  <!-- Date de la collect à la boulangerie ou chez le client-->
+  <ion-item>
+    <ion-label>Date Collect</ion-label>
+    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+  </ion-item>
 
   <!-- Proceed To Checkout Button Option -->
   <div class="ion-padding">
     <ion-button color="color1" shape="round" expand="full" (click)="goToCheckout()">
       Procéder au paiement
+    </ion-button>
+  </div>
+  <div class="ion-padding">
+    <ion-button color="color1" shape="round" expand="full" (click)="closeModal()">
+      FERMER
     </ion-button>
   </div>
 </ion-content>

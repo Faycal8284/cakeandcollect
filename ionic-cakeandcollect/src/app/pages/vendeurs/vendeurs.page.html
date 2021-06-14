@@ -2,10 +2,13 @@
 <ion-header>
   <ion-toolbar color="color1">
 
-    <!-- Back Button -->
+     <!-- Back button -->
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-button (click)="gotoAccueilPage()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
     </ion-buttons>
+
 
     <!-- Title -->
     <ion-title>Vendeurs</ion-title>

@@ -10,14 +10,18 @@
     </ion-buttons>
 
     <!-- Page title -->
-    <ion-title>
-      Categorie
+    <ion-title *ngIf="vendeur">
+      Categorie : {{categorie.nom}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <!-- Contents -->
 <ion-content  class="ion-padding">
+  <h6 ion-text color="danger" *ngIf="!categorie.nom">
+    Aucune patisserie n'est trouvée dans cette catégorie.
+    Veuillez nous excuser. Revenez plus tard.
+  </h6>
   <ion-grid>
     <ion-row>
       <!-- List of Categories -->

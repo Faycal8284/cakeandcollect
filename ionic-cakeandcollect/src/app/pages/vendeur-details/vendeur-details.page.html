@@ -9,9 +9,16 @@
     </ion-buttons>
 
     <!-- Page title -->
-    <ion-title>
-      Vendeur Patisseries Détails
+    <ion-title *ngIf="vendeur">
+     {{vendeur.nom}}
     </ion-title>
+
+     <!-- Cart Page Button -->
+     <ion-buttons slot="end">
+      <ion-button color="light" (click)="gotoPanierPage()">
+        <ion-icon name="cart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -30,7 +37,14 @@
           <ion-label>{{patisserie.Patisserie}}</ion-label>
         </ion-slide>
       </ion-slides>
+    </div>
 
+    <!-- Code promo du vendeur  -->
+    <div id="patVendeur">
+      <ion-list-header *ngIf="vendeur">
+        <ion-label color="primary">Promotion</ion-label>
+        <ion-button color="color1" class="center">{{vendeur.code_promo}}</ion-button>
+      </ion-list-header>
     </div>
 
     <!-- Les patisseries du vendeur  -->

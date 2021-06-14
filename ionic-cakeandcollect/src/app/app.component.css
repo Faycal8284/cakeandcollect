@@ -1,0 +1,27 @@
+ion-menu ion-toolbar {
+  --background: var(--ion-color-color1);
+  height: 150px;
+}
+
+ion-menu ion-toolbar ion-row {
+  padding-top: 30px;
+  padding-left: 10px;
+}
+
+ion-menu ion-toolbar ion-row img {
+  height: 50px;
+  border-radius: 50px;
+}
+
+ion-menu ion-toolbar ion-row .text-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+}
+/*# sourceMappingURL=app.component.css.map */

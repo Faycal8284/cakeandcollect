@@ -1,8 +1,12 @@
+/* eslint-disable max-len */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Vendeur } from '../interfaces/Vendeur';
 
 const AUTH_API_VENDEUR = 'http://localhost:8080/api/auth/vendeur/';
+const API_VENDEUR = 'http://localhost:8080/api/auth/vendeurs/';
 
 //const AUTH_API_CLIENT = 'http://localhost:8080/api/auth/client/';
 
@@ -25,12 +29,24 @@ export class AuthService {
     }, httpOptions);
   };
 
-  register(nom: string, prenom: string, email: string, mdp: string): Observable<any> {
-    return this.http.post(AUTH_API_VENDEUR + 'signup', {
+  register(nom: string, prenom: string, siret: string, email: string, mdp: string, img: string, categorie: string, note: number, code_promo: string, partticulier: boolean, tel: string, descriptions: string, actif: boolean, rue: string, code_postal: string, ville: string): Observable<Vendeur> {
+    return this.http.post(API_VENDEUR + 'signup', {
       nom,
       prenom,
+      siret,
       email,
-      mdp
+      mdp,
+      img,
+      categorie,
+      note,
+      code_promo,
+      partticulier,
+      tel,
+      descriptions,
+      actif,
+      rue,
+      code_postal,
+      ville
     }, httpOptions);
   };
 }

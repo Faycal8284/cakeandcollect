@@ -1,0 +1,35 @@
+ion-input, ion-text {
+  font-size: 0.9rem;
+}
+
+.error {
+  font-size: 0.7rem !important;
+}
+
+p ion-icon {
+  font-size: 1.8rem;
+  margin: 1vh 2vh;
+}
+
+ion-button {
+  margin: 5vh 0;
+}
+
+ion-input[type=email] {
+  width: 95%;
+  height: 20%;
+  margin-top: 10%;
+  margin-left: 5%;
+}
+
+.input-cover {
+  width: 0px;
+  height: 0px;
+}
+
+div.display {
+  display: block !important;
+  visibility: visible !important;
+  height: 100% !important;
+}
+/*# sourceMappingURL=sign-in.component.css.map */

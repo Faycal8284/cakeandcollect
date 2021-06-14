@@ -8,13 +8,28 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
+
   // Save Vendeur to Database
-  Vendeur.create({
+  Vendeur.create({    
+    nom: req.body.nom,
+    prenom: req.body.prenom,
+    siret: req.body.siret,
     email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 8)
+    mdp: bcrypt.hashSync(req.body.mdp, 8),
+    img: req.body.img,
+    categorie: req.body.categorie,
+    note: req.body.note,
+    code_promo: req.body.code_promo,
+    particulier: req.body.particulier,
+    tel: req.body.tel,
+    descriptions: req.body.descriptions,
+    actif: req.body.actif,
+    rue: req.body.rue,
+    code_postal: req.body.code_postal,
+    ville: req.body.ville
   })
     .then(vendeur => {
-        res.send({ message: "Vendeur was registered successfully!" });
+        res.send({ message: "Le Vendeur a bien été ajouté à la base !" });
     })
     .catch(err => {
       res.status(500).send({ message: err.message });
@@ -29,7 +44,7 @@ exports.signin = (req, res) => {
   })
     .then(vendeur => {
       if (!vendeur) {
-        return res.status(404).send({ message: "Vendeur Not found." });
+        return res.status(404).send({ message: "Vendeur non trouvé !" });
       }
 
       var passwordIsValid = bcrypt.compareSync(
@@ -40,7 +55,7 @@ exports.signin = (req, res) => {
       if (!passwordIsValid) {
         return res.status(401).send({
           accessToken: null,
-          message: "Invalid Password!"
+          message: "Mot de passe non valide !"
         });
       }
 

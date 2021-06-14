@@ -1,3 +1,6 @@
+/* eslint-disable @angular-eslint/no-input-rename */
+/* eslint-disable @angular-eslint/no-host-metadata-property */
+/* eslint-disable @angular-eslint/directive-selector */
 import { Directive, AfterViewInit, ElementRef, Renderer2, Input } from '@angular/core';
 import { DomController } from '@ionic/angular';
 
@@ -30,7 +33,7 @@ export class ParallaxHeaderDirective implements AfterViewInit {
 			this.header = this.renderer.createElement('div');
 
 			this.renderer.insertBefore(this.element.nativeElement, this.header, this.element.nativeElement.firstChild);
-			
+
 			this.renderer.setStyle(this.header, 'background-image', 'url(' + this.imagePath + ')');
 			this.renderer.setStyle(this.header, 'height', this.headerHeight + 'px');
 			this.renderer.setStyle(this.header, 'background-size', 'cover');
@@ -43,8 +46,8 @@ export class ParallaxHeaderDirective implements AfterViewInit {
 
 	this.domCtrl.read(() => {
 
-	let translateAmt, scaleAmt;
-	
+	let translateAmt; let scaleAmt;
+
 	      // Already scrolled past the point at which the header image is visible
 	if(ev.detail.scrollTop > this.parallaxHeight){
   return;

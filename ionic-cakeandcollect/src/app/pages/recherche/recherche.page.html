@@ -15,35 +15,44 @@
 <ion-content [fullscreen]="true">
   <ion-searchbar placeholder="Recherche..." [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
 
-    <ion-list>
-      <ion-item *ngFor="let v of vendeurs | filter:filterTerm">
-        <ion-card>
-          <img [src]="v.img" [alt]="v.nom">
+    <ion-list *ngFor="let data of allData | filter:filterTerm">
+      <ion-item><!-- Les vendeurs -->
+        <ion-card (click)="goToVendeursDetails(data.IdVendeur)"> 
+          <img [src]="data.imgVendeur" [alt]="data.Vendeur" [title]="data.Vendeur">
           <ion-card-header>
-            <ion-card-subtitle>{{v.ville}}</ion-card-subtitle>
-            <ion-card-title>{{v.nom}}</ion-card-title>
+            <ion-card-subtitle>{{data.villeVendeur}}</ion-card-subtitle>
+            <ion-card-title>{{data.Vendeur}}</ion-card-title>
           </ion-card-header>
-        
           <ion-card-content>
-            {{v.ville}} {{v.email}} {{v.tel}} {{v.descriptions}}
+             {{data.telVendeur}} 
           </ion-card-content>
         </ion-card>
       </ion-item>
-    </ion-list>
 
-    <ion-list>
-      <ion-item *ngFor="let c of categories | filter:filterTerm">
-        <ion-card>
-          <img [src]="c.img" [alt]="c.nom">
+      <ion-item><!-- Les Catégories -->
+        <ion-card (click)="gotoCategoriePage(data.IdCategorie)"> 
+          <img [src]="data.imageCategorie" [alt]="data.Categorie" [title]="data.Categorie">
           <ion-card-header>
             <ion-card-subtitle></ion-card-subtitle>
-            <ion-card-title>{{c.nom}}</ion-card-title>
+            <ion-card-title>Catégorie : {{data.Categorie}}</ion-card-title>
           </ion-card-header>
-        
           <ion-card-content>
-            {{c.descriptions}}
+            {{data.descriptionCategorie}} 
           </ion-card-content>
         </ion-card>
       </ion-item>
-    </ion-list> 
+    
+      <ion-item><!-- Les Patisseries -->
+        <ion-card (click)="gotoPatisseriePage(data.IdPatisserie)"> 
+          <img [src]="data.imagePatisserie" [alt]="data.Patisserie" [title]="data.Patisserie">
+          <ion-card-header>
+            <ion-card-subtitle></ion-card-subtitle>
+            <ion-card-title>{{data.Patisserie}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{data.descriptionPatisserie}} 
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+  </ion-list>
 </ion-content>

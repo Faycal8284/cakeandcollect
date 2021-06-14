@@ -12,10 +12,11 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { PanierPage } from './pages/panier/panier.page';
 
 @NgModule({
-  declarations: [AppComponent,],
-  entryComponents: [],
+  declarations: [AppComponent,PanierPage],
+  entryComponents: [PanierPage],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

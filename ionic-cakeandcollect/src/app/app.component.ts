@@ -13,13 +13,11 @@ export class AppComponent {
   selectedMenu: any;
   public appPages = [
     { title: 'Accueil', url: '/accueil', icon: 'home' },
-    { title: 'Espace Vendeur', url: '/login-vendeur', icon: 'person' },
-    { title: 'Espace Client', url: '/login-client', icon: 'person' },
-    { title: 'Register Vendeur', url: '/register-vendeur', icon: 'add' },
-    { title: 'Catégories', url: '/categories', icon: 'heart' },
     { title: 'Recherche', url: '/recherche', icon: 'search' },
-    { title: 'Vendeurs', url: '/vendeurs', icon: 'restaurant' },
-    { title: 'Patisseries', url: '/patisseries', icon: 'restaurant' },
+    { title: 'Espace Client', url: '/login-client', icon: 'person' },
+    { title: 'Espace Vendeur', url: '/login-vendeur', icon: 'create' },
+    { title: 'Login Client', url: '/client', icon: 'person' },
+    { title: 'TLB CLI', url: '/tableau-de-bord-client', icon: 'apps' },
     { title: 'Panier', url: '/panier', icon: 'cart' },
   ];
   public labels = ['Famille', 'Amis', 'Notes', '', '', 'Rappels'];

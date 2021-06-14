@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "login-vendeur.page.scss"
+    ],
+    "names": [],
+    "file": "login-vendeur.page.css"
+}

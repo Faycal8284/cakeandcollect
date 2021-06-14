@@ -19,6 +19,7 @@ app.use(express.json());
 //app.use(express.urlencoded());
 app.use(express.urlencoded({ extended: true }));
 
+// Définir les routes
 
 // http://localhost:8080/api/clients
 require('./src/routes/clients.routes')(app);
