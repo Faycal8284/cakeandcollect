@@ -18,6 +18,9 @@ export class AuthScreenClientPage implements OnInit {
   segmentChanged(event: any) {
     console.log(event);
     this.segmentValue = event.detail.value;
+    //event.preventDefault();
+    event.stopPropagation();
+    //event.srcEvent.stopPropagation();
   }
 
 }

@@ -4,5 +4,7 @@
 
 #categories ion-card img {
   width: 80px;
+  max-height: 65px !important;
+  object-fit: inherit !important;
 }
 /*# sourceMappingURL=categories.page.css.map */

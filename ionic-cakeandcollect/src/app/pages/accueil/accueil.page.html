@@ -1,9 +1,9 @@
 <!-- <ion-content [scrollEvents]="true" parallaxHeader="../../../assets/images/parallax/pat1.jpg" [parallaxHeight]="300" >
   <div class="main-content"> -->
- 
+
 <!-- Header -->
-<ion-header >
-  
+<ion-header>
+
   <ion-toolbar color="color1">
 
     <!-- Back Button -->
@@ -18,80 +18,80 @@
 
 
 <!-- Contents -->
+<ion-content class="background" [scrollEvents]="true" [parallaxHeight]="140" parallaxHeader="../../../assets/images/background/macarons-framboise.jpg">
+  <div class="main-content">
+    <!-- <ion-icon name="cart-outline"></ion-icon> -->
+    <!-- Barre de Recherche -->
+    <div id="section1">
+      <ion-grid>
+        <ion-row class="ion-align-items-center ion-justify-content-center">
+          <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+            <ion-searchbar (ionInput)="gotoRecherchePage($event)" placeholder="Trouver un vendeur..."></ion-searchbar>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
 
-<ion-content class="background">
-
-  <!-- <ion-icon name="cart-outline"></ion-icon> -->
-  <!-- Barre de Recherche -->
-  <div id="section1">
-    <ion-grid>
-      <ion-row class="ion-align-items-center ion-justify-content-center">
-        <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
-          <ion-searchbar (ionInput)="gotoRecherchePage($event)" placeholder="Trouver un vendeur..."></ion-searchbar>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-
- <!-- Top offres -->
- <div id="top-offres">
-    <ion-slides class="ion-padding slider" #slider [options]="slideOpt1">
-      <!-- <ion-slide *ngFor="let vendeur of vendeurs" [ngStyle]="{'background' : 'url(' + vendeur.img + ')'}">
+    <!-- Top offres -->
+    <div id="top-offres">
+      <ion-slides class="ion-padding slider" #slider [options]="slideOpt1">
+        <!-- <ion-slide *ngFor="let vendeur of vendeurs" [ngStyle]="{'background' : 'url(' + vendeur.img + ')'}">
       </ion-slide> -->
-      <ion-slide *ngFor="let vendeur of vendeurs" [ngStyle]="{'background' : 'url(' + vendeur.img + ')'}" (click)="goToVendeursDetails(vendeur.id)">
+        <ion-slide *ngFor="let vendeur of vendeurs" [ngStyle]="{'background' : 'url(' + vendeur.img + ')'}"
+          (click)="goToVendeursDetails(vendeur.id)">
           <ion-thumbnail slot="start">
           </ion-thumbnail>
           <ion-label>{{vendeur.code_promo}}</ion-label>
-          
-      </ion-slide>
-    </ion-slides>
-  </div>
 
-  <!-- Categories -->
-  <div id="categories">
-    <ion-list>
+        </ion-slide>
+      </ion-slides>
+    </div>
+
+    <!-- Categories -->
+    <div id="categories">
+      <ion-list>
+        <ion-list-header>
+          <ion-label color="dark">Catégories</ion-label>
+          <ion-button color="color1" (click)="gotoCategoriesPage()">Voir tous</ion-button>
+        </ion-list-header>
+      </ion-list>
+
+      <ion-slides [options]="slideOpts2">
+        <ion-slide *ngFor="let categorie of categories; let i=index" (click)="gotoCategoriePage(categorie.id)">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-card class="ion-no-padding ion-no-margin">
+
+                  <!-- Categories Image -->
+                  <img [src]="categorie.img" />
+
+                  <!-- Categories Name -->
+                  <ion-card-header>
+                    <ion-card-subtitle>{{categorie.nom}}</ion-card-subtitle>
+                  </ion-card-header>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <!-- End Categories -->
+
+
+    <!-- Vendeurs les plus populaires -->
+    <div id="popular-vendeurs">
       <ion-list-header>
-        <ion-label color="dark">Catégories</ion-label>
-        <ion-button color="color1" (click)="gotoCategoriesPage()">Voir tous</ion-button>
+        <ion-label color="dark">Vendeurs populaires</ion-label>
+        <ion-button color="color1" (click)="gotoVendeursPage()">Voir tous</ion-button>
       </ion-list-header>
-    </ion-list>
-
-    <ion-slides [options]="slideOpts2">
-      <ion-slide *ngFor="let categorie of categories; let i=index" (click)="gotoCategoriePage(categorie.id)">
+      <div>
         <ion-grid>
           <ion-row>
             <ion-col>
-              <ion-card class="ion-no-padding ion-no-margin">
-
-                <!-- Categories Image -->
-                <img [src]="categorie.img" />
-
-                <!-- Categories Name -->
-                <ion-card-header>
-                  <ion-card-subtitle>{{categorie.nom}}</ion-card-subtitle>
-                </ion-card-header>
-              </ion-card>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-slide>
-    </ion-slides>
-  </div>
-  <!-- End Categories -->
-
-
-  <!-- Vendeurs les plus populaires -->
-  <div id="popular-vendeurs">
-    <ion-list-header>
-      <ion-label color="dark">Vendeurs populaires</ion-label>
-      <ion-button color="color1" (click)="gotoVendeursPage()">Voir tous</ion-button>
-    </ion-list-header>
-    <div>
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-card *ngFor="let vendeur of vendeurs; let i=index" (click)="goToVendeursDetails(vendeur.id)">
-              <img [src]="vendeur.img" />
+              <ion-card *ngFor="let vendeur of vendeurs; let i=index" (click)="goToVendeursDetails(vendeur.id)">
+                <img [src]="vendeur.img" />
                 <ion-list lines="none">
                   <ion-item>
                     <!-- Like/Dislike Button Option -->
@@ -114,40 +114,67 @@
             </ion-col>
           </ion-row>
         </ion-grid>
+      </div>
+
+      <!-- Les patisseries les plus populaires -->
+      <div id="popular-patisseries">
+        <ion-list-header>
+          <ion-label color="dark">Les patisseries les plus populaires </ion-label>
+          <ion-button color="color1" (click)="gotoPatisseriesPage()">Voir Tous</ion-button>
+        </ion-list-header>
+
+        <ion-card *ngFor="let patisserie of patisseries; let i=index">
+          <ion-list lines="none">
+            <ion-item class="ion-no-padding border">
+
+              <!-- Image -->
+              <ion-thumbnail slot="start">
+                <img class="packages_thumbnail" style="vertical-align: middle;" [src]="patisserie.img"
+                  (click)="gotoPatisseriePage(patisserie.id)" />
+              </ion-thumbnail>
+
+              <ion-label class="ion-text-wrap">
+                <h4 class="name">{{patisserie.nom}}</h4>
+                <ion-text color="medium">
+                  <ion-icon color="medium" name="restaurant"></ion-icon> {{patisserie.stock}}
+                </ion-text>
+                <br>
+                <ion-text color="color1">{{patisserie.prix_u}} €</ion-text>
+              </ion-label>
+              <ion-card (click)="gotoPanierPage()">
+                Commander
+              </ion-card>
+            </ion-item>
+          </ion-list>
+        </ion-card>
+      </div>
+    </div>
+
+    
+
   </div>
 
-  <!-- Les patisseries les plus populaires -->
-  <div id="popular-patisseries">
-    <ion-list-header>
-      <ion-label color="dark">Les patisseries les plus populaires </ion-label>
-      <ion-button color="color1" (click)="gotoPatisseriesPage()">Voir Tous</ion-button>
-    </ion-list-header>
-
-    <ion-card *ngFor="let patisserie of patisseries; let i=index">
-      <ion-list lines="none">
-        <ion-item class="ion-no-padding border">
-
-          <!-- Image -->
-          <ion-thumbnail slot="start">
-            <img class="packages_thumbnail" style="vertical-align: middle;" [src]="patisserie.img" (click)="gotoPatisseriePage(patisserie.id)" />
-          </ion-thumbnail>
-
-          <ion-label class="ion-text-wrap">
-            <h4 class="name">{{patisserie.nom}}</h4>
-            <ion-text color="medium">
-              <ion-icon color="medium" name="location"></ion-icon> {{patisserie.descriptions}}
-            </ion-text>
-            <br>
-            <ion-text color="color1">{{patisserie.prix_u}} €</ion-text>
-          </ion-label>
-          <ion-card (click)="gotoPanierPage()">
-            Commander
-          </ion-card>
-        </ion-item>
-      </ion-list>
-    </ion-card>
+  <!-- Background -->
+  <div class="background2">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
-</div>
 </ion-content>
-
-

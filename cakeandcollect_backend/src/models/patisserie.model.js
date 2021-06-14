@@ -1,5 +1,16 @@
 'use strict';
 module.exports = (sequelize, Sequelize) => {
+    /* File = sequelize.define('file', {
+        type: {
+          type: Sequelize.STRING
+        },
+        name: {
+          type: Sequelize.STRING
+        },
+        data: {
+          type: Sequelize.BLOB('long')
+        }
+  }); */
     const patisserie = sequelize.define('patisserie', { // déf, nom table patisserie, et les param, colonnes table patisserie
         /* id_patisserie :{
             type:  Sequelize.INTEGER,
@@ -55,6 +66,9 @@ module.exports = (sequelize, Sequelize) => {
         img: {
             type: Sequelize.STRING
         },
+        /* img: {
+            type: Sequelize.FILE
+        }, */
         img1: {
             type: Sequelize.STRING
         },

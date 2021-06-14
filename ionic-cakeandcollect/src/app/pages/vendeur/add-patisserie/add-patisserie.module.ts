@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { AddPatisseriePageRoutingModule } from './add-patisserie-routing.module';
 
 import { AddPatisseriePage } from './add-patisserie.page';
+import { FileChooser } from '@ionic-native/file-chooser';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddPatisseriePageRoutingModule
+    AddPatisseriePageRoutingModule,
   ],
-  declarations: [AddPatisseriePage]
+  declarations: [AddPatisseriePage],
+  //providers: [FileChooser]
 })
 export class AddPatisseriePageModule {}

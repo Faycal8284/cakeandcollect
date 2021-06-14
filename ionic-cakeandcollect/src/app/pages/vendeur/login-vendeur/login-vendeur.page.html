@@ -18,24 +18,20 @@
           <div padding>
             <ion-item color="transparent">
               <ion-input type="text" class="form-control" name="email" [(ngModel)]="form.email" required
-              #email="ngModel"></ion-input>
+                #email="ngModel"></ion-input>
               <div class="alert alert-danger" role="alert" *ngIf="email.errors && f.submitted">
                 Email obligatoire !
               </div>
             </ion-item>
             <ion-item color="transparent">
-              <ion-icon 
-                [name]="type ? 'eye-off' : 'eye'" 
-                slot="end" 
-                color="dark" 
-                (click)="changeType()">
+              <ion-icon [name]="type ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType()">
               </ion-icon>
-              <ion-input [type]="type ? 'password' : 'text'" class="form-control" name="password" [(ngModel)]="form.password" required minlength="3"
-              #password="ngModel"></ion-input>
+              <ion-input [type]="type ? 'password' : 'text'" class="form-control" name="password"
+                [(ngModel)]="form.password" required minlength="3" #password="ngModel"></ion-input>
               <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
                 <div *ngIf="password.errors.required">Mot de passe obligatoire</div>
                 <div *ngIf="password.errors.minlength">
-                    Le mot de passe doit comporter minimum 3 caractères
+                  Le mot de passe doit comporter minimum 3 caractères
                 </div>
               </div>
             </ion-item>
@@ -51,11 +47,14 @@
     </ion-grid>
   </form>
 
-  <ion-item color="transparent">
-    <div>
-      <ion-title>Vous n'avez pas de compte ?</ion-title><br>
-      <ion-button size="small" color="primary" (click)="goToRegisterVendeurPage()">Créer un compte</ion-button>
-    </div>
-  </ion-item>
+  <ion-list lines="none" class="bg-transparent">
+    <ion-item color="transparent">
+      <div>
+        <br>
+        <h6>Vous n'avez pas de compte ?</h6>
+        <ion-button size="small" color="primary" (click)="goToRegisterVendeurPage()">Créer un compte</ion-button>
+      </div>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

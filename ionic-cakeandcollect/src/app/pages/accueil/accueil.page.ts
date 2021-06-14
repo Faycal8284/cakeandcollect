@@ -1,16 +1,43 @@
+/* eslint-disable @angular-eslint/use-lifecycle-interface */
+/* eslint-disable @angular-eslint/directive-class-suffix */
+/* eslint-disable max-len */
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable @angular-eslint/no-input-rename */
+/* eslint-disable @angular-eslint/no-host-metadata-property */
+/* eslint-disable @angular-eslint/directive-selector */
+/* eslint-disable prefer-arrow/prefer-arrow-functions */
+/* eslint-disable @typescript-eslint/semi */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoriesService } from 'src/app/shared/categories.service';
 import { PatisseriesService } from 'src/app/shared/patisseries.service';
 import { VendeursService } from 'src/app/shared/vendeurs.service';
 //import { Geolocation } from '@ionic-native/geolocation';
+import { Directive, AfterViewInit, ElementRef, Renderer2, Input } from '@angular/core';
+import { DomController } from '@ionic/angular';
 
 @Component({
   selector: 'app-accueil',
   templateUrl: './accueil.page.html',
   styleUrls: ['./accueil.page.scss'],
 })
+
+@Directive({
+  selector: '[parallaxHeader]',
+  host: {
+    '(ionScroll)': 'onContentScroll($event)'
+  }
+})
+
 export class AccueilPage implements OnInit {
+
+  @Input('parallaxHeader') imagePath: string;
+	@Input('parallaxHeight') parallaxHeight: number;
+
+	private headerHeight: number;
+	private header: HTMLDivElement;
+  private mainContent: HTMLDivElement;
+
 
   filterTerm: string;
 
@@ -57,7 +84,8 @@ export class AccueilPage implements OnInit {
 
     constructor(
       private categoriesService: CategoriesService, private vendeursService: VendeursService,
-      private patisseriesService: PatisseriesService, private router: Router) { }
+      private patisseriesService: PatisseriesService, private router: Router,
+      private element: ElementRef, private renderer: Renderer2, private domCtrl: DomController) { }
 
   ngOnInit() {
     this.getCategories();
@@ -89,19 +117,19 @@ export class AccueilPage implements OnInit {
     });
   }
   shuffleArray = function(array) {
-    var m = array.length, t, i;
-  
+    let m = array.length; let t; let i;
+
     // While there remain elements to shuffle
     while (m) {
       // Pick a remaining element…
       i = Math.floor(Math.random() * m--);
-  
+
       // And swap it with the current element.
       t = array[m];
       array[m] = array[i];
       array[i] = t;
     }
-  
+
     return array;
   }
 
@@ -174,5 +202,55 @@ subscription.unsubscribe(); */
 
     return array;
   } */
+
+
+  ngAfterViewInit(){
+
+		this.headerHeight = this.parallaxHeight;
+    	this.mainContent = this.element.nativeElement.querySelector('.main-content');
+
+		this.domCtrl.write(() => {
+
+			this.header = this.renderer.createElement('div');
+
+			this.renderer.insertBefore(this.element.nativeElement, this.header, this.element.nativeElement.firstChild);
+
+			this.renderer.setStyle(this.header, 'background-image', 'url(' + this.imagePath + ')');
+			this.renderer.setStyle(this.header, 'height', this.headerHeight + 'px');
+			this.renderer.setStyle(this.header, 'background-size', 'cover');
+
+		});
+
+  	}
+
+	onContentScroll(ev){
+
+	    this.domCtrl.read(() => {
+
+	      let translateAmt; let scaleAmt;
+
+	      // Already scrolled past the point at which the header image is visible
+	      if(ev.detail.scrollTop > this.parallaxHeight){
+	        return;
+	      }
+
+	      if(ev.detail.scrollTop >= 0){
+	          translateAmt = -(ev.detail.scrollTop / 2);
+	          scaleAmt = 1;
+	      } else {
+	          translateAmt = 0;
+	          scaleAmt = -ev.detail.scrollTop / this.headerHeight + 1;
+	      }
+
+	      this.domCtrl.write(() => {
+	        this.renderer.setStyle(this.header, 'transform', 'translate3d(0,'+translateAmt+'px,0) scale('+scaleAmt+','+scaleAmt+')');
+	        this.renderer.setStyle(this.mainContent, 'transform', 'translate3d(0, '+(-ev.detail.scrollTop) + 'px, 0');
+	      });
+
+	    });
+
+	}
+
+
 
 }

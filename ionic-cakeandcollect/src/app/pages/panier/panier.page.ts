@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ItemCarts } from 'src/app/interfaces/item-carts';
@@ -20,24 +21,24 @@ export class PanierPage {
     public navCtrl: NavController
   ) {}
 
-  ionViewDidEnter():void {
-          this.storage.get("cart").then((data:ItemCarts[]) => {
-            this.panierItems=data
-            this.panierItems.forEach((element:ItemCarts) =>{
-            
-            this.total += (element.item.prix_u * element.qty)
+  ionViewDidEnter(): void {
+          this.storage.get('cart').then((data: ItemCarts[]) => {
+            this.panierItems=data;
+            this.panierItems.forEach((element: ItemCarts) =>{
+
+            this.total += (element.item.prix_u * element.qty);
             });
         })
         .catch((err)=>{
-          console.log('erreur',err)
-        })
-      
+          console.log('erreur',err);
+        });
+
 
         // this.panierItems.forEach((element:ItemCarts) =>{
         //   if(element.item.disponible== true)
         //   this.total += (element.item.prix_u * element.qty)
         // })
-      
+
   }
 
   // Back to home page
@@ -46,5 +47,10 @@ export class PanierPage {
   }
   closeModal(): void {
     this.modal.dismiss();
+  }
+
+  goToLoginClient(){
+    this.closeModal();
+    this.router.navigateByUrl('/login-client');
   }
 }

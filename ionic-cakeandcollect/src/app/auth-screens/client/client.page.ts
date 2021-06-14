@@ -22,8 +22,8 @@ export class ClientPage implements OnInit {
   }
 
   async goToLogin() {
-    //await this.storageService.setStorage(CLIENT_KEY, 'true');
-    await this.storageService.set(CLIENT_KEY, 'true');
+    await this.storageService.setStorage(CLIENT_KEY, 'true');
+    //await this.storageService.set(CLIENT_KEY, 'true');
     this.router.navigateByUrl('/auth-screen-client', { replaceUrl: true });
 
     /* const setName = async () => {
@@ -123,7 +123,5 @@ export class ClientPage implements OnInit {
         }
       }
     };
-
   }
-
 }

@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Patisserie } from 'src/app/interfaces/patisserie';
 import { PatisseriesService } from 'src/app/shared/patisseries.service';
 
+import { FileChooser } from '@ionic-native/file-chooser/ngx';
+
 @Component({
   selector: 'app-add-patisserie',
   templateUrl: './add-patisserie.page.html',
@@ -39,10 +41,15 @@ export class AddPatisseriePage implements OnInit {
   errorMessage = '';
   patisserie: Patisserie = {};
 
-  constructor(private route: ActivatedRoute, private patisseriesServices: PatisseriesService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private patisseriesServices: PatisseriesService,
+              private router: Router ) { }
 
   ngOnInit() {
     console.log("L'id du vendeur qui ajoute " + this.id);
+
+    /* this.fileChooser.open() private fileChooser: FileChooser
+          .then(uri => console.log(uri))
+          .catch(e => console.log(e)); */
   }
 
   isRegistred() {
@@ -67,19 +74,26 @@ export class AddPatisseriePage implements OnInit {
   }
 
   loadImageFromDevice(event) {
+    console.log("à l.78 => l'evenement sur l'jout d'un fichier : " );
     console.log(event);
 
     const file = event.target.files[0];
+    console.log("le fichier : ");
     console.log(file);
     const reader = new FileReader();
+    console.log("le reader  : ");
     console.log(reader);
 
     reader.readAsArrayBuffer(file);
     reader.onload = () => {
       // get the blob of the image:
       let blob: Blob = new Blob([new Uint8Array((reader.result as ArrayBuffer))]);
+      console.log("le blob : " );
+      console.log(blob);
       // create blobURL, such that we could use it in an image element:
       let blobURL: string = URL.createObjectURL(blob);
+      console.log("le blobURL : " );
+      console.log(blobURL);
 
       //this.yourImageDataURL = dataReader.result;
 
