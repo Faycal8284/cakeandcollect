@@ -46,7 +46,7 @@
 
     <ion-item>
       <ion-icon color="medium" slot="end" name="settings"></ion-icon>
-      <ion-label class="ion-padding">Paramètres</ion-label>
+      <ion-label class="ion-padding" (click)="goToDeviceInformation(client.id)">Paramètres</ion-label>
     </ion-item>
 
   </ion-list>

@@ -167,3 +167,10 @@ ionic cordova plugin add cordova-sqlite-storage
 npm install --save @ionic/storage
 npm install @ionic/storage
 npm install @ionic/storage-angular
+-----------------------------------------------------------------------------------
+ionic cordova plugin add cordova-plugin-device
+npm install @ionic-native/device
+ionic g page pages/client/device-information
+ionic cordova plugin add @ionic-enterprise/device 
+
+cordova platform add android
