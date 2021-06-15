@@ -6,18 +6,30 @@
 
 <ion-content>
 
-  <div class="container" style="width:400px">
-    <div style="color: blue; margin-bottom: 20px">
-      <h1>{{title}}</h1>
-      <h3>{{description}}</h3>
-    </div>
-  
-    <form-upload></form-upload>
-  
-    <br/>
-    <br/>
-  
-    <app-list-upload></app-list-upload>
+  <div style="text-align:center">
+    <form>
+      <div>
+        <input type="file" name="image" (change)="selectImage($event)" />
+      </div>
+      <br>
+      <div>
+        <button type="submit" (click)="onSubmit()">Upload</button>
+      </div>
+    </form>
+  </div>
+
+  <hr>
+  <h2 style="text-align: center;">Multiple</h2>
+  <div style="text-align:center">
+    <form>
+      <div>
+        <input type="file" name="image" multiple (change)="selectMultipleImage($event)" />
+      </div>
+      <br>
+      <div>
+        <button type="submit" (click)="onMultipleSubmit()">Multiple Upload</button>
+      </div>
+    </form>
   </div>
 
 </ion-content>

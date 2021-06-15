@@ -1,10 +1,14 @@
 const express = require('express');
 const cors = require("cors");
+const multer = require('multer');
+// const bodyParser = require('body-parser');
+
 // Configure cross-origin for Angular-Client which running at port:
 /* const corsOptions = {
     origin: 'http://localhost:8200', // ou http://localhost:8100
     optionsSuccessStatus: 200
 } */
+
 const db = require("./src/models");
 var app = express();
 db.sequelize.sync();
@@ -26,9 +30,13 @@ const venpatcat = db.venpatcat;
 
 //app.use(cors(corsOptions)); => ne fonctionne pas !!!
 
-app.use(cors());
+//app.use(cors());
+
+app.use(cors({ origin : "*" }));
 
 app.use(express.json()); 
+//app.use(bodyParser.json()); 
+
 //app.use(express.urlencoded());
 app.use(express.urlencoded({ extended: true }));
 
@@ -88,3 +96,44 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log(`Server fonctionne sur le port ${PORT}.`); // Alt Gr+7
 });
+
+const storage = multer.diskStorage({
+    destination: (req, file, callback) => {
+        callback(null, 'uploads/images/patisseries')
+    },
+    filename: (req, file, callback) => {
+        callback(null, `${file.originalname}`)
+    }
+})
+
+var upload = multer({ storage: storage })
+
+// let upload = multer({ dest: 'upload/' })
+
+app.get("/", (req, res) => {
+    res.send(
+        `<h1 syle='text-align: center'> Test 2 sur upload image</h1>`
+    );
+});
+
+app.post('/file', upload.single('file'), (req, res, next) => {
+    const file = req.file
+    console.log(file.filename);
+    if(!file) {
+        const error = new Error('Please upload a file')
+        error.httpStatusCode = 400
+        return next(error)
+    }
+    res.send(file)
+})
+
+app.post('/multiplefiles', upload.array('files'), (req, res, next) => {
+    const files = req.files
+    console.log(files);
+    if(!files) {
+        const error = new Error('No file')
+        error.httpStatusCode = 400
+        return next(error)
+    }
+    res.send({status: 'ok'});
+})

@@ -19,6 +19,7 @@ export class AppComponent {
     { title: 'Login Client', url: '/client', icon: 'create' },
     { title: 'Panier', url: '/panier', icon: 'cart' },
     { title: 'upload', url: '/upload', icon: 'settings' },
+    { title: 'tests', url: '/tests', icon: 'settings' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor(

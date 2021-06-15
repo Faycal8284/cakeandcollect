@@ -108,7 +108,12 @@ const routes: Routes = [
   {
     path: 'device-information/:id',
     loadChildren: () => import('./pages/client/device-information/device-information.module').then( m => m.DeviceInformationPageModule)
-  },  {
+  },
+  {
+    path: 'tests',
+    loadChildren: () => import('./pages/tests/tests.module').then( m => m.TestsPageModule)
+  },
+  {
     path: 'upload',
     loadChildren: () => import('./pages/upload/upload.module').then( m => m.UploadPageModule)
   },
