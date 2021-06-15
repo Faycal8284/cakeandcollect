@@ -1,5 +1,10 @@
 const express = require('express');
 const cors = require("cors");
+// Configure cross-origin for Angular-Client which running at port:
+/* const corsOptions = {
+    origin: 'http://localhost:8200', // ou http://localhost:8100
+    optionsSuccessStatus: 200
+} */
 const db = require("./src/models");
 var app = express();
 db.sequelize.sync();
@@ -11,7 +16,15 @@ const categorie = db.categorie;
 const commande = db.commande;
 const patisserie = db.patisserie;
 
+const file = db.File;
+
+// Définir la vue
 const venpatcat = db.venpatcat;
+
+// upload files
+//const fileWorker = require('../controllers/file.controller.js');
+
+//app.use(cors(corsOptions)); => ne fonctionne pas !!!
 
 app.use(cors());
 
@@ -50,6 +63,18 @@ require('./src/routes/auth.client.routes')(app);
 require('./src/routes/vendeur.routes')(app);
 // login client
 require('./src/routes/client.routes')(app);
+
+// upload files
+/* app.post('/api/file/upload', upload.single("file"), (req, res) => { 
+		// to do
+}); */
+
+
+// http://localhost:8080/api/file (/info /:id /upload)
+require('./src/routes/file.routes')(app);
+
+//let router = require('./src/routers/file.router.js');
+//app.use('/', router);
 
 
 // navigateur web

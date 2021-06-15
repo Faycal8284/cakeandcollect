@@ -31,6 +31,7 @@ db.categorie = require('../models/categorie.model')(sequelize, Sequelize);
 db.commande = require('../models/commande.model')(sequelize, Sequelize);
 db.patisserie = require('../models/patisserie.model')(sequelize, Sequelize);
 db.venpatcat = require('../models/venpatcat.model')(sequelize, Sequelize);
+db.files = require('../models/file.model')(sequelize, Sequelize);
 
 // 1 Client peut avoir plusieurs commandes
 db.client.hasMany(db.commande, { as: "commandes" });

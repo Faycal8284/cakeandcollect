@@ -18,13 +18,14 @@ export class AppComponent {
     { title: 'Espace Vendeur', url: '/login-vendeur', icon: 'restaurant' },
     { title: 'Login Client', url: '/client', icon: 'create' },
     { title: 'Panier', url: '/panier', icon: 'cart' },
+    { title: 'upload', url: '/upload', icon: 'settings' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private router: Router
+
     ) {
       this.initializeApp();
     }
@@ -34,8 +35,5 @@ export class AppComponent {
         this.statusBar.styleDefault();
         this.splashScreen.hide();
       });
-    }
-    signout() {
-      this.router.navigate(['/login-client']);
     }
 }

@@ -180,3 +180,25 @@ ionic cordova run android
 -----------------------------------------------------------------------------------
 ionic cordova plugin add cordova-plugin-filechooser
 npm install @ionic-native/file-chooser
+-----------------------------------------------------------------------------------
+# dans le backend test
+mkdir Node.js-Express-Upload-Download-Files-MYSQL
+cd Node.js-Express-Upload-Download-Files-MYSQL
+npm init
+>> description: Building a Node.js/Express RestAPIs that upload/download files to Mysql database using Multer middleware, Sequelize ORM
+npm install express multer sequelize pg pg-hstore cors --save
+-----------------------------------------------------------------------------------
+ionic g s upload/UploadFile
+ionic g c upload/FormUpload
+ionic g c upload/ListUpload
+ionic g c upload/DetailsUpload
+
+ionic g s shared/upload-file
+ionic g page pages/tests
+ionic g page pages/upload
+ionic g page pages/upload/FormUpload
+ionic g page pages/upload/ListUpload
+ionic g page pages/upload/DetailsUpload
+
+ionic g c pages/upload/DetailsUpload
+-----------------------------------------------------------------------------------
