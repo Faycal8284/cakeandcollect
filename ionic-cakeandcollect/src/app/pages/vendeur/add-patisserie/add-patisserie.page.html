@@ -42,10 +42,11 @@
 
           <ion-item lines="full">
             <ion-label position="floating">Image</ion-label>
-            <ion-input type="file" name="img" (change)="selectImage($event)"
-                                    accept="image/png, image/jpeg"
-                      class="form-control" name="img" [(ngModel)]="registerForm.img"
-                #img="ngModel"></ion-input>
+            <ion-input  name="img" type="file" (change)="selectImage($event)" 
+                        [(ngModel)]="registerForm.img" class="form-control" 
+                        #img="ngModel" accept="image/png, image/jpeg">
+            </ion-input>
+            <!-- <button type="submit" (click)="charger()">Charger</button> -->
           </ion-item>
 
           <ion-item lines="full">

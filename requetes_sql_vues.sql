@@ -27,3 +27,22 @@ FROM vendeurs v
 JOIN patisseries p ON v.Id = p.vendeurId
 LEFT JOIN categories c ON p.categorieId = c.Id
 GROUP BY c.Id;
+
+
+UPDATE patisseries p
+JOIN categories c ON p.categorieId = c.Id
+SET p.img = REPLACE(p.img, 'C:\\fakepath\\', 'assets/images/uploads/patisseries/');
+
+SELECT REPLACE('C:\\fakepath\\', 'C:\fakepath', 'assets/images/uploads/patisseries/');
+
+UPDATE patisseries
+SET img = REPLACE(img, 'C:\fakepath', 'assets/images/uploads/patisseries/')
+WHERE img LIKE '%C:\fakepath\%';
+
+UPDATE patisseries
+SET img = REPLACE(img, 'C:\fakepath', 'assets/images/uploads/patisseries/')
+WHERE img LIKE '%C:\fakepath\%';
+
+SELECT img,
+REPLACE(img,'C:\fakepath','assets/images/uploads/patisseries/') 
+FROM patisseries;

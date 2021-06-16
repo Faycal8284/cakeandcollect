@@ -22,6 +22,8 @@ const patisserie = db.patisserie;
 
 const file = db.File;
 
+const image = db.image;
+
 // Définir la vue
 const venpatcat = db.venpatcat;
 
@@ -84,6 +86,8 @@ require('./src/routes/file.routes')(app);
 //let router = require('./src/routers/file.router.js');
 //app.use('/', router);
 
+// http://localhost:8080/api/image
+//require('./src/routes/image.routes')(app);
 
 // navigateur web
 app.get("/", (req, res) => {
@@ -97,9 +101,11 @@ app.listen(PORT, () => {
     console.log(`Server fonctionne sur le port ${PORT}.`); // Alt Gr+7
 });
 
+const UPLOAD_PATH = '../ionic-cakeandcollect/src/assets/images/uploads/patisseries';
+
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        callback(null, 'uploads/images/patisseries')
+        callback(null, UPLOAD_PATH )
     },
     filename: (req, file, callback) => {
         callback(null, `${file.originalname}`)
@@ -137,3 +143,9 @@ app.post('/multiplefiles', upload.array('files'), (req, res, next) => {
     }
     res.send({status: 'ok'});
 })
+
+//db.sequelize.query("UPDATE patisseries p JOIN categories c ON p.categorieId = c.Id SET p.img = REPLACE(p.img, 'C:\\fakepath\\', 'assets/images/uploads/patisseries/');" );
+
+
+
+

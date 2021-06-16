@@ -32,6 +32,7 @@ db.commande = require('../models/commande.model')(sequelize, Sequelize);
 db.patisserie = require('../models/patisserie.model')(sequelize, Sequelize);
 db.venpatcat = require('../models/venpatcat.model')(sequelize, Sequelize);
 db.files = require('../models/file.model')(sequelize, Sequelize);
+db.image = require('../models/image.model')(sequelize, Sequelize);
 
 // 1 Client peut avoir plusieurs commandes
 db.client.hasMany(db.commande, { as: "commandes" });
@@ -66,6 +67,7 @@ db.patisserie.belongsTo(db.commande, {
   allowNull: true,
 });
 
+// à la création de la table, hacher le mot de passe
 db.vendeur.beforeCreate((vendeur, options) => {
   return bcrypt.hash(vendeur.mdp, 8)
       .then(hash => {
@@ -86,5 +88,7 @@ db.client.beforeCreate((client, options) => {
           throw new Error(); 
       });
 });
+
+
 
 module.exports = db;

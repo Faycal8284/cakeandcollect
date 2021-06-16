@@ -11,6 +11,7 @@ import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { UploadFileService } from 'src/app/shared/upload-file.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-patisserie',
@@ -47,44 +48,74 @@ export class AddPatisseriePage implements OnInit {
     quantite: null
   };
 
-
   isAdded = false;
   isAddedFailed = false;
   errorMessage = '';
   patisserie: Patisserie = {};
+  nomImage: any;
 
   constructor(private route: ActivatedRoute, private patisseriesServices: PatisseriesService,
-              private router: Router, private http: HttpClient, private form: FormBuilder,
-              private uploadService: UploadFileService ) { }
+    private router: Router, private http: HttpClient, private form: FormBuilder,
+    private uploadService: UploadFileService, private toast: ToastController) { }
 
   ngOnInit() {
     console.log("L'id du vendeur qui ajoute " + this.id);
+  }
 
-    /* this.fileChooser.open() private fileChooser: FileChooser
-          .then(uri => console.log(uri))
-          .catch(e => console.log(e)); */
+  // 1) sélectionner une image
+  selectImage(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.img = file;
+      //file.value.replace("C:\\fakepath\\", "");
+      this.nomImage = file.name;
+    }
   }
 
   isRegistred() {
-    this.onSubmitFormUploadImage();
-    this.uploadFile();
-    console.log("nom path image : " + this.path);
 
-    console.log(this.registerForm);
     const { nom, vendeurId, categorieId, commandeId, disponible, descriptions, ingredients, prix_u, stock, img, img1, img2, img3, quantite } = this.registerForm;
 
     this.patisserie = this.registerForm;
 
     this.patisseriesServices.addPatisserie(this.patisserie)
       .subscribe(
-        data => {
-          console.log(data);
-          data.img = this.path;
-          console.log(data.img);
+        async data => {
+          // upload image et ajouter au dossier distant
+          const formData = new FormData();
+          formData.append('file', this.img);
+          console.log("L'image sauvegardée dans le dossier du serveur : " + this.img);
+          this.uploadService.addImageForm(formData).subscribe(imageData => {
 
-          this.router.navigate(['mes-patisseries', this.id]);
+            console.log(imageData);
+            this.path = imageData.destination + '/' + imageData.filename;
+//            this.img = this.path;
+            //this.img = this.nomImage;
+            console.log("l'url du dossier de sauvegarde :" + this.path);
+
+            // les données à récupérer et mettre dans la colonne img patisserie
+            console.log(data);
+            data.img = this.nomImage;
+            console.log(data.img);
+
+            //(res) =>  console.log(res),
+            //(err) => console.log(err)
+          });
+
+          console.log("nom path image : " + this.path);
+          console.log(this.registerForm);
+
+          //this.img.value.replace("C:\\fakepath\\", this.path);
+
+          //this.router.navigate(['mes-patisseries', this.id]);
           this.isAdded = true;
           this.isAddedFailed = false;
+
+          /*  let toast = await this.toast.create({
+             message: 'Patisserie ajoutée avec succès !',
+             duration: 6000
+           });
+           toast.present(); */
         },
         err => {
           this.errorMessage = err.error.message;
@@ -93,99 +124,58 @@ export class AddPatisseriePage implements OnInit {
       );
   }
 
-  uploadFile() {
-    this.progress.percentage = 0;
-
-    this.currentFileUpload = this.selectedFiles.item(0);
-    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
-      if (event.type === HttpEventType.UploadProgress) {
-        this.progress.percentage = Math.round(100 * event.loaded / event.total);
-      } else if (event instanceof HttpResponse) {
-        console.log('Image sauvegardée dans la table files : ' + this.currentFileUpload );
-      }
-    });
-
-    this.selectedFiles = undefined;
-  }
-
-  onSubmitFormUploadImage(){
-    const formData = new FormData();
-    formData.append('file', this.img);
-    console.log("L'image sauvegardée dans le dossier du serveur : " + this.img);
-
-    this.http.post<any>('http://localhost:8080/file', formData).subscribe( res => {
-      console.log(res);
-      this.path = res.destination + '/' + res.filename;
-      this.img = this.path;
-      console.log("J'ai besoin de ce chemin post serveur :" + this.path);
-    },
-      //(res) =>  console.log(res),
-      (err) => console.log(err)
-    );
-
-  }
-
-  selectImage(event) {
-    this.selectedFiles = event.target.files;
-    console.log("image sélectionnée (selectFile) : " + this.selectedFiles.item(0));
-    if(event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.img = file;
-      //this.path = file.name;
-      console.log("selection de l'image : " + this.img);
+    uploadFile() {
+      this.progress.percentage = 0;
+      this.currentFileUpload = this.selectedFiles.item(0);
+      this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.progress.percentage = Math.round(100 * event.loaded / event.total);
+        } else if (event instanceof HttpResponse) {
+          console.log('Image sauvegardée dans la table files : ' + this.currentFileUpload );
+        }
+      });
+      this.selectedFiles = undefined;
     }
-  }
 
-  selectFile(event) {
+  /* selectFile(event) {
     this.selectedFiles = event.target.files;
-  }
-
- /*  onSubmit() {
-    const formData = new FormData();
-    formData.append('file', this.images);
-
-    this.http.post<any>('http://localhost:8080/file', formData).subscribe(
-      (res) =>  console.log(res),
-      (err) => console.log(err)
-    );
   } */
 
 
- /*  loadImageFromDevice(event) {
-    console.log("à l.78 => l'evenement sur l'jout d'un fichier : " );
-    console.log(event);
+  /*  loadImageFromDevice(event) {
+     console.log("à l.78 => l'evenement sur l'jout d'un fichier : " );
+     console.log(event);
+     const file = event.target.files[0];
+     console.log("le fichier : ");
+     console.log(file);
+     const reader = new FileReader();
+     console.log("le reader  : ");
+     console.log(reader);
 
-    const file = event.target.files[0];
-    console.log("le fichier : ");
-    console.log(file);
-    const reader = new FileReader();
-    console.log("le reader  : ");
-    console.log(reader);
+     reader.readAsArrayBuffer(file);
+     reader.onload = () => {
+       // get the blob of the image:
+       let blob: Blob = new Blob([new Uint8Array((reader.result as ArrayBuffer))]);
+       console.log("le blob : " );
+       console.log(blob);
+       // create blobURL, such that we could use it in an image element:
+       let blobURL: string = URL.createObjectURL(blob);
+       console.log("le blobURL : " );
+       console.log(blobURL);
 
-    reader.readAsArrayBuffer(file);
-    reader.onload = () => {
-      // get the blob of the image:
-      let blob: Blob = new Blob([new Uint8Array((reader.result as ArrayBuffer))]);
-      console.log("le blob : " );
-      console.log(blob);
-      // create blobURL, such that we could use it in an image element:
-      let blobURL: string = URL.createObjectURL(blob);
-      console.log("le blobURL : " );
-      console.log(blobURL);
+       //this.yourImageDataURL = dataReader.result;
 
-      //this.yourImageDataURL = dataReader.result;
+     };
 
-    };
+     reader.onerror = (error) => {
 
-    reader.onerror = (error) => {
+       console.log(error);
+       //handle errors
 
-      console.log(error);
-      //handle errors
+     };
+   }; */
 
-    };
-  }; */
-
-  goToEspaceVendeur(id){
+  goToEspaceVendeur(id) {
     this.router.navigate(['espace-vendeur', id]);
   }
 

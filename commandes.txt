@@ -202,3 +202,5 @@ ionic g page pages/upload/DetailsUpload
 
 ionic g c pages/upload/DetailsUpload
 -----------------------------------------------------------------------------------
+ionic cordova plugin add cordova-plugin-filepath
+npm install @ionic-native/file-path

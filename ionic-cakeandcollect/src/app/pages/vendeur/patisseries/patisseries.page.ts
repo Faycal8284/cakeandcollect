@@ -80,7 +80,6 @@ deletePatisserie(id: any) {
       duration: 2500
     });
     toast.present();
-    
     this.getAllPatisseriesVendeur(null);
   });
 
