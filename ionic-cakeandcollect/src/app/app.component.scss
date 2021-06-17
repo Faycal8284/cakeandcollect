@@ -1,6 +1,12 @@
+ion-header, ion-toolbar{
+    background-color: linear-gradient(to right bottom, #810357, #990669, #b30a7b, #cd0e8e, #e713a1);
+}
+.gradient{
+    background: linear-gradient(to right bottom, color1, color, #b30a7b, #cd0e8e, #e713a1) !important;
+}
 ion-menu {
   ion-toolbar {
-      --background: var(--ion-color-color1);
+      --background: linear-gradient(to right bottom, #810357, #990669, #b30a7b, #cd0e8e, #e713a1);
       height: 100px;
 
       ion-row {

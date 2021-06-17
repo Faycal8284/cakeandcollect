@@ -67,12 +67,11 @@
 
       <ion-item>
         <img [src]="patisserie.img" />
-        <h1>{{patisserie.img}}</h1>
         <ion-label position="floating">Image Principale</ion-label>
         <ion-input formControlName="img" type="file" 
                    name="img" (change)="selectFile($event)" 
                    [(ngModel)]="img" class="form-control"
-                   accept="image/*">
+                   accept=".png, .jpg, .jpeg">
         </ion-input>
         <div *ngIf="currentFileUpload" class="progress">
           <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" 

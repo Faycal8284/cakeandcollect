@@ -1,6 +1,42 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+/* .selector {
+  @include background-image(linear-gradient(to right bottom, color1, color, #b30a7b, #cd0e8e, #e713a1));
+} */
+
+@mixin fluster-linear-gradient($direction, $color-left, $color-right) {
+  background: $color-right;
+  background: -webkit-linear-gradient($direction, $color-left, $color-right);
+  background: -moz-linear-gradient($direction, $color-left, $color-right);
+  background: -o-linear-gradient($direction, $color-left, $color-right);
+  background: linear-gradient($direction, $color-left, $color-right);
+}
+
+@mixin fluster-linear-gradient-variable($direction, $color-left, $color-right) {
+  --background: #{$color-right};
+  --background: -webkit-linear-gradient(#{$direction}, #{$color-left}, #{$color-right});
+  --background: -moz-linear-gradient(#{$direction}, #{$color-left}, #{$color-right});
+  --background: -o-linear-gradient(#{$direction}, #{$color-left}, #{$color-right});
+  --background: linear-gradient(#{$direction}, #{$color-left}, #{$color-right});
+}
+
+@mixin fluster-linear-gradient-variable-activated($direction, $color-left, $color-right) {
+  --background-activated: #{$color-right};
+  --background-activated: -webkit-linear-gradient(#{$direction}, #{$color-left}, #{$color-right});
+  --background-activated: -moz-linear-gradient(#{$direction}, #{$color-left}, #{$color-right});
+  --background-activated: -o-linear-gradient(#{$direction}, #{$color-left}, #{$color-right});
+  --background-activated: linear-gradient(#{$direction}, #{$color-left}, #{$color-right});
+}
+
+@mixin fluster-linear-gradient-variable-checked($direction, $color-left, $color-right) {
+  --background-checked: #{$color-right};
+  --background-checked: -webkit-linear-gradient(#{$direction}, #{$color-left}, #{$color-right});
+  --background-checked: -moz-linear-gradient(#{$direction}, #{$color-left}, #{$color-right});
+  --background-checked: -o-linear-gradient(#{$direction}, #{$color-left}, #{$color-right});
+  --background-checked: linear-gradient(#{$direction}, #{$color-left}, #{$color-right});
+}
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/

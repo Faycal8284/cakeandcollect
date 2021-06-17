@@ -22,7 +22,7 @@
       <ion-list class="ion-padding" lines="none">
         <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
           <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-            <ion-icon color="color1" size="small" slot="start" [name]="p.icon"></ion-icon>
+            <ion-icon color="color1" size="medium" slot="start" [name]="p.icon"></ion-icon>
             <ion-label>
               {{ p.title }}
             </ion-label>

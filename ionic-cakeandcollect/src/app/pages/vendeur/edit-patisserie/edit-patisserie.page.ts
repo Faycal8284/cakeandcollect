@@ -38,6 +38,7 @@ export class EditPatisseriePage implements OnInit {
               private uploadService: UploadFileService, private toast: ToastController) { }
 
   ngOnInit() {
+    // Initialiser le formulaire
     this.editForm = this.form.group({
       nom: [''],
       categorieId: [''],
@@ -49,10 +50,9 @@ export class EditPatisseriePage implements OnInit {
       img: ['']
     });
 
-
+    // Récupérer la patisserie à modifier
     this.patisseriesServices.getPatisserie(this.id).subscribe(data =>{
       console.log(data);
-      console.log(data.nom);
       this.patisserie = data;
       this.editForm.patchValue({
         id: this.id,
@@ -82,8 +82,6 @@ export class EditPatisseriePage implements OnInit {
   console.log(this.editForm.value.img);
   this.editForm.value.img = this.path;
   this.editForm.value.img.replace(this.editForm.value.img, this.path);
-  this.path = '/assets/images/uploads/' + this.imageName;
-  this.editForm.value.img = this.path;
 }
 
  // 2) sinon, si boutton html actif => charger l'image afin d'obtenir ses infos en concole
@@ -104,39 +102,38 @@ export class EditPatisseriePage implements OnInit {
     }
   });
   this.selectedFiles = undefined;
-
 }
 
   modifier(){
-    // 1) Envoyer l'image sélectionnée au dossier distant (server)
      const formData = new FormData();
     formData.append('file', this.imgUpload);
     console.log("L'image sauvegardée dans le dossier du serveur : " + this.imgUpload);
-
+ // 1) Envoyer l'image sélectionnée au dossier distant (server)
     this.uploadService.addImageForm(formData).subscribe(imageData => {
       this.editForm.value.img = this.path;
 
       console.log(imageData);
-      //this.path = imageData.destination + '/' + imageData.filename;
-      //this.path = '/assets/images/uploads/' + imageData.filename; // url img dans la table patisserie
       this.path = '/assets/images/uploads/' + this.imageName;
       console.log("le chemin de l'image " + this.path);
 
       // affecter la nouvelle url à l'img patisserie
       this.patisserie.img = this.path;
 
-      // Enregistrer la patisserie
-      this.patisseriesServices.updatePatisserie(this.id, this.editForm.value).subscribe(data => {
+      // Enregistrer la patisserie avec son image chargée
+      this.patisseriesServices.updatePatisserie(this.id, this.editForm.value).subscribe(async data => {
 
         // enregistrer url img
-        //this.path = '/assets/images/uploads/' + this.imageName;
         this.editForm.value.img = this.path;
         this.patisserie.img = this.path;
         console.log(this.patisserie);
-        //console.log("nom path image : " + this.path);
         console.log(this.editForm.value.img);
 
-        //this.zone.run(() => this.router.navigate(['mes-patisseries', this.patisserie.vendeurId]));
+        this.zone.run(() => this.router.navigate(['mes-patisseries', this.patisserie.vendeurId]));
+        let toast = await this.toast.create({
+          message: 'Patisserie modifiée avec succès !',
+          duration: 6000
+        });
+        toast.present();
       });
 
     });
@@ -145,27 +142,5 @@ export class EditPatisseriePage implements OnInit {
   goToPatisseriesOfVendeur(id){
     this.router.navigate(['mes-patisseries', id]);
   }
-
-  deletePatisserie(id:any){
-    this.patisseriesServices.deletePatisserie(id).subscribe(data => {
-      console.log(data);
-    });
-   /*  this.patisseriesServices.deletePatisserie(id).subscribe(async data => {
-      console.log(data);
-      let toast = await this.toast.create({
-        message: 'Patisserie supprimée',
-        duration: 2500
-      });
-      toast.present();
-      this.patisseriesServices.getAllPatisseries().subscribe(data => {
-        console.log(data);
-        this.patisseries = data;
-      });
-    });
-    this.getAllPatisseriesVendeur(null); */
-  }
-
-
-
 
 }
