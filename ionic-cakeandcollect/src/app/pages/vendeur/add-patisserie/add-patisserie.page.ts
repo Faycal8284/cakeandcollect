@@ -50,6 +50,7 @@ export class AddPatisseriePage implements OnInit {
   errorMessage = '';
   patisserie: Patisserie = {};
 
+
   constructor(private route: ActivatedRoute, private patisseriesServices: PatisseriesService,
     private router: Router, private http: HttpClient, private form: FormBuilder,
     private uploadService: UploadFileService, private toast: ToastController) { }
@@ -98,7 +99,7 @@ export class AddPatisseriePage implements OnInit {
 
       console.log(imageData);
       //this.path = imageData.destination + '/' + imageData.filename;
-      this.path = '/assets/images/uploads/patisseries/' + imageData.filename; // url img dans la table patisserie
+      this.path = '/assets/images/uploads/' + imageData.filename; // url img dans la table patisserie
       console.log("le chemin de l'image " + this.path);
 
       // affecter la nouvelle url à l'img patisserie

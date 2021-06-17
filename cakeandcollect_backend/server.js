@@ -101,7 +101,7 @@ app.listen(PORT, () => {
     console.log(`Server fonctionne sur le port ${PORT}.`); // Alt Gr+7
 });
 
-const UPLOAD_PATH = '../ionic-cakeandcollect/src/assets/images/uploads/patisseries';
+const UPLOAD_PATH = '../ionic-cakeandcollect/src/assets/images/uploads';
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {

@@ -4,14 +4,18 @@
 /* eslint-disable prefer-const */
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, NgZone, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { Component, NgZone, OnInit, Directive } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { Patisserie } from 'src/app/interfaces/patisserie';
 import { PatisseriesService } from 'src/app/shared/patisseries.service';
+import { UploadFileService } from 'src/app/shared/upload-file.service';
 
 @Component({
   selector: 'app-edit-patisserie',
+  exportAs: 'editForm',
   templateUrl: './edit-patisserie.page.html',
   styleUrls: ['./edit-patisserie.page.scss'],
 })
@@ -20,12 +24,21 @@ export class EditPatisseriePage implements OnInit {
   patisserie: Patisserie = {};
   editForm: FormGroup;
   id = this.route.snapshot.params.id;
+  imgUpload;
+  path: string;
+  destination: string;
+  imageName: string;
+  selectedFiles: FileList;
+  currentFileUpload: File;
+  progress: { percentage: number } = { percentage: 0 };
 
-  constructor(public formBuilder: FormBuilder, private zone: NgZone, private route: ActivatedRoute,
-              private patisseriesServices: PatisseriesService, private router: Router) { }
+
+  constructor(private form: FormBuilder, private zone: NgZone, private route: ActivatedRoute,
+              private patisseriesServices: PatisseriesService, private router: Router,
+              private uploadService: UploadFileService, private toast: ToastController) { }
 
   ngOnInit() {
-    this.editForm = this.formBuilder.group({
+    this.editForm = this.form.group({
       nom: [''],
       categorieId: [''],
       disponible: [''],
@@ -55,10 +68,77 @@ export class EditPatisseriePage implements OnInit {
     });
   }
 
+   // 1) selection image et la charger
+ selectFile(event) {
+  this.selectedFiles = event.target.files;
+  const file = event.target.files[0];
+  this.imgUpload = file;
+  console.log(this.selectedFiles);
+  console.log(file);
+  this.upload(); //charger image à la sélection de celle-ci
+  this.imageName = this.currentFileUpload.name;
+  this.path = '/assets/images/uploads/' + this.imageName;
+  this.patisserie.img = this.path;
+  console.log(this.editForm.value.img);
+  this.editForm.value.img = this.path;
+  this.editForm.value.img.replace(this.editForm.value.img, this.path);
+  this.path = '/assets/images/uploads/' + this.imageName;
+  this.editForm.value.img = this.path;
+}
+
+ // 2) sinon, si boutton html actif => charger l'image afin d'obtenir ses infos en concole
+ upload() {
+  this.path = '/assets/images/uploads/' + this.imageName;
+  this.editForm.value.img = this.path;
+  this.progress.percentage = 0;
+  this.currentFileUpload = this.selectedFiles.item(0);
+  this.imageName = this.currentFileUpload.name;
+
+  this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+    if (event.type === HttpEventType.UploadProgress) {
+      this.progress.percentage = Math.round(100 * event.loaded / event.total);
+    } else if (event instanceof HttpResponse) {
+      console.log('File is completely uploaded!');
+      console.log(this.currentFileUpload.name);
+      this.imageName = this.currentFileUpload.name;
+    }
+  });
+  this.selectedFiles = undefined;
+
+}
+
   modifier(){
-    this.patisseriesServices.updatePatisserie(this.id, this.editForm.value).subscribe(data => {
-      console.log("Edit patisserie :" + data);
-      this.zone.run(() => this.router.navigate(['mes-patisseries', this.patisserie.vendeurId]));
+    // 1) Envoyer l'image sélectionnée au dossier distant (server)
+     const formData = new FormData();
+    formData.append('file', this.imgUpload);
+    console.log("L'image sauvegardée dans le dossier du serveur : " + this.imgUpload);
+
+    this.uploadService.addImageForm(formData).subscribe(imageData => {
+      this.editForm.value.img = this.path;
+
+      console.log(imageData);
+      //this.path = imageData.destination + '/' + imageData.filename;
+      //this.path = '/assets/images/uploads/' + imageData.filename; // url img dans la table patisserie
+      this.path = '/assets/images/uploads/' + this.imageName;
+      console.log("le chemin de l'image " + this.path);
+
+      // affecter la nouvelle url à l'img patisserie
+      this.patisserie.img = this.path;
+
+      // Enregistrer la patisserie
+      this.patisseriesServices.updatePatisserie(this.id, this.editForm.value).subscribe(data => {
+
+        // enregistrer url img
+        //this.path = '/assets/images/uploads/' + this.imageName;
+        this.editForm.value.img = this.path;
+        this.patisserie.img = this.path;
+        console.log(this.patisserie);
+        //console.log("nom path image : " + this.path);
+        console.log(this.editForm.value.img);
+
+        //this.zone.run(() => this.router.navigate(['mes-patisseries', this.patisserie.vendeurId]));
+      });
+
     });
   }
 
@@ -86,33 +166,6 @@ export class EditPatisseriePage implements OnInit {
   }
 
 
-  /*
-  loadImageFromDevice(event) {
-    console.log(event);
-
-    const file = event.target.files[0];
-    console.log(file);
-    const reader = new FileReader();
-    console.log(reader);
-
-    reader.readAsArrayBuffer(file);
-    reader.onload = () => {
-      // get the blob of the image:
-      let blob: Blob = new Blob([new Uint8Array((reader.result as ArrayBuffer))]);
-      // create blobURL, such that we could use it in an image element:
-      let blobURL: string = URL.createObjectURL(blob);
-
-      //this.yourImageDataURL = dataReader.result;
-
-    };
-
-    reader.onerror = (error) => {
-
-      console.log(error);
-      //handle errors
-
-    };
-  }; */
 
 
 }

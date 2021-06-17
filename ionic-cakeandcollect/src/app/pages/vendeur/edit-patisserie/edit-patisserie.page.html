@@ -26,14 +26,6 @@
     <form [formGroup]="editForm" (ngSubmit)="modifier()">
 
       <ion-item>
-        <!-- Image -->
-        <img [src]="patisserie.img" />
-        <ion-label position="floating">Image Principale</ion-label>
-        <ion-input formControlName="img" type="file">
-        </ion-input>
-      </ion-item>
-
-      <ion-item>
         <ion-label position="floating">Nom</ion-label>
         <ion-input formControlName="nom" type="text" required></ion-input>
       </ion-item>
@@ -73,6 +65,23 @@
         </ion-input>
       </ion-item>
 
+      <ion-item>
+        <img [src]="patisserie.img" />
+        <h1>{{patisserie.img}}</h1>
+        <ion-label position="floating">Image Principale</ion-label>
+        <ion-input formControlName="img" type="file" 
+                   name="img" (change)="selectFile($event)" 
+                   [(ngModel)]="img" class="form-control"
+                   accept="image/*">
+        </ion-input>
+        <div *ngIf="currentFileUpload" class="progress">
+          <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" 
+               attr.aria-valuenow="{{progress.percentage}}"
+               aria-valuemin="0" aria-valuemax="100" 
+               [ngStyle]="{width:progress.percentage+'%'}">Image chargée à {{progress.percentage}}%</div>
+        </div>
+      </ion-item>
+
       <ion-row>
         <ion-col>
           <ion-button type="submit" color="primary" shape="full" expand="block">
@@ -80,6 +89,7 @@
           </ion-button>
         </ion-col>
       </ion-row>
+      
     </form>
   </ion-list>
 </ion-content>
