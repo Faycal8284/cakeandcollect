@@ -6,8 +6,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Patisserie } from 'src/app/interfaces/patisserie';
 import { PatisseriesService } from 'src/app/shared/patisseries.service';
-
-import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { UploadFileService } from 'src/app/shared/upload-file.service';
@@ -21,11 +19,10 @@ import { ToastController } from '@ionic/angular';
 export class AddPatisseriePage implements OnInit {
 
   id = this.route.snapshot.params.id;
-  title = 'fileUpload';
-  //images;
-  img;
+  imgUpload;
   path: string;
   destination: string;
+  imageName: string;
 
   selectedFiles: FileList;
   currentFileUpload: File;
@@ -52,7 +49,6 @@ export class AddPatisseriePage implements OnInit {
   isAddedFailed = false;
   errorMessage = '';
   patisserie: Patisserie = {};
-  nomImage: any;
 
   constructor(private route: ActivatedRoute, private patisseriesServices: PatisseriesService,
     private router: Router, private http: HttpClient, private form: FormBuilder,
@@ -62,118 +58,79 @@ export class AddPatisseriePage implements OnInit {
     console.log("L'id du vendeur qui ajoute " + this.id);
   }
 
-  // 1) sélectionner une image
-  selectImage(event) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.img = file;
-      //file.value.replace("C:\\fakepath\\", "");
-      this.nomImage = file.name;
-    }
+  // 1) selection image et la charger
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
+    const file = event.target.files[0];
+    this.imgUpload = file;
+    console.log(this.selectedFiles);
+    console.log(file);
+    this.upload(); //charger image à la sélection de celle-ci
   }
 
+  // 2) sinon, si boutton html actif => charger l'image afin d'obtenir ses infos en concole
+  upload() {
+    this.progress.percentage = 0;
+    this.currentFileUpload = this.selectedFiles.item(0);
+    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress) {
+        this.progress.percentage = Math.round(100 * event.loaded / event.total);
+      } else if (event instanceof HttpResponse) {
+        console.log('File is completely uploaded!');
+        console.log(this.currentFileUpload.name);
+        this.imageName = this.currentFileUpload.name;
+      }
+    });
+    this.selectedFiles = undefined;
+  }
+
+  // 3) Soumettre l'enregistrement du formulaire
   isRegistred() {
 
     const { nom, vendeurId, categorieId, commandeId, disponible, descriptions, ingredients, prix_u, stock, img, img1, img2, img3, quantite } = this.registerForm;
-
     this.patisserie = this.registerForm;
 
-    this.patisseriesServices.addPatisserie(this.patisserie)
-      .subscribe(
+    // 1) Envoyer l'image sélectionnée au dossier distant (server)
+    const formData = new FormData();
+    formData.append('file', this.imgUpload);
+    console.log("L'image sauvegardée dans le dossier du serveur : " + this.imgUpload);
+    this.uploadService.addImageForm(formData).subscribe(imageData => {
+
+      console.log(imageData);
+      //this.path = imageData.destination + '/' + imageData.filename;
+      this.path = '/assets/images/uploads/patisseries/' + imageData.filename; // url img dans la table patisserie
+      console.log("le chemin de l'image " + this.path);
+
+      // affecter la nouvelle url à l'img patisserie
+      this.patisserie.img = this.path;
+
+      // Enregistrer la patisserie
+      this.patisseriesServices.addPatisserie(this.patisserie).subscribe(
         async data => {
-          // upload image et ajouter au dossier distant
-          const formData = new FormData();
-          formData.append('file', this.img);
-          console.log("L'image sauvegardée dans le dossier du serveur : " + this.img);
-          this.uploadService.addImageForm(formData).subscribe(imageData => {
-
-            console.log(imageData);
-            this.path = imageData.destination + '/' + imageData.filename;
-//            this.img = this.path;
-            //this.img = this.nomImage;
-            console.log("l'url du dossier de sauvegarde :" + this.path);
-
-            // les données à récupérer et mettre dans la colonne img patisserie
-            console.log(data);
-            data.img = this.nomImage;
-            console.log(data.img);
-
-            //(res) =>  console.log(res),
-            //(err) => console.log(err)
-          });
-
+          console.log(data);
+          // enregistrer url img
+          this.patisserie.img = this.path;
+          console.log(this.patisserie.img);
           console.log("nom path image : " + this.path);
           console.log(this.registerForm);
-
-          //this.img.value.replace("C:\\fakepath\\", this.path);
 
           //this.router.navigate(['mes-patisseries', this.id]);
           this.isAdded = true;
           this.isAddedFailed = false;
 
-          /*  let toast = await this.toast.create({
+          let toast = await this.toast.create({
              message: 'Patisserie ajoutée avec succès !',
              duration: 6000
            });
-           toast.present(); */
+           toast.present();
         },
         err => {
           this.errorMessage = err.error.message;
           this.isAddedFailed = true;
         }
       );
+    });
   }
-
-    uploadFile() {
-      this.progress.percentage = 0;
-      this.currentFileUpload = this.selectedFiles.item(0);
-      this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
-        if (event.type === HttpEventType.UploadProgress) {
-          this.progress.percentage = Math.round(100 * event.loaded / event.total);
-        } else if (event instanceof HttpResponse) {
-          console.log('Image sauvegardée dans la table files : ' + this.currentFileUpload );
-        }
-      });
-      this.selectedFiles = undefined;
-    }
-
-  /* selectFile(event) {
-    this.selectedFiles = event.target.files;
-  } */
-
-
-  /*  loadImageFromDevice(event) {
-     console.log("à l.78 => l'evenement sur l'jout d'un fichier : " );
-     console.log(event);
-     const file = event.target.files[0];
-     console.log("le fichier : ");
-     console.log(file);
-     const reader = new FileReader();
-     console.log("le reader  : ");
-     console.log(reader);
-
-     reader.readAsArrayBuffer(file);
-     reader.onload = () => {
-       // get the blob of the image:
-       let blob: Blob = new Blob([new Uint8Array((reader.result as ArrayBuffer))]);
-       console.log("le blob : " );
-       console.log(blob);
-       // create blobURL, such that we could use it in an image element:
-       let blobURL: string = URL.createObjectURL(blob);
-       console.log("le blobURL : " );
-       console.log(blobURL);
-
-       //this.yourImageDataURL = dataReader.result;
-
-     };
-
-     reader.onerror = (error) => {
-
-       console.log(error);
-       //handle errors
-
-     };
-   }; */
 
   goToEspaceVendeur(id) {
     this.router.navigate(['espace-vendeur', id]);
