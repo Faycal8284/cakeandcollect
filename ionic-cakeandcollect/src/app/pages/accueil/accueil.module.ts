@@ -7,6 +7,7 @@ import { AccueilPage } from './accueil.page';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ParallaxHeaderDirective } from '../../directives/parallax-header.directive';
+import { IonicHeaderParallaxModule } from 'ionic-header-parallax';
 
 @NgModule({
   imports: [
@@ -15,6 +16,8 @@ import { ParallaxHeaderDirective } from '../../directives/parallax-header.direct
     FormsModule,
     AccueilPageRoutingModule,
     Ng2SearchPipeModule,
+    IonicHeaderParallaxModule,
+    
   ],
   declarations: [AccueilPage, ParallaxHeaderDirective]
 })

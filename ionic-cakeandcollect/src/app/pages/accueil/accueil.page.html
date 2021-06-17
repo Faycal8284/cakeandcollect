@@ -1,8 +1,8 @@
-<!-- <ion-content [scrollEvents]="true" parallaxHeader="../../../assets/images/parallax/pat1.jpg" [parallaxHeight]="300" >
-  <div class="main-content"> -->
- 
+<!-- <ion-content [scrollEvents]="true" parallaxHeader="../../../assets/images/b" [parallaxHeight]="300" >
+  <div class="main-content">
+  -->
 <!-- Header -->
-<ion-header >
+<ion-header parallax imageUrl="../../../assets/images/background/macarons-framboise.jpg" maximumHeight="350" expandedColor="#AAA" titleColor="white">
   
   <ion-toolbar color="color1">
 
@@ -12,7 +12,7 @@
     </ion-buttons>
 
     <!-- Title -->
-    <ion-title>Accueil</ion-title>
+    <ion-title>Cake & Collect</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -140,7 +140,7 @@
             <br>
             <ion-text color="color1">{{patisserie.prix_u}} €</ion-text>
           </ion-label>
-          <ion-card (click)="gotoPanierPage()">
+          <ion-card (click)="gotoPatisseriePage(patisserie.id)">
             Commander
           </ion-card>
         </ion-item>
