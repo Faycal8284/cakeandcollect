@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar color="color1">
+    <ion-buttons slot="start">
+      <ion-button (click)="gotToEspaceClient()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Profil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list lines="full">
+  <form [formGroup]="editProfilForm" (ngSubmit)="updateProfile()">
+
+    <ion-item>
+      <ion-label position="floating">Nom : </ion-label>
+      <ion-input formControlName="nom" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Prénom : </ion-label>
+      <ion-input formControlName="prenom" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">email : </ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Téléphone : </ion-label>
+      <ion-input formControlName="tel" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Adresse : </ion-label>
+      <ion-input formControlName="rue" type="text"></ion-input>
+      <ion-input formControlName="code_postal" type="number"></ion-input>
+      <ion-input formControlName="ville" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Avatar</ion-label>
+      <ion-input formControlName="img" type="file" 
+                 name="img" (change)="selectFile($event)" 
+                 [(ngModel)]="img" class="form-control"
+                 accept=".png, .jpg, .jpeg" required>
+      </ion-input>
+      <div *ngIf="currentFileUpload" class="progress">
+        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" 
+             attr.aria-valuenow="{{progress.percentage}}"
+             aria-valuemin="0" aria-valuemax="100" 
+             [ngStyle]="{width:progress.percentage+'%'}">Image chargée à {{progress.percentage}}%</div>
+      </div>
+      <img [src]="client.img" [alt]="client.nom" width="150px">
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="danger" position="floating">
+        Confirmez vos changements en entrant votre mot de passe</ion-label>
+      <ion-input formControlName="mdp" type="text" 
+                 placeholder="Mot de passe obligatoire" required minlength="3">
+      </ion-input>                
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="primary" shape="full" expand="block">
+          Mettre à jour
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-list>
+</ion-content>
+
+

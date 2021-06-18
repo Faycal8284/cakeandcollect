@@ -39,4 +39,7 @@ export class EspaceVendeurPage implements OnInit {
   gotToModifierMotDePasse(id: any){
     this.router.navigate(['changer-motdepasse-vendeur', id]);
   }
+  editProfileVendeur(id: any){
+    this.router.navigate(['profil-vendeur', id]);
+  }
 }

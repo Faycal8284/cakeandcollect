@@ -14,7 +14,7 @@
 <ion-content [fullscreen]="true" class="background">
   <!-- Profile Details -->
   <ion-list lines="none" class="ion-padding-top" *ngIf="client">
-    <ion-item>
+    <ion-item  class="navigate" (click)="editProfileClient(client.id)">
       <!-- User Image -->
       <ion-avatar slot="start">
         <img style="vertical-align: middle;" [src]="client.img">
@@ -31,22 +31,22 @@
   <ion-list lines="full" class="ion-padding-top">
     <ion-item>
       <ion-icon color="medium" slot="end" name="key-outline"></ion-icon>
-      <ion-label class="ion-padding" (click)="gotToModifierMotDePasse(client.id)">Modifier Mot de passe</ion-label>
+      <ion-label class="ion-padding click" (click)="gotToModifierMotDePasse(client.id)">Modifier Mot de passe</ion-label>
     </ion-item>
 
     <ion-item>
       <ion-icon color="medium" slot="end" name="heart"></ion-icon>
-      <ion-label class="ion-padding">Mes Favories</ion-label>
+      <ion-label class="ion-padding click">Mes Favories</ion-label>
     </ion-item>
 
     <ion-item>
       <ion-icon color="medium" slot="end" name="card"></ion-icon>
-      <ion-label class="ion-padding" (click)="goToModeDePaiement()">Mode de paiement</ion-label>
+      <ion-label class="ion-padding click" (click)="goToModeDePaiement()">Mode de paiement</ion-label>
     </ion-item>
 
     <ion-item>
       <ion-icon color="medium" slot="end" name="settings"></ion-icon>
-      <ion-label class="ion-padding" (click)="goToDeviceInformation(client.id)">Paramètres</ion-label>
+      <ion-label class="ion-padding click" (click)="goToDeviceInformation(client.id)">Paramètres</ion-label>
     </ion-item>
 
   </ion-list>

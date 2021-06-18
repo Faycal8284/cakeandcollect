@@ -25,3 +25,17 @@
         --ion-color-tint: #c72e94 !important;
     }
 }
+
+.navigate{
+    cursor: pointer;  
+}
+.none{
+    display: none;
+    position: relative;
+    z-index: 1;
+}
+
+.navigate:hover .none{
+    display: block;
+}
+

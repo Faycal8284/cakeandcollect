@@ -28,3 +28,19 @@
 ion-toast > .toast-wrapper {
     background-color: rgb(209, 12, 160) !important;
 }
+
+.click{
+    cursor: pointer;
+}
+
+.click:hover{
+    background-image: linear-gradient(to right bottom, #810357, #990669, #b30a7b, #cd0e8e, #e713a1);
+    color: #fff;
+    border-radius: 10% 50px;
+    transition-duration: 0.2s;
+}
+
+.navigate{
+    cursor: pointer;  
+}
+

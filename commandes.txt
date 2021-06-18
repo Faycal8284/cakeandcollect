@@ -175,7 +175,9 @@ ionic g page pages/client/device-information
 ionic cordova plugin add @ionic-enterprise/device 
 -----------------------------------------------------------------------------------
 ionic cordova platform add android
-ionic cordova build android
+ionic cordova build android 
+ionic cordova emulate android 
+ionic cordova build android --device
 ionic cordova run android
 -----------------------------------------------------------------------------------
 ionic cordova plugin add cordova-plugin-filechooser
@@ -204,3 +206,7 @@ ionic g c pages/upload/DetailsUpload
 -----------------------------------------------------------------------------------
 ionic cordova plugin add cordova-plugin-filepath
 npm install @ionic-native/file-path
+-----------------------------------------------------------------------------------
+ionic g page pages/vendeur/profilVendeur
+ionic g page pages/client/profilClient
+ionic g page pages/client/parametres

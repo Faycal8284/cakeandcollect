@@ -35,7 +35,11 @@ export class EspaceClientPage implements OnInit {
   }
 
   goToDeviceInformation(id: any){
-    this.router.navigate(['device-information', id]);
+    this.router.navigate(['parametres', id]);
+  }
+
+  editProfileClient(id: any){
+    this.router.navigate(['profil-client', id]);
   }
 
 }
