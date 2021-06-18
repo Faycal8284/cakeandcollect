@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/shared/auth.client.service';
 
 
@@ -32,7 +33,7 @@ export class RegisterClientPage implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService, private toast: ToastController) { }
 
   ngOnInit() {
   }
@@ -42,13 +43,18 @@ export class RegisterClientPage implements OnInit {
     const { nom, prenom, email, mdp, img, tel, actif, rue, code_postal, ville, note_vendeur, avis_commande } = this.registerForm;
     this.authService.register(nom, prenom, email, mdp, img, tel, actif, rue, code_postal, ville, note_vendeur, avis_commande )
     .subscribe(
-      data => {
+      async data => {
         console.log(data);
 
         this.isSignedUp = true;
         this.isSignUpFailed = false;
         this.router.navigateByUrl('/login-client'); // navigate vers la page de connexion
         //this.router.navigate(['login-vendeur', data.id]);
+        const toast = await this.toast.create({
+          message: 'Compte créé avec succès ! Connectez-vous !',
+          duration: 6000
+        });
+        toast.present();
       },
       err => {
         this.errorMessage = err.error.message;

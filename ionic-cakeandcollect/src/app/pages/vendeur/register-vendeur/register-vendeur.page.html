@@ -75,14 +75,6 @@
           </ion-item>
 
           <ion-item lines="full">
-            <ion-label position="floating">Image</ion-label>
-            <ion-input type="file" (change)="loadImageFromDevice($event)" id="file-input"
-                                    accept="image/png, image/jpeg"
-                      class="form-control" name="img" [(ngModel)]="registerForm.img"
-                #img="ngModel"></ion-input>
-          </ion-item>
-
-          <ion-item lines="full">
             <ion-label position="floating">Catégorie</ion-label>
             <ion-input type="text" class="form-control" name="categorie" [(ngModel)]="registerForm.categorie"
                 #categorie="ngModel"></ion-input>

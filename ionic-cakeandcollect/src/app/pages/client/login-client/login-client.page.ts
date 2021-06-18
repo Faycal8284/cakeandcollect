@@ -24,7 +24,7 @@ export class LoginClientPage implements OnInit {
   errorMessage = '';
 
   constructor(private router: Router, private authService: AuthService,
-    private tokenStorage: TokenStorageService) { }
+              private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
   }
