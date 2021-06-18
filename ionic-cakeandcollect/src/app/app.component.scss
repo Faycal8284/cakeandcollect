@@ -7,7 +7,8 @@ ion-header, ion-toolbar{
 ion-menu {
   ion-toolbar {
       --background: linear-gradient(to right bottom, #810357, #990669, #b30a7b, #cd0e8e, #e713a1);
-      height: 100px;
+      height: 110px;
+      padding: 0;
 
       ion-row {
           padding-top: 30px;
