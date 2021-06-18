@@ -30,15 +30,15 @@
         quantite
         <ion-card>
           <!-- Add More quantite -->
-          <ion-col (click)="article[i].qty = article[i].qty + 1">
+          <ion-col (click)="addone(patisserie)">
             <ion-icon style="zoom:1.7;" name="add-circle-outline"></ion-icon>
           </ion-col>
 
           <!-- Total quantite -->
-          <ion-col style='text-align:center'>{{article.qty}}</ion-col>
+          <ion-col  style='text-align:center' >{{ itemQty  }}</ion-col>
 
           <!-- Minus quantite -->
-          <ion-col (click)="article[i].qty > 1 && article[i].quantite = patisseries[i].quantite - 1">
+          <ion-col (click)="eliminate()">
             <ion-icon style="zoom:1.7;" name="remove-circle-outline"></ion-icon>
           </ion-col>
         </ion-card>
