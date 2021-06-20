@@ -48,3 +48,12 @@ ion-toast > .toast-wrapper {
     font-family: 'Amita', cursive;
 }
 
+.gradient{
+    padding-bottom: 20px;
+    color: #fff;
+    --background: linear-gradient(to right bottom, #810357, #990669, #b30a7b, #cd0e8e, #e713a1);
+}
+
+ion-menu-button{
+    color: #fff;
+}

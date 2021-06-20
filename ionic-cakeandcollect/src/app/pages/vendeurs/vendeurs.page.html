@@ -1,7 +1,6 @@
 <!-- Header -->
 <ion-header>
-  <ion-toolbar color="color1">
-
+  <ion-toolbar class="gradient">
      <!-- Back button -->
     <ion-buttons slot="start">
       <ion-button (click)="gotoAccueilPage()">
@@ -47,9 +46,9 @@
                 <h5>Catégories : {{vendeur.categorie}}</h5>
 
                 <!-- vendeur détails  -->
-                <ion-text color="medium"> {{vendeur.descriptions}}</ion-text><br>
-                <ion-text color="medium"> Téléphone : {{vendeur.tel}}</ion-text> <br>
-                <ion-text color="medium"> Adresse : {{vendeur.rue}} {{vendeur.code_postal}} {{vendeur.ville}}</ion-text><br>
+                <ion-text color="medium"><b>Description : </b> {{vendeur.descriptions}}</ion-text><br>
+                <ion-text color="medium"><b>Mobile : </b> Téléphone : {{vendeur.tel}}</ion-text> <br>
+                <ion-text color="medium"> <b>Adresse</b> : {{vendeur.rue}} {{vendeur.code_postal}} {{vendeur.ville}}</ion-text><br>
               </ion-label>
             </ion-item>
           </ion-list>
