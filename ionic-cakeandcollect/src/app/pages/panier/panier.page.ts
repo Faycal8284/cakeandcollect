@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/prefer-for-of */
-import { Component, IterableDiffers, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ItemCarts } from 'src/app/interfaces/item-carts';
 import { Storage } from '@ionic/storage-angular';
 import { ModalController, NavController, ViewDidEnter } from '@ionic/angular';
-import { AddPatisseriePage } from '../vendeur/add-patisserie/add-patisserie.page';
 import { Patisserie } from 'src/app/interfaces/patisserie';
 import { BehaviorSubject } from 'rxjs';
 
@@ -17,87 +16,67 @@ export class PanierPage {
   panierItems: ItemCarts[];
   total = 0;
   cartCount = new BehaviorSubject(0);
+ 
   itemQty = 0;
   patisserie: Patisserie = {};
+  qty  = new BehaviorSubject<number>(0);
+  totalSum: number;
 
   constructor(
     private storage: Storage,
     private router: Router,
     public modal: ModalController,
-    public navCtrl: NavController
-  ) {}
+    public navCtrl: NavController,
+   
+  ){}
 
   ionViewDidEnter(): void {
+    console.log('render')
           this.storage.get('cart').then((data: ItemCarts[]) => {
             this.panierItems=data;
             this.panierItems.forEach((element: ItemCarts) =>{
 
-            this.total += (element.item.prix_u * element.qty);
             });
+            
         })
         .catch((err)=>{
           console.log('erreur',err);
         });
-
-
-        // this.panierItems.forEach((element:ItemCarts) =>{
-        //   if(element.item.disponible== true)
-        //   this.total += (element.item.prix_u * element.qty)
-        // })
-
-    this.storage
-      .get('cart')
-      .then((data: ItemCarts[]) => {
-        this.panierItems = data;
-        this.panierItems.forEach((element: ItemCarts) => {
-          // this.itemQty = element.qty;
-          // this.total = (element.item.prix_u * element.qty)
-        });
-      })
-      .catch((err) => {
-        console.log('erreur', err);
-      });
-
-    // this.panierItems.forEach((element:ItemCarts) =>{
-    //   if(element.item.disponible== true)
-    //   this.total += (element.item.prix_u * element.qty)
-    // })
   }
 
-  addone(patisserieDetails: Patisserie): void {
-    console.log(patisserieDetails.id);
-    let added = false;
+  incrementQty(value:any,i){
     this.storage.get('cart').then((data: ItemCarts[]) => {
-      // if(this.panierItems.find(items=>{items.item.id==id})){
-      //   return true
-      // }
-      for (let i = 0; i < data.length; i++) {
-        const element: ItemCarts = data[i];
-        console.log(element);
-        if (element.item.id === patisserieDetails.id) {
-          element.qty += 1;
-          added = true;
-        }
-        this.storage.set('cart', data);
-
-      }
-    });
-
-    // for(let i=0;i<data.length; i++){
-    //   const element: ItemCarts = data[i];
-    //   if(element.item.id==items.item.id){
-    //     if(element.item.quantite>=element.qty){
-    //       items.qty += 1 ;
-    // this.total = (element.item.prix_u * this.itemQty)
-
-    // this.cartCount.subscribe(count=>{count=element.qty});
-    // console.log(this.cartCount)
-    // }else{
-    //   return "quantite max"
-
-    // }}
-    // this.cartCount.next(this.cartCount.value)
+    const initialvalue=1;
+    if(value>0){
+      const afterclick=value+1;
+      return(this.panierItems[i].qty=afterclick)
+    }else {return(this.panierItems[i].qty=initialvalue+1)}
+  })
+  this.storage.set('cart',this.panierItems)
   }
+
+  decrementQty(value:any,i){
+    this.storage.get('cart').then((data: ItemCarts[]) => {
+    const initialvalue=1;
+    if(value>0){
+      const afterclick=value-1;
+      return(this.panierItems[i].qty=afterclick)
+    }else {return(this.panierItems[i].qty=initialvalue-1)}
+    
+  })
+  this.storage.set('cart',this.panierItems)
+  }
+
+  getTotalCost() {
+    let total = 0;
+    for (var i = 0; i < this.panierItems.length; i++) {
+    this.panierItems[i].item.prix_u;
+            this.totalSum = this.panierItems[i].item.prix_u * this.panierItems[i].qty;
+            total = total + this.totalSum
+        }
+  return total;
+}
+
 
   // Back to home page
   close() {

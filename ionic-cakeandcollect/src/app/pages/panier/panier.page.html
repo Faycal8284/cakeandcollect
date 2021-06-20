@@ -18,7 +18,7 @@
   <div>
 
     <!-- Food panier List -->
-    <ion-list *ngFor='let article of panierItems'>
+    <ion-list *ngFor='let article of panierItems; let i = index'>
       <ion-item class="ion-no-padding">
 
         <!-- Food Image -->
@@ -30,15 +30,15 @@
         quantite
         <ion-card>
           <!-- Add More quantite -->
-          <ion-col (click)="addone(patisserie)">
+          <ion-col (click)="incrementQty(panierItems[i].qty,i)">
             <ion-icon style="zoom:1.7;" name="add-circle-outline"></ion-icon>
           </ion-col>
 
           <!-- Total quantite -->
-          <ion-col  style='text-align:center' >{{ itemQty  }}</ion-col>
+          <ion-col  style='text-align:center'>{{ article.qty }}</ion-col>
 
           <!-- Minus quantite -->
-          <ion-col (click)="eliminate()">
+          <ion-col (click)="decrementQty(panierItems[i].qty,i)">
             <ion-icon style="zoom:1.7;" name="remove-circle-outline"></ion-icon>
           </ion-col>
         </ion-card>
@@ -71,7 +71,7 @@
       <!-- Total Cost -->
       <ion-item>
         <ion-label>Total:</ion-label>
-        <ion-note slot="end" color="dark">{{total | currency:'EUR':true}}</ion-note>
+        <ion-note slot="end" color="dark">{{getTotalCost() | currency:'EUR':true}}</ion-note>
       </ion-item>
     </ion-list>
   </div>
