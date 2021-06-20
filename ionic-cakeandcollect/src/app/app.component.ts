@@ -16,7 +16,6 @@ export class AppComponent {
     { title: 'Recherche', url: '/recherche', icon: 'search' },
     { title: 'Espace Client', url: '/client', icon: 'person' },
     { title: 'Espace Vendeur', url: '/login-vendeur', icon: 'restaurant' },
-    { title: 'Panier', url: '/panier', icon: 'cart' },
     { title: 'Contactez les Vendeurs', url: '/vendeurs', icon: 'create' },
     { title: 'Contactez-Nous', url: '/contact', icon: 'create' },
   ];
