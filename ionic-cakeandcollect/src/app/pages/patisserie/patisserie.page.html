@@ -37,17 +37,21 @@
       <ion-button fill="outline" slot="end">{{patisserie.prix_u}} €</ion-button>
     </ion-item>
 
-    <ion-card-content>{{patisserie.descriptions}}</ion-card-content>
-    <ion-card-content>{{patisserie.ingredients}}</ion-card-content>
-    <ion-label>
-      <h2>{{ patisserie.nom }}</h2>
-      <p>{{ patisserie.prix_u}}</p>
-      <ion-button  name="cart"
-        color="primary" (click)="addToCart(patisserie)">
-        <ion-icon name='cart'></ion-icon>
-        Ajouter
-      </ion-button>
-    </ion-label>
+    <ion-card-content>
+      <ion-list>
+        <ion-item> {{patisserie.nom}}</ion-item>
+        <ion-item> Stock : &nbsp; {{patisserie.stock}}</ion-item>
+        <ion-item> {{patisserie.descriptions}}</ion-item>
+        <ion-item> {{patisserie.ingredients}}</ion-item>
+        <ion-item>
+          <ion-button name="cart"
+            color="primary" (click)="addToCart(patisserie)">
+            <ion-icon name='cart'></ion-icon>
+            Ajouter
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
   </ion-card>
 
 </ion-content>

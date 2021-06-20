@@ -27,7 +27,7 @@ export class PatisseriePage implements OnInit {
 
   constructor(private router: Router, private patisseriesServices: PatisseriesService,
               private route: ActivatedRoute,private storage: Storage,
-              public toast:ToastController,public modal:ModalController) { }
+              public toast: ToastController,public modal:ModalController) { }
 
   ngOnInit() {
     this.storage.create();

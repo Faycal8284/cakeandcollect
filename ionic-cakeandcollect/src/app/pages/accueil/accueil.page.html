@@ -1,28 +1,19 @@
-<!-- <ion-content [scrollEvents]="true" parallaxHeader="../../../assets/images/parallax/pat1.jpg" [parallaxHeight]="300" >
-  <div class="main-content"> -->
-<!-- <ion-content [scrollEvents]="true" parallaxHeader="../../../assets/images/b" [parallaxHeight]="300" >
-  <div class="main-content">
-  -->
 <!-- Header -->
 <ion-header parallax imageUrl="../../../assets/images/background/macarons-framboise.jpg" maximumHeight="350" expandedColor="#AAA" titleColor="white">
   
   <ion-toolbar class="gradient">
-
     <!-- Back Button -->
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-
     <!-- Title -->
     <ion-title>Cake & Collect <img id="logo" src="assets/logo/CAC-White-NO-BG.png" title="Cake & Collect" alt="Cake & Collect"></ion-title>
   </ion-toolbar>
 </ion-header>
 
-
 <!-- Contents -->
 <ion-content class="background">
   <div class="main-content">
-    <!-- <ion-icon name="cart-outline"></ion-icon> -->
     <!-- Barre de Recherche -->
     <div id="section1">
       <ion-grid>
@@ -36,7 +27,7 @@
 
     <!-- Top offres -->
     <div id="top-offres">
-      <ion-slides class="ion-padding slider" #slider [options]="slideOpt1">
+      <ion-slides class="slider" #slider [options]="slideOpt1">
         <!-- <ion-slide *ngFor="let vendeur of vendeurs" [ngStyle]="{'background' : 'url(' + vendeur.img + ')'}">
       </ion-slide> -->
         <ion-slide *ngFor="let vendeur of vendeurs" [ngStyle]="{'background' : 'url(' + vendeur.img + ')'}"
@@ -44,7 +35,6 @@
           <ion-thumbnail slot="start">
           </ion-thumbnail>
           <ion-label>{{ vendeur.nom }} : {{vendeur.code_promo}}</ion-label>
-
         </ion-slide>
       </ion-slides>
     </div>
@@ -100,12 +90,10 @@
                     <ion-fab vertical="top" horizontal="end">
                       <ion-icon color="danger" name="heart"></ion-icon>
                     </ion-fab>
-
                     <!-- Vendeur Info -->
                     <ion-label class="ion-text-wrap">
                       <h4 class="name">{{vendeur.nom}}</h4>
                       <h5>{{vendeur.categorie}}</h5>
-
                       <!-- Note -->
                      <!--  <ion-text color="medium"> {{vendeur.note}} </ion-text> -->
                       <ion-text color="medium"> {{vendeur.ville}} </ion-text>
@@ -125,14 +113,13 @@
           <ion-button color="color1" (click)="gotoPatisseriesPage()">Voir Tous</ion-button>
         </ion-list-header>
 
-        <ion-card *ngFor="let patisserie of patisseries; let i=index">
+        <ion-card *ngFor="let patisserie of patisseries; let i=index" class="click" (click)="gotoPatisseriePage(patisserie.id)">
           <ion-list lines="none">
             <ion-item class="ion-no-padding border">
 
               <!-- Image -->
               <ion-thumbnail slot="start">
-                <img class="packages_thumbnail" style="vertical-align: middle;" [src]="patisserie.img"
-                  (click)="gotoPatisseriePage(patisserie.id)" />
+                <img class="packages_thumbnail" style="vertical-align: middle;" [src]="patisserie.img" [alt]="patisserie.nom" [title]="patisserie.nom"/>
               </ion-thumbnail>
 
               <ion-label class="ion-text-wrap">
