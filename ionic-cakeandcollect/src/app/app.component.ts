@@ -14,10 +14,10 @@ export class AppComponent {
   public appPages = [
     { title: 'Accueil', url: '/accueil', icon: 'home' },
     { title: 'Recherche', url: '/recherche', icon: 'search' },
-    { title: 'Espace Client', url: '/login-client', icon: 'person' },
+    { title: 'Espace Client', url: '/client', icon: 'person' },
     { title: 'Espace Vendeur', url: '/login-vendeur', icon: 'restaurant' },
-    { title: 'Login Client', url: '/client', icon: 'create' },
     { title: 'Panier', url: '/panier', icon: 'cart' },
+    { title: 'Contact', url: '/vendeurs', icon: 'create' },
 
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

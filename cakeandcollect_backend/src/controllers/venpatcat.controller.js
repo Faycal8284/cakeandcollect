@@ -84,7 +84,7 @@ module.exports = {
 
         const id = req.params.id;
         try { 
-            const categorie = await sequelize.query("SELECT * FROM venpatcat WHERE IdCategorie = " + id, { type: QueryTypes.SELECT });
+            const categorie = await sequelize.query("SELECT * FROM venpatcat WHERE IdCategorie = " + id + " Group by IdVendeur", { type: QueryTypes.SELECT });
             //const venpatcatCollection = await venpatcat.findAll();
             res.status(201).send(categorie); 
             console.log(categorie);

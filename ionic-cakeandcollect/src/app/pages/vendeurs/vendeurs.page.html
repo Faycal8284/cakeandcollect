@@ -44,10 +44,12 @@
               <!-- Vendeurs Info -->
               <ion-label class="ion-text-wrap">
                 <h4>{{vendeur.nom}}</h4>
-                <h5>{{vendeur.categorie}}</h5>
+                <h5>Catégories : {{vendeur.categorie}}</h5>
 
-                <!-- Reviews -->
-                <ion-text color="medium"> {{vendeur.note}} ({{vendeur.descriptions}} )</ion-text>
+                <!-- vendeur détails  -->
+                <ion-text color="medium"> {{vendeur.descriptions}}</ion-text><br>
+                <ion-text color="medium"> Téléphone : {{vendeur.tel}}</ion-text> <br>
+                <ion-text color="medium"> Adresse : {{vendeur.rue}} {{vendeur.code_postal}} {{vendeur.ville}}</ion-text><br>
               </ion-label>
             </ion-item>
           </ion-list>

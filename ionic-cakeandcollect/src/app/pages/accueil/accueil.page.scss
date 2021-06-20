@@ -1,9 +1,35 @@
 .gradient{
+  padding-bottom: 20px;
   color: #fff;
   --background: linear-gradient(to right bottom, #810357, #990669, #b30a7b, #cd0e8e, #e713a1);
 }
 ion-menu-button{
   color: #fff;
+}
+
+ion-title {
+  font-family: 'Palanquin', sans-serif;
+  font-size: 1.6em;
+  font-weight: 600;
+}
+
+#logo{
+  width: 50px;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#logo-footer{
+  width: 200px;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+ion-footer p{
+  color: #c80eb3;
+  text-align: center;
 }
 
 ion-content.background {

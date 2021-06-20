@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "nom": "Tartes",
+        "descriptions": "Tartes aux fruits",
+        "img": "assets/images/categories/tartes.jpg",
+        "createdAt": "2021-06-19T18:38:41.000Z",
+        "updatedAt": "2021-06-19T18:38:41.000Z"
+    },
+    {
+        "id": 2,
+        "nom": "Cakes",
+        "descriptions": "Cakes aux fruits, chocolats, pistache",
+        "img": "assets/images/categories/cakes.jpg",
+        "createdAt": "2021-06-19T19:23:16.000Z",
+        "updatedAt": "2021-06-19T19:23:16.000Z"
+    },
+    {
+        "id": 3,
+        "nom": "Cupcakes",
+        "descriptions": "Cupcakes aux multiples parfums",
+        "img": "assets/images/categories/cupcakes.jpg",
+        "createdAt": "2021-06-19T20:13:43.000Z",
+        "updatedAt": "2021-06-19T20:13:43.000Z"
+    },
+    {
+        "id": 4,
+        "nom": "Divers",
+        "descriptions": "Divers gâteaux, patisseries du monde",
+        "img": "assets/images/categories/divers.jpg",
+        "createdAt": "2021-06-19T20:45:51.000Z",
+        "updatedAt": "2021-06-19T20:45:51.000Z"
+    },
+    {
+        "id": 5,
+        "nom": "Anniversaire",
+        "descriptions": "Gâteaux spécial anniversaire",
+        "img": "assets/images/categories/anniversaire.jpg",
+        "createdAt": "2021-06-20T09:34:42.000Z",
+        "updatedAt": "2021-06-20T09:35:17.000Z"
+    },
+    {
+        "id": 6,
+        "nom": "Mariage",
+        "descriptions": "Gâteaux spécial mariage, pièces montées",
+        "img": "assets/images/categories/mariage.jpg",
+        "createdAt": "2021-06-20T09:50:44.000Z",
+        "updatedAt": "2021-06-20T09:50:44.000Z"
+    }
+]

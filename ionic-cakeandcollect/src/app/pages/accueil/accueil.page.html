@@ -14,7 +14,7 @@
     </ion-buttons>
 
     <!-- Title -->
-    <ion-title>Cake & Collect <img width="50" src="assets/images/icon.png"></ion-title>
+    <ion-title>Cake & Collect <img id="logo" src="assets/logo/CAC-White-NO-BG.png" title="Cake & Collect" alt="Cake & Collect"></ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -43,7 +43,7 @@
           (click)="goToVendeursDetails(vendeur.id)">
           <ion-thumbnail slot="start">
           </ion-thumbnail>
-          <ion-label>{{vendeur.code_promo}}</ion-label>
+          <ion-label>{{ vendeur.nom }} : {{vendeur.code_promo}}</ion-label>
 
         </ion-slide>
       </ion-slides>
@@ -107,7 +107,7 @@
                       <h5>{{vendeur.categorie}}</h5>
 
                       <!-- Note -->
-                      <ion-text color="medium"> {{vendeur.note}} </ion-text>
+                     <!--  <ion-text color="medium"> {{vendeur.note}} </ion-text> -->
                       <ion-text color="medium"> {{vendeur.ville}} </ion-text>
                     </ion-label>
                   </ion-item>
@@ -152,6 +152,11 @@
       </div>
     </div>
   </div>
+  <ion-footer>
+    <img id="logo-footer" src="assets/logo/CAC-Purple-With-Title.png" alt="C&C" title="C&C">
+    <p>© 2021 Khadidja IKHLEF & Fayçal Bouras</p>
+    <p>Softeam Institute</p>
+  </ion-footer>
   <!-- Background -->
   <div class="background2">
     <span></span>
