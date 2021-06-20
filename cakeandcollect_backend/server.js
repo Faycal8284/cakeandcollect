@@ -19,6 +19,7 @@ const vendeur = db.vendeur;
 const categorie = db.categorie;
 const commande = db.commande;
 const patisserie = db.patisserie;
+const contact = db.contact;
 
 const file = db.File;
 
@@ -52,6 +53,9 @@ require('./src/routes/vendeurs.routes')(app);
 
 // http://localhost:8080/api/categories
 require('./src/routes/categorie.routes')(app);
+
+// http://localhost:8080/api/contact
+require('./src/routes/contact.routes')(app);
 
 // http://localhost:8080/api/commandes
 require('./src/routes/commande.routes')(app);

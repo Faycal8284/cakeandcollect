@@ -15,7 +15,7 @@
 
      <!-- Cart Page Button -->
      <ion-buttons slot="end">
-      <ion-button color="light" (click)="gotoPanierPage()">
+      <ion-button color="light" (click)="gotoPatisseriePage(patisserie.id)">
         <ion-icon name="cart"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -75,7 +75,7 @@
               <ion-text color="color1">{{patisserie.Prix}} €</ion-text>
             </ion-label>
 
-            <ion-card color="primary" (click)="gotoPanierPage()">
+            <ion-card color="primary" (click)="gotoPatisseriePage(patisserie.id)">
               Commander
             </ion-card>
           </ion-item>

@@ -45,9 +45,7 @@ export class PatisseriePage implements OnInit {
   gotoPatisseriesPage() {
     this.router.navigateByUrl('/patisseries');
   }
-  gotoPanierPage() {
-    this.router.navigateByUrl('/panier');
-  }
+  
   addToCart(patisserieDetails:Patisserie): void{
     let added:boolean=false;
     this.storage.get("cart").then((data:ItemCarts[])=>{

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Platform } from '@ionic/angular';
+import { ModalController, Platform } from '@ionic/angular';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -17,10 +17,11 @@ export class AppComponent {
     { title: 'Espace Client', url: '/client', icon: 'person' },
     { title: 'Espace Vendeur', url: '/login-vendeur', icon: 'restaurant' },
     { title: 'Panier', url: '/panier', icon: 'cart' },
-    { title: 'Contact', url: '/vendeurs', icon: 'create' },
-
+    { title: 'Contactez les Vendeurs', url: '/vendeurs', icon: 'create' },
+    { title: 'Contactez-Nous', url: '/contact', icon: 'create' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -29,7 +30,7 @@ export class AppComponent {
     ) {
       this.initializeApp();
     }
-
+ 
     initializeApp() {
       this.platform.ready().then(() => {
         this.statusBar.styleDefault();

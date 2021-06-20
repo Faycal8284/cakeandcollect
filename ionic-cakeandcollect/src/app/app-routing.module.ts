@@ -129,11 +129,10 @@ const routes: Routes = [
     path: 'parametres/:id',
     loadChildren: () => import('./pages/client/parametres/parametres.module').then( m => m.ParametresPageModule)
   },
-
-
-
-
-
+  {
+    path: 'contact',
+    loadChildren: () => import('./pages/contact/contact.module').then( m => m.ContactPageModule)
+  },
 ];
 
 @NgModule({

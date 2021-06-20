@@ -5,7 +5,6 @@ import { ItemCarts } from 'src/app/interfaces/item-carts';
 import { Storage } from '@ionic/storage-angular';
 import { ModalController, NavController, ViewDidEnter } from '@ionic/angular';
 import { Patisserie } from 'src/app/interfaces/patisserie';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-panier',
@@ -15,11 +14,7 @@ import { BehaviorSubject } from 'rxjs';
 export class PanierPage {
   panierItems: ItemCarts[];
   total = 0;
-  cartCount = new BehaviorSubject(0);
- 
-  itemQty = 0;
   patisserie: Patisserie = {};
-  qty  = new BehaviorSubject<number>(0);
   totalSum: number;
 
   constructor(
@@ -34,10 +29,6 @@ export class PanierPage {
     console.log('render')
           this.storage.get('cart').then((data: ItemCarts[]) => {
             this.panierItems=data;
-            this.panierItems.forEach((element: ItemCarts) =>{
-
-            });
-            
         })
         .catch((err)=>{
           console.log('erreur',err);
