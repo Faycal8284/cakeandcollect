@@ -16,8 +16,7 @@ import { IonicHeaderParallaxModule } from 'ionic-header-parallax';
     FormsModule,
     AccueilPageRoutingModule,
     Ng2SearchPipeModule,
-    IonicHeaderParallaxModule,
-    
+    IonicHeaderParallaxModule
   ],
   declarations: [AccueilPage, ParallaxHeaderDirective]
 })

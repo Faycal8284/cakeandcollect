@@ -137,6 +137,7 @@ ion-content.background {
 }
 
 .background2 span {
+  z-index: 99999;
   width: 5vmin;
   height: 5vmin;
   border-radius: 10vmin;

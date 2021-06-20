@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar color="color1">
+    <ion-buttons slot="start">
+      <ion-button (click)="gotToEspaceClient()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Paramètres</ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content class="ion-padding" color="light">  
+  <ion-toolbar>  
+    <ion-segment (ionChange)="segmentChanged($event)" [(ngModel)]="segment" color="primary">  
+      <ion-segment-button value="0">  
+        <ion-label>Device</ion-label>  
+        <ion-icon name="settings"></ion-icon>  
+      </ion-segment-button>  
+      <ion-segment-button value="1">  
+        <ion-label>Favoris</ion-label>  
+        <ion-icon name="heart"></ion-icon>  
+      </ion-segment-button>  
+      <ion-segment-button value="2">  
+        <ion-label>Profile</ion-label>  
+        <ion-icon name="person"></ion-icon>  
+      </ion-segment-button>  
+    </ion-segment>  
+  </ion-toolbar>  
+    
+  <ion-slides #slides (ionSlideDidChange)="slideChanged()" scrollbar="true">  
+    <ion-slide>
+      <ion-list padding> 
+        <ion-item>Device Model : {{ model }} </ion-item>
+        <ion-item>Device Cordova : {{ cordova }}</ion-item>
+        <ion-item>Device Platform : {{ platform }} </ion-item>
+        <ion-item>Device UUID : {{ uuid }}</ion-item>
+        <ion-item>Device Version : {{ version }}</ion-item>
+        <ion-item>Device Serial : {{ serial }} </ion-item>
+        <ion-item>isVirtual : {{ isVirtual }}</ion-item>
+        <ion-item>Manufacturer : {{ manufacturer }}</ion-item>
+      </ion-list>
+
+    </ion-slide>  
+
+
+    <ion-slide>Mes pâtisseries favorites</ion-slide>  
+
+
+    <ion-slide>
+      <ion-list lines="full">
+        <form [formGroup]="editProfilForm" (ngSubmit)="updateProfile()">
+      
+          <ion-item>
+            <ion-label position="floating">Nom : </ion-label>
+            <ion-input formControlName="nom" type="text"></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label position="floating">Prénom : </ion-label>
+            <ion-input formControlName="prenom" type="text"></ion-input>
+          </ion-item>
+           
+          <ion-item>
+            <ion-label position="floating">Téléphone : </ion-label>
+            <ion-input formControlName="tel" type="text"></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label position="floating">Adresse : </ion-label>
+            <ion-input formControlName="rue" type="text"></ion-input>
+            <ion-input formControlName="code_postal" type="number"></ion-input>
+            <ion-input formControlName="ville" type="text"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label color="danger" position="floating">
+              Confirmez vos changements en entrant votre mot de passe</ion-label>
+            <ion-input formControlName="mdp" type="text" 
+                       placeholder="Mot de passe obligatoire" required>
+            </ion-input>                
+          </ion-item>
+      
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" color="primary" shape="full" expand="block">
+                Mettre à jour
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-list>
+
+    </ion-slide>  
+  </ion-slides>  
+</ion-content>  

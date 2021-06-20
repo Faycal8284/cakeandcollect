@@ -117,6 +117,21 @@ const routes: Routes = [
     path: 'upload',
     loadChildren: () => import('./pages/upload/upload.module').then( m => m.UploadPageModule)
   },
+  {
+    path: 'profil-vendeur/:id',
+    loadChildren: () => import('./pages/vendeur/profil-vendeur/profil-vendeur.module').then( m => m.ProfilVendeurPageModule)
+  },
+  {
+    path: 'profil-client/:id',
+    loadChildren: () => import('./pages/client/profil-client/profil-client.module').then( m => m.ProfilClientPageModule)
+  },
+  {
+    path: 'parametres/:id',
+    loadChildren: () => import('./pages/client/parametres/parametres.module').then( m => m.ParametresPageModule)
+  },
+
+
+
 
 
 ];
