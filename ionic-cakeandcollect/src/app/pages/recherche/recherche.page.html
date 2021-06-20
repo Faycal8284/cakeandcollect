@@ -16,6 +16,20 @@
   <ion-searchbar placeholder="Recherche..." [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
 
     <ion-list *ngFor="let data of allData | filter:filterTerm">
+      
+      <ion-item><!-- Les Patisseries -->
+        <ion-card (click)="gotoPatisseriePage(data.IdPatisserie)"> 
+          <img [src]="data.imagePatisserie" [alt]="data.Patisserie" [title]="data.Patisserie">
+          <ion-card-header>
+            <ion-card-subtitle></ion-card-subtitle>
+            <ion-card-title>{{data.Patisserie}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{data.descriptionPatisserie}} 
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+
       <ion-item><!-- Les vendeurs -->
         <ion-card (click)="goToVendeursDetails(data.IdVendeur)"> 
           <img [src]="data.imgVendeur" [alt]="data.Vendeur" [title]="data.Vendeur">
@@ -38,19 +52,6 @@
           </ion-card-header>
           <ion-card-content>
             {{data.descriptionCategorie}} 
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
-    
-      <ion-item><!-- Les Patisseries -->
-        <ion-card (click)="gotoPatisseriePage(data.IdPatisserie)"> 
-          <img [src]="data.imagePatisserie" [alt]="data.Patisserie" [title]="data.Patisserie">
-          <ion-card-header>
-            <ion-card-subtitle></ion-card-subtitle>
-            <ion-card-title>{{data.Patisserie}}</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            {{data.descriptionPatisserie}} 
           </ion-card-content>
         </ion-card>
       </ion-item>

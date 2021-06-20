@@ -63,7 +63,7 @@ export class ProfilVendeurPage implements OnInit {
         code_promo: vendeur.code_promo,
         particulier: vendeur.particulier,
         tel: vendeur.tel,
-        desciptions: vendeur.desciptions,
+        descriptions: vendeur.descriptions,
         rue: vendeur.rue,
         code_postal: vendeur.code_postal,
         ville: vendeur.ville,

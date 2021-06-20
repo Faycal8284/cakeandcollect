@@ -1,0 +1,19 @@
+[
+    {
+        "id": 1,
+        "nom": "IKHLEF",
+        "prenom": "Khadidja",
+        "email": "khadidja.ikhlef.mobile@gmail.com",
+        "mdp": "$2b$08$745jBVKTYvwrzYDUGAjrs.V.nGgmdqUTN8MykOk3ccaUUg13LsjrO",
+        "img": "/assets/images/uploads/1610562480965.jpg",
+        "actif": true,
+        "rue": "6 rue du G. De Gaulle",
+        "tel": "06020304050",
+        "code_postal": 95000,
+        "ville": "Cergy",
+        "note_vendeur": "",
+        "avis_commande": "",
+        "createdAt": "2021-06-20T11:04:40.000Z",
+        "updatedAt": "2021-06-20T11:06:39.000Z"
+    }
+]

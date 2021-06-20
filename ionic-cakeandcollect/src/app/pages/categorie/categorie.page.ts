@@ -15,7 +15,7 @@ import { VenpatcatService } from 'src/app/shared/venpatcat.service';
 export class CategoriePage implements OnInit {
 
   categories: any = [];
-  id = 0;
+  id: any;
   categorie: Categorie = {};
   //vendeurs: Array<Vendeur> = new Array<Vendeur>();
   vendeurs: any = [];
@@ -48,7 +48,6 @@ export class CategoriePage implements OnInit {
 
   getAllData() {
     this.id = this.route.snapshot.params.id;
-    console.log('zzzzzz', this.vendeursPatCatService.getCategorie(this.id))
     this.vendeursPatCatService.getCategorie(this.id).subscribe(data => {
       console.log('Vendeurs par catégorie data : ' + JSON.stringify(data)); // En attendant l'interface
       this.vendeurs = data;
