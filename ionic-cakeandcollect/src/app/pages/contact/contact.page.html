@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title> Contact-Us</ion-title>
+    <ion-title> Restons en contact</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,16 +12,15 @@
   <ion-list lines="full">
     <form [formGroup]="contactForm" (ngSubmit)="saveContact()">
       <ion-item>
-        <ion-label position="floating">Name</ion-label>
+        <ion-label position="floating">Nom</ion-label>
         <ion-input formControlName="name" type="text" ></ion-input>
       </ion-item>
       <span  *ngIf="submitted && errorControl.name.errors?.required">
-        Name is required.
+        Nom obligatoire
       </span>
       
-      
       <ion-item>
-        <ion-label position="floating">Prenom</ion-label>
+        <ion-label position="floating">Prénom</ion-label>
         <ion-input formControlName="prenom" type="text" required>
         </ion-input>
       </ion-item>
@@ -41,10 +40,7 @@
 
       <ion-row>
         <ion-col>
-          <!-- <ion-button type="submit" color="primary" shape="full" expand="block">
-            Ajouter User
-          </ion-button> -->
-          <button type="submit" mdc-button raised style="width:100%">Send Message</button>
+          <ion-button color="color1" type="submit">Envoyer</ion-button>
         </ion-col>
       </ion-row>
     </form>

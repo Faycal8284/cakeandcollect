@@ -16,7 +16,7 @@ export class AppComponent {
     { title: 'Recherche', url: '/recherche', icon: 'search' },
     { title: 'Espace Client', url: '/client', icon: 'person' },
     { title: 'Espace Vendeur', url: '/login-vendeur', icon: 'restaurant' },
-    { title: 'Contactez les Vendeurs', url: '/vendeurs', icon: 'create' },
+    { title: 'Vendeurs', url: '/vendeurs', icon: 'business' },
     { title: 'Contactez-Nous', url: '/contact', icon: 'create' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
